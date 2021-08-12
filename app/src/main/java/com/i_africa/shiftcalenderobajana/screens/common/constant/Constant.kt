@@ -15,17 +15,17 @@ object Constant {
     const val SECURITY_SHIFT_B = "SECURITY_SHIFT_B"
     const val SECURITY_SHIFT_C = "SECURITY_SHIFT_C"
 
-    const val FIRST_MORNING_DUTY = "FIRST MORNING DUTY"
-    const val SECOND_MORNING_DUTY = "SECOND MORNING DUTY"
-    const val THIRD_MORNING_DUTY = "THIRD MORNING DUTY"
+    const val FIRST_MORNING = "FIRST MORNING DUTY"
+    const val SECOND_MORNING = "SECOND MORNING DUTY"
+    const val THIRD_MORNING = "THIRD MORNING DUTY"
 
-    const val FIRST_NIGHT_DUTY = "FIRST NIGHT DUTY"
-    const val SECOND_NIGHT_DUTY = "SECOND NIGHT DUTY"
-    const val THIRD_NIGHT_DUTY = "THIRD NIGHT DUTY"
+    const val FIRST_NIGHT = "FIRST NIGHT DUTY"
+    const val SECOND_NIGHT = "SECOND NIGHT DUTY"
+    const val THIRD_NIGHT = "THIRD NIGHT DUTY"
 
-    const val FIRST_OFF_DUTY = "FIRST OFF DUTY"
-    const val SECOND_OFF_DUTY = "SECOND OFF DUTY"
-    const val THIRD_OFF_DUTY = "THIRD OFF DUTY"
+    const val FIRST_OFF = "FIRST OFF DUTY"
+    const val SECOND_OFF = "SECOND OFF DUTY"
+    const val THIRD_OFF = "THIRD OFF DUTY"
 
     const val FIRST_TIME_LOADING = "com.i_africa.shiftcalenderobajana.screens.common.constant_FIRST_TIME_LOADING"
     const val SHIFT_PREFERENCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_PREFERENCE_KEY"

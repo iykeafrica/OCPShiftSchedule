@@ -1,14 +1,15 @@
 package com.i_africa.shiftcalenderobajana.screens.shift
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityShiftBinding
 import com.i_africa.shiftcalenderobajana.screens.common.BaseViewMvc
 import com.i_africa.shiftcalenderobajana.screens.common.utils.DateFormatter
-import java.text.SimpleDateFormat
 import java.util.*
 
+private const val TAG = "ShiftViewMvc"
 class ShiftViewMvc(
     layoutInflater: LayoutInflater,
     parent: ViewGroup?
@@ -19,18 +20,12 @@ class ShiftViewMvc(
 
     private var dateOne: Date = Date()
     private var dateTwo = Date()
-    private var dateThree = Date()
     private val calOne = Calendar.getInstance()
     private val calTwo = Calendar.getInstance()
 
     private lateinit var day: String
     private lateinit var month: String
     private lateinit var year: String
-
-    private val REFERENCE_DATE: String = "02/01/1970"
-    private val SHIFT_CYCLE_DAYS: Int = 9
-    private val FORMAT: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
-
 
     interface Listener {
         fun calendarClick()
@@ -43,7 +38,8 @@ class ShiftViewMvc(
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             dateOne = Date(year, month, (dayOfMonth - 1))
             dateTwo = Date(year, month, dayOfMonth)
-            calTwo.time = dateTwo
+            calTwo.set(year, month, dayOfMonth)
+//            calTwo.time = dateTwo
 
             for (listener in listeners) {
                 listener.calendarClick()
@@ -57,47 +53,76 @@ class ShiftViewMvc(
         }
     }
 
-    fun setOnResumeDate() {
+    fun getOnResumeDate() {
         binding.dayOfMonthView.text = calOne.get(Calendar.DAY_OF_MONTH).toString()
         binding.weekdayView.text = DateFormatter.weekDay(dateOne)
         binding.workingDaysView.text = DateFormatter.month(dateTwo)
-
-        calOne.time = dateOne
     }
 
-    fun setOnCreateDate() {
+    fun getOnCalendarClickDate() {
         binding.dayOfMonthView.text = calTwo.get(Calendar.DAY_OF_MONTH).toString()
         binding.weekdayView.text = DateFormatter.weekDay(dateOne)
         binding.workingDaysView.text = DateFormatter.month(dateTwo)
     }
 
-    fun setShiftDutyOnResume() {
-        day = calOne.get(Calendar.DAY_OF_MONTH).toString()
-        month = (calOne.get(Calendar.MONTH) + 1).toString()
-        year = calOne.get(Calendar.YEAR).toString()
-
-        computeShiftDuty(calculateDifference(day, month, year))
+    private fun setCalendar(cal: Calendar) {
+        day = cal.get(Calendar.DAY_OF_MONTH).toString()
+        month = (cal.get(Calendar.MONTH) + 1).toString()
+        year = cal.get(Calendar.YEAR).toString()
     }
 
-    fun setShiftDutyOnCreate() {
-        day = calTwo.get(Calendar.DAY_OF_MONTH).toString()
-        month = (calTwo.get(Calendar.MONTH) + 1).toString()
-        year = calTwo.get(Calendar.YEAR).toString()
+    fun getOnResumeShiftDuty(shift: String) {
+        setCalendar(calOne)
+        Log.d(TAG, "getOnResumeShiftDuty: $day/$month/$year")
 
-        computeShiftDuty(calculateDifference(day, month, year))
+        computeShiftDuty(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
+        computeShiftDutyDays(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
     }
 
-    private fun calculateDifference(day: String, month: String, year: String): Int {
-        val clickedDate = "$day/$month/$year"
+    fun getOnCalendarClickShiftDuty(shift: String) {
+        setCalendar(calTwo)
+        Log.d(TAG, "getOnCalendarClickShiftDuty: $day/$month/$year")
 
-        val referenceDate: Date = FORMAT.parse(REFERENCE_DATE)
-        val currentDate: Date = FORMAT.parse(clickedDate)
-
-        val differenceDate = referenceDate.time - currentDate.time
-        return ((differenceDate / (24 * 60 * 60 * 1000))/SHIFT_CYCLE_DAYS).toInt()
+        computeShiftDuty(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
+        computeShiftDutyDays(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
     }
 
-    private fun computeShiftDuty(dateDifference: Int) {
+    private fun computeShiftDuty(dateDifference: Int, collection: List<String>) {
+        var count: Int = 0
+
+        if (dateDifference == 0) {
+            Log.d(TAG, "computeShiftDuty: $dateDifference")
+            binding.shiftView.text = collection[0]
+
+            if ()
+        }
+        if (dateDifference == 1) {
+            binding.shiftView.text = collection[1]
+        }
+        if (dateDifference == 2) {
+            binding.shiftView.text = collection[2]
+        }
+        if (dateDifference == 3) {
+            binding.shiftView.text = collection[3]
+        }
+        if (dateDifference == 4) {
+            binding.shiftView.text = collection[4]
+        }
+        if (dateDifference == 5) {
+            binding.shiftView.text = collection[5]
+        }
+        if (dateDifference == 6) {
+            binding.shiftView.text = collection[6]
+        }
+        if (dateDifference == 7) {
+            binding.shiftView.text = collection[7]
+        }
+        if (dateDifference == 8) {
+            binding.shiftView.text = collection[8]
+        }
+    }
+
+    private fun computeShiftDutyDays(dateDifference: Int, collection: List<String>) {
 
     }
 
