@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.fragment
+package com.i_africa.shiftcalenderobajana.screens.common.fragment
 
 import androidx.fragment.app.Fragment
 

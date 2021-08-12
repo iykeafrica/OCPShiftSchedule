@@ -1,20 +1,20 @@
-package com.i_africa.shiftcalenderobajana.screens.selectshift
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.i_africa.shiftcalenderobajana.mysharedpref.MySharedPreferences
-import com.i_africa.shiftcalenderobajana.screens.ScreensNavigator
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.CMTCE_SHIFT_A
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.CMTCE_SHIFT_B
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.CMTCE_SHIFT_C
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.FIRST_TIME_LOADING
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.PLANT_SHIFT_A
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.PLANT_SHIFT_B
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.PLANT_SHIFT_C
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SECURITY_SHIFT_A
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SECURITY_SHIFT_B
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SECURITY_SHIFT_C
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SHIFT_PREFERENCE_KEY
+import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_A
+import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_B
+import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_C
+import com.i_africa.shiftcalenderobajana.utils.Constant.FIRST_TIME_LOADING
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_A
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_B
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_C
+import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_A
+import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_B
+import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_C
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 
 class SelectShiftActivity : AppCompatActivity(), SelectShiftViewMvc.Listener {
 

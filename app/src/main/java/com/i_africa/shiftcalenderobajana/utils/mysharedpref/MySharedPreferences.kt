@@ -1,12 +1,13 @@
-package com.i_africa.shiftcalenderobajana.mysharedpref
+package com.i_africa.shiftcalenderobajana.utils.mysharedpref
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant
+import com.i_africa.shiftcalenderobajana.utils.Constant
 
 class MySharedPreferences(application: Application) {
 
-    private val preferences: SharedPreferences = application.applicationContext.getSharedPreferences(Constant.MY_PREF, 0)
+    private val preferences: SharedPreferences = application.applicationContext.getSharedPreferences(
+        Constant.MY_PREF, 0)
     private val editor = preferences.edit()!!
 
     fun storeStringValue(key: String, value: String) {

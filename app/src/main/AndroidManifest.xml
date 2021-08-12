@@ -7,22 +7,26 @@
 
     <application
         android:name=".MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity">
+
+        <activity android:name=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity" />
+
+        <activity android:name=".screens.viewmvc.main.MainActivity" />
+
+        <activity android:name=".screens.viewmvc.selectshift.SelectShiftActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.shift.ShiftActivity">
 
-        </activity>
+        <activity android:name=".screens.viewmvc.shift.ShiftActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,9 +1,9 @@
-package com.i_africa.shiftcalenderobajana.screens.selectshift
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivitySelectShiftBinding
-import com.i_africa.shiftcalenderobajana.screens.common.BaseViewMvc
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 
 class SelectShiftViewMvc(
     layoutInflater: LayoutInflater,

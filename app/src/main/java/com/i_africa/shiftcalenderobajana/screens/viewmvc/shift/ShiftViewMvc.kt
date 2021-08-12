@@ -1,15 +1,20 @@
-package com.i_africa.shiftcalenderobajana.screens.shift
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityShiftBinding
-import com.i_africa.shiftcalenderobajana.screens.common.BaseViewMvc
-import com.i_africa.shiftcalenderobajana.screens.common.utils.DateFormatter
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.DateFormatter
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftDuty
+import com.i_africa.shiftcalenderobajana.utils.Constant.FIRST_OFF
+import com.i_africa.shiftcalenderobajana.utils.Constant.SECOND_OFF
+import com.i_africa.shiftcalenderobajana.utils.Constant.THIRD_OFF
 import java.util.*
 
 private const val TAG = "ShiftViewMvc"
+
 class ShiftViewMvc(
     layoutInflater: LayoutInflater,
     parent: ViewGroup?
@@ -26,6 +31,8 @@ class ShiftViewMvc(
     private lateinit var day: String
     private lateinit var month: String
     private lateinit var year: String
+    private var daysInMonth: Int = 0
+    private var count = 0
 
     interface Listener {
         fun calendarClick()
@@ -56,13 +63,11 @@ class ShiftViewMvc(
     fun getOnResumeDate() {
         binding.dayOfMonthView.text = calOne.get(Calendar.DAY_OF_MONTH).toString()
         binding.weekdayView.text = DateFormatter.weekDay(dateOne)
-        binding.workingDaysView.text = DateFormatter.month(dateTwo)
     }
 
     fun getOnCalendarClickDate() {
         binding.dayOfMonthView.text = calTwo.get(Calendar.DAY_OF_MONTH).toString()
         binding.weekdayView.text = DateFormatter.weekDay(dateOne)
-        binding.workingDaysView.text = DateFormatter.month(dateTwo)
     }
 
     private fun setCalendar(cal: Calendar) {
@@ -73,28 +78,34 @@ class ShiftViewMvc(
 
     fun getOnResumeShiftDuty(shift: String) {
         setCalendar(calOne)
+        daysInMonth = calOne.getActualMaximum(Calendar.DAY_OF_MONTH)
         Log.d(TAG, "getOnResumeShiftDuty: $day/$month/$year")
 
         computeShiftDuty(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
-        computeShiftDutyDays(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
+        computeShiftDutyDays(ShiftDuty.setShiftDuty(shift))
+
+        binding.workingDaysView.text = "${DateFormatter.month(dateTwo)} has $count working days."
+        count = 0
     }
 
     fun getOnCalendarClickShiftDuty(shift: String) {
         setCalendar(calTwo)
+        daysInMonth = calTwo.getActualMaximum(Calendar.DAY_OF_MONTH)
         Log.d(TAG, "getOnCalendarClickShiftDuty: $day/$month/$year")
 
         computeShiftDuty(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
-        computeShiftDutyDays(ShiftDuty.setFormula(day, month, year), ShiftDuty.setShiftDuty(shift))
+
+        if (count == 0) {
+            computeShiftDutyDays(ShiftDuty.setShiftDuty(shift))
+            binding.workingDaysView.text = "${DateFormatter.month(dateTwo)} has $count working days."
+            count = 0
+        }
     }
 
     private fun computeShiftDuty(dateDifference: Int, collection: List<String>) {
-        var count: Int = 0
 
         if (dateDifference == 0) {
-            Log.d(TAG, "computeShiftDuty: $dateDifference")
             binding.shiftView.text = collection[0]
-
-            if ()
         }
         if (dateDifference == 1) {
             binding.shiftView.text = collection[1]
@@ -122,8 +133,49 @@ class ShiftViewMvc(
         }
     }
 
-    private fun computeShiftDutyDays(dateDifference: Int, collection: List<String>) {
+    private fun computeShiftDutyDays(collection: List<String>) {
 
+        for (i in 1..daysInMonth) {
+            val dateDifference = ShiftDuty.setFormula(i.toString(), month, year)
+
+            if (dateDifference == 0 && collection[0] != FIRST_OFF && collection[0] != SECOND_OFF && collection[0] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[0]}")
+                count++
+            }
+            if (dateDifference == 1 && collection[1] != FIRST_OFF && collection[1] != SECOND_OFF && collection[1] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[1]}")
+                count++
+            }
+            if (dateDifference == 2 && collection[2] != FIRST_OFF && collection[2] != SECOND_OFF && collection[2] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[2]}")
+                count++
+            }
+            if (dateDifference == 3 && collection[3] != FIRST_OFF && collection[3] != SECOND_OFF && collection[3] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[3]}")
+                count++
+            }
+            if (dateDifference == 4 && collection[4] != FIRST_OFF && collection[4] != SECOND_OFF && collection[4] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[4]}")
+                count++
+            }
+            if (dateDifference == 5 && collection[5] != FIRST_OFF && collection[5] != SECOND_OFF && collection[5] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[5]}")
+                count++
+            }
+            if (dateDifference == 6 && collection[6] != FIRST_OFF && collection[6] != SECOND_OFF && collection[6] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[6]}")
+                count++
+            }
+            if (dateDifference == 7 && collection[7] != FIRST_OFF && collection[7] != SECOND_OFF && collection[7] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[7]}")
+                count++
+            }
+            if (dateDifference == 8 && collection[8] != FIRST_OFF && collection[8] != SECOND_OFF && collection[8] != THIRD_OFF) {
+                Log.d(TAG, "computeShiftDutyDays: ${collection[8]}")
+                count++
+            }
+        }
+        Log.d(TAG, "computeShiftDutyDays: $count")
     }
 
 

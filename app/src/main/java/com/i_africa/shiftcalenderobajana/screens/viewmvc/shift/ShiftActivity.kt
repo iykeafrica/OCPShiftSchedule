@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.shift
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 
 import android.content.Context
 import android.content.Intent
@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.i_africa.shiftcalenderobajana.mysharedpref.MySharedPreferences
-import com.i_africa.shiftcalenderobajana.screens.ScreensNavigator
-import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SHIFT_EXTRA_KEY
-import com.i_africa.shiftcalenderobajana.screens.common.constant.Constant.SHIFT_PREFERENCE_KEY
+import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.popupmenu.MyPopUpMenu
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 
 private val TAG = ShiftActivity::class.simpleName
 
@@ -65,6 +65,10 @@ class ShiftActivity : AppCompatActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Li
     override fun changeShift() {
         mySharedPreferences.clearPreferences()
         screensNavigator.changeShift()
+    }
+
+    override fun calculateOvertime() {
+        screensNavigator.calculateOvertime()
     }
 
     override fun rateApp() {

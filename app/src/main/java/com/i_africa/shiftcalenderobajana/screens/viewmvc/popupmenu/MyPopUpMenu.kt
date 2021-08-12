@@ -1,15 +1,17 @@
-package com.i_africa.shiftcalenderobajana.screens.common
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.popupmenu
 
 import android.view.View
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.R
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 
 class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUpMenu.Listener>() {
 
     interface Listener {
         fun refresh()
         fun changeShift()
+        fun calculateOvertime()
         fun rateApp()
         fun about()
     }
@@ -29,6 +31,11 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
                 R.id.select_shift -> {
                     for (listener in listeners) {
                         listener.changeShift()
+                    }
+                }
+                R.id.calculate_ot -> {
+                    for (listener in listeners) {
+                        listener.calculateOvertime()
                     }
                 }
                 R.id.rate_app -> {

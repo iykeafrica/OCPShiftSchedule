@@ -5,6 +5,7 @@
     <string name="disclaimer"><u><b>Disclaimer</b></u> \nThis App is not connected to Dangote. \nIt was created solely for personal use \nwhile working  @OCP by IK.</string>
     <string name="refresh">Refresh</string>
     <string name="select_shift">Change Shift</string>
+    <string name="calculate_ot">Calculate Overtime</string>
     <string name="rate_app">Rate App</string>
     <string name="about">About</string>
 </resources>

@@ -10,6 +10,10 @@
         android:title="@string/select_shift"
         app:showAsAction="never"/>
 
+    <item android:id="@+id/calculate_ot"
+        android:title="@string/calculate_ot"
+        app:showAsAction="never"/>
+
     <item android:id="@+id/rate_app"
         android:title="@string/rate_app"
         app:showAsAction="never"/>

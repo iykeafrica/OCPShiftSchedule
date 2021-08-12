@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.common.constant
+package com.i_africa.shiftcalenderobajana.utils
 
 object Constant {
 

@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.common.utils
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils
 
 import java.text.Format
 import java.text.SimpleDateFormat

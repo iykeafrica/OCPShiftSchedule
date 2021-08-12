@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.common
+package com.i_africa.shiftcalenderobajana.screens.viewmvc
 
 import java.util.*
 
