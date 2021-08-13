@@ -102,7 +102,30 @@ object ShiftCollection {
         Constant.FIRST_OFF,
         Constant.SECOND_OFF)
 
+    fun setCollection(shift: String): List<String> {
+        var collection: List<String> = ArrayList()
 
+        if (shift == Constant.PLANT_SHIFT_A)
+            collection = plantA
+        if (shift == Constant.PLANT_SHIFT_B)
+            collection = plantB
+        if (shift == Constant.PLANT_SHIFT_C)
+            collection = plantC
+        if (shift == Constant.CMTCE_SHIFT_A)
+            collection = cmtceA
+        if (shift == Constant.CMTCE_SHIFT_B)
+            collection = cmtceB
+        if (shift == Constant.CMTCE_SHIFT_C)
+            collection = cmtceC
+        if (shift == Constant.SECURITY_SHIFT_A)
+            collection = securityA
+        if (shift == Constant.SECURITY_SHIFT_B)
+            collection = securityB
+        if (shift == Constant.SECURITY_SHIFT_C)
+            collection = securityC
+
+        return collection
+    }
 
 
 }
