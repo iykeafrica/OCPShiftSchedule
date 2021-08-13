@@ -40,9 +40,10 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     override fun onResume() {
         super.onResume()
         shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
-        shiftViewMvc.getShiftDutyInfoOnResume(shift)
-        shiftViewMvc.getDayOfMonthOnResume()
+        shiftViewMvc.getDayOfMonth()
         shiftViewMvc.getWeekDay()
+        shiftViewMvc.getShiftDuty(shift)
+        shiftViewMvc.getShiftMonthlyWorkingDays(shift)
     }
 
     override fun onBackPressed() {
@@ -50,9 +51,10 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     }
 
     override fun calendarClick() {
-        shiftViewMvc.getShiftDutyInfoOnCalenderClick(shift)
-        shiftViewMvc.getDayOfMonthOnCalendarClick()
+        shiftViewMvc.getDayOfMonth()
         shiftViewMvc.getWeekDay()
+        shiftViewMvc.getShiftDuty(shift)
+        shiftViewMvc.getShiftMonthlyWorkingDays(shift)
     }
 
     override fun popUpMenuClick(v: View) {

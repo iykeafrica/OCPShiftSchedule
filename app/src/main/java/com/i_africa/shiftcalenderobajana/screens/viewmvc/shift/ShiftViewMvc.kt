@@ -23,11 +23,8 @@ class ShiftViewMvc(
     private val binding = ActivityShiftBinding.inflate(layoutInflater, parent, false)
     val rootView = binding.root
 
-    private var dateOne = Date()
-    private var dateTwo = Date()
-    private val calOne = Calendar.getInstance()
-    private val calTwo = Calendar.getInstance()
-
+    private var date = Date()
+    private val calendar = Calendar.getInstance()
     private lateinit var day: String
     private lateinit var month: String
     private lateinit var year: String
@@ -40,12 +37,11 @@ class ShiftViewMvc(
     }
 
     init {
-        calOne.time = dateOne
+        calendar.time = date
 
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            dateOne = Date(year, month, (dayOfMonth - 1))
-            dateTwo = Date(year, month, dayOfMonth)
-            calTwo.set(year, month, dayOfMonth)
+            calendar.set(year, month, dayOfMonth)
+            date = calendar.time
 
             for (listener in listeners) {
                 listener.calendarClick()
@@ -59,16 +55,12 @@ class ShiftViewMvc(
         }
     }
 
-    fun getDayOfMonthOnResume() {
-        binding.dayOfMonthView.text = calOne.get(Calendar.DAY_OF_MONTH).toString()
-    }
-
-    fun getDayOfMonthOnCalendarClick() {
-        binding.dayOfMonthView.text = calTwo.get(Calendar.DAY_OF_MONTH).toString()
+    fun getDayOfMonth() {
+        binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
     }
 
     fun getWeekDay() {
-        binding.weekdayView.text = DateFormatter.weekDay(dateOne)
+        binding.weekdayView.text = DateFormatter.weekDay(date)
     }
 
     private fun setCalendar(cal: Calendar) {
@@ -78,24 +70,20 @@ class ShiftViewMvc(
         daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
     }
 
-    fun getShiftDutyInfoOnResume(shift: String) {
-        setCalendar(calOne)
-        Log.d(TAG, "getShiftDutyInfoOnResume: $day/$month/$year")
+    fun getShiftDuty(shift: String) {
+        setCalendar(calendar)
+        Log.d(TAG, "getShiftDuty: $day/$month/$year")
 
-        setShiftDutyInfo(shift)
+        val shiftDuty = computeShiftDuty(setFormula(day, month, year), setCollection(shift))
+        binding.shiftView.text = shiftDuty
     }
 
-    fun getShiftDutyInfoOnCalenderClick(shift: String) {
-        setCalendar(calTwo)
-        Log.d(TAG, "getOnCalendarClickShiftDuty: $day/$month/$year")
+    fun getShiftMonthlyWorkingDays(shift: String) {
+        setCalendar(calendar)
+        Log.d(TAG, "getShiftMonthlyWorkingDays: $day/$month/$year")
 
-        setShiftDutyInfo(shift)
-    }
-
-    private fun setShiftDutyInfo(shift: String) {
-        binding.shiftView.text = computeShiftDuty(setFormula(day, month, year), setCollection(shift))
         count = computeShiftDutyDays(daysInMonth, month, year, setCollection(shift))
-        binding.workingDaysView.text = "${DateFormatter.month(dateTwo)} has $count working days."
+        binding.workingDaysView.text = "${DateFormatter.month(date)} has $count working days."
     }
 
 }
