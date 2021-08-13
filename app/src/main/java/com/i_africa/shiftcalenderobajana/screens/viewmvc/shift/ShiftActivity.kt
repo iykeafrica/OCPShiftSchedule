@@ -5,10 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.i_africa.shiftcalenderobajana.common.Service
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
+import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 
@@ -17,24 +19,21 @@ private val TAG = ShiftActivity::class.simpleName
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
-    private lateinit var screensNavigator: ScreensNavigator
-    private lateinit var mySharedPreferences: MySharedPreferences
-    private lateinit var myPopUpMenu: MyPopUpMenu
+    @field:Service private lateinit var screensNavigator: ScreensNavigator
+    @field:Service private lateinit var mySharedPreferences: MySharedPreferences
+    @field:Service private lateinit var myPopUpMenu: MyPopUpMenu
+    @field:Service private lateinit var viewMvcFactory: ViewMvcFactory
+
     private lateinit var shift: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        shiftViewMvc = compositionRoot.viewMvcFactory.newShiftViewMvc(null)
-        screensNavigator = compositionRoot.screensNavigator
-        mySharedPreferences = compositionRoot.mySharedPreferences
-        myPopUpMenu = compositionRoot.popUpMenu
-
+        injector.inject(this)
+        shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
         setContentView(shiftViewMvc.rootView)
 
         val shift = intent.getStringExtra(SHIFT_EXTRA_KEY)
-        mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
-
         Log.d(TAG, "onCreate: $shift")
     }
 

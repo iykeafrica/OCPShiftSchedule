@@ -2,8 +2,10 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.i_africa.shiftcalenderobajana.common.Service
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
+import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_A
 import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_B
@@ -20,15 +22,15 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 class SelectShiftActivity : BaseActivity(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    private lateinit var screensNavigator: ScreensNavigator
-    private lateinit var mySharedPreferences: MySharedPreferences
+    @field:Service private lateinit var screensNavigator: ScreensNavigator
+    @field:Service private lateinit var mySharedPreferences: MySharedPreferences
+    @field:Service private lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        selectShiftViewMvc = compositionRoot.viewMvcFactory.newSelectShiftViewMvc(null)
-        screensNavigator = compositionRoot.screensNavigator
-        mySharedPreferences = compositionRoot.mySharedPreferences
+        injector.inject(this)
+        selectShiftViewMvc = viewMvcFactory.newSelectShiftViewMvc(null)
 
         setContentView(selectShiftViewMvc.rootView)
     }
