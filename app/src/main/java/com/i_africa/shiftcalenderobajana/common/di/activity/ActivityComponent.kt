@@ -7,6 +7,7 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.Component
 
+@ActivityScope
 @Component(modules = [ActivityModule::class])
 interface ActivityComponent {
 

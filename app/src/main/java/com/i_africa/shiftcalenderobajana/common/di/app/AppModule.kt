@@ -6,12 +6,12 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule(application: Application) {
-
-    private val mySharedPreferences: MySharedPreferences by lazy {
-        MySharedPreferences(application)
-    }
+class AppModule(private val application: Application) {
 
     @Provides
-    fun mySharedPreferences() = mySharedPreferences
+    fun application() = application
+
+    @AppScope
+    @Provides
+    fun mySharedPreferences(application: Application) = MySharedPreferences(application)
 }

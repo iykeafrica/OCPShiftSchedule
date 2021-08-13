@@ -15,15 +15,15 @@ class ActivityModule(
     private val appComponent: AppComponent
 ) {
 
-    private val screensNavigator by lazy {
-        ScreensNavigator(activity)
-    }
+    @Provides
+    fun activity() = activity
 
     @Provides
     fun layoutInflater() = activity.layoutInflater
 
+    @ActivityScope
     @Provides
-    fun screensNavigator()  = screensNavigator
+    fun screensNavigator(activity: AppCompatActivity)  = ScreensNavigator(activity)
 
     @Provides
     fun mySharedPreferences() = appComponent.mySharedPreferences()
