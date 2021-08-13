@@ -15,7 +15,6 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import javax.inject.Inject
 
 private val TAG = ShiftActivity::class.simpleName
-
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
@@ -30,6 +29,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         super.onCreate(savedInstanceState)
 
         injector.inject(this)
+        Log.d(TAG, "onCreate: $screensNavigator")
         shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
         setContentView(shiftViewMvc.rootView)
 

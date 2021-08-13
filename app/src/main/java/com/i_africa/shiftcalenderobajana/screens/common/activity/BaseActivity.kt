@@ -5,7 +5,6 @@ import com.i_africa.shiftcalenderobajana.MyApplication
 import com.i_africa.shiftcalenderobajana.common.di.activity.ActivityComponent
 import com.i_africa.shiftcalenderobajana.common.di.activity.ActivityModule
 import com.i_africa.shiftcalenderobajana.common.di.presentation.PresentationComponent
-import com.i_africa.shiftcalenderobajana.common.di.presentation.PresentationModule
 
 open class BaseActivity: AppCompatActivity() {
 
@@ -16,7 +15,7 @@ open class BaseActivity: AppCompatActivity() {
     }
 
     private val presentationComponent: PresentationComponent by lazy {
-        activityComponent.newPresentationComponent(PresentationModule())
+        activityComponent.newPresentationComponent()
     }
 
     val injector get() = presentationComponent

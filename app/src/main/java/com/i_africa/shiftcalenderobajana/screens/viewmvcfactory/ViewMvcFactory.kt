@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftViewMvc
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.ShiftViewMvc
+import javax.inject.Inject
 
-class ViewMvcFactory(
-    private val layoutInflater: LayoutInflater
-) {
+class ViewMvcFactory @Inject constructor(private val layoutInflater: LayoutInflater) {
 
     fun newShiftViewMvc(parent: ViewGroup?) : ShiftViewMvc {
         return ShiftViewMvc(layoutInflater, parent)

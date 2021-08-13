@@ -1,6 +1,7 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_C
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import javax.inject.Inject
 
+private val TAG = SelectShiftFragment::class.simpleName
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
@@ -31,6 +33,7 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
+        Log.d(TAG, "onCreate: $screensNavigator")
     }
 
     override fun onCreateView(
