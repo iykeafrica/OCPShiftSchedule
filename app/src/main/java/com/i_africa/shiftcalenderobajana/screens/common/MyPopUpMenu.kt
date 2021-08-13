@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.popupmenu
+package com.i_africa.shiftcalenderobajana.screens.common
 
 import android.view.View
 import android.widget.PopupMenu

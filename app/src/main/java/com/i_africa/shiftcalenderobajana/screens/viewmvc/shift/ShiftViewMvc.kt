@@ -36,7 +36,7 @@ class ShiftViewMvc(
 
     interface Listener {
         fun calendarClick()
-        fun popUpMenu(v: View)
+        fun popUpMenuClick(v: View)
     }
 
     init {
@@ -55,7 +55,7 @@ class ShiftViewMvc(
 
         binding.menu.setOnClickListener { v ->
             for (listener in listeners) {
-                listener.popUpMenu(v)
+                listener.popUpMenuClick(v)
             }
         }
     }

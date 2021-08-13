@@ -2,19 +2,19 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
+import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.popupmenu.MyPopUpMenu
+import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 
 private val TAG = ShiftActivity::class.simpleName
 
-class ShiftActivity : AppCompatActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
+class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
     private lateinit var screensNavigator: ScreensNavigator
@@ -25,12 +25,12 @@ class ShiftActivity : AppCompatActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Li
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        shiftViewMvc = ShiftViewMvc(layoutInflater, null)
-        setContentView(shiftViewMvc.rootView)
+        shiftViewMvc = compositionRoot.viewMvcFactory.newShiftViewMvc(null)
+        screensNavigator = compositionRoot.screensNavigator
+        mySharedPreferences = compositionRoot.mySharedPreferences
+        myPopUpMenu = compositionRoot.popUpMenu
 
-        mySharedPreferences = MySharedPreferences(application)
-        myPopUpMenu = MyPopUpMenu(this)
-        screensNavigator = ScreensNavigator(this)
+        setContentView(shiftViewMvc.rootView)
 
         val shift = intent.getStringExtra(SHIFT_EXTRA_KEY)
         mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
@@ -54,7 +54,7 @@ class ShiftActivity : AppCompatActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Li
         shiftViewMvc.getOnCalendarClickDate()
     }
 
-    override fun popUpMenu(v: View) {
+    override fun popUpMenuClick(v: View) {
         myPopUpMenu.popup(v)
     }
 
