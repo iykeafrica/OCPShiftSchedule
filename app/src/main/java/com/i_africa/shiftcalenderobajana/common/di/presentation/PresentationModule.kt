@@ -1,24 +1,19 @@
 package com.i_africa.shiftcalenderobajana.common.di.presentation
 
+import android.app.Application
+import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.common.di.activity.ActivityComponent
+import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
+import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
+import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.Module
 import dagger.Provides
 
 @Module
-class PresentationModule(private val activityComponent: ActivityComponent) {
+class PresentationModule() {
 
     @Provides
-    fun layoutInflater() = activityComponent.layoutInflater()
-
-    @Provides
-    fun screensNavigator() = activityComponent.screensNavigator()
-
-    @Provides
-    fun mySharedPreferences() = activityComponent.mySharedPreferences()
-
-    @Provides
-    fun popUpMenu() = activityComponent.popUpMenu()
-
-    @Provides
-    fun viewMvcFactory() = activityComponent.viewMvcFactory()
+    fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
 }

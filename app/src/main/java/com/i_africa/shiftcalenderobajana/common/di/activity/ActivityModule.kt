@@ -16,6 +16,9 @@ class ActivityModule(
 ) {
 
     @Provides
+    fun application() = appComponent.application()
+
+    @Provides
     fun activity() = activity
 
     @Provides
@@ -31,6 +34,4 @@ class ActivityModule(
     @Provides
     fun popUpMenu() = MyPopUpMenu(activity)
 
-    @Provides
-    fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
 }

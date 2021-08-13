@@ -18,6 +18,4 @@ interface ActivityComponent {
     fun mySharedPreferences(): MySharedPreferences
 
     fun popUpMenu(): MyPopUpMenu
-
-    fun viewMvcFactory(): ViewMvcFactory
 }
