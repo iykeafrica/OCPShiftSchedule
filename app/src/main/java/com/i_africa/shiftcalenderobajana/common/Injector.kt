@@ -6,7 +6,7 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import java.lang.reflect.Field
 
-class Injector(private val compositionRoot: PresentationCompositionRoot) {
+class Injector(private val component: PresentationComponent) {
 
     fun inject(client: Any) {
         for (field in getAllFields(client)) {
@@ -41,16 +41,16 @@ class Injector(private val compositionRoot: PresentationCompositionRoot) {
     private fun getServiceForClass(type: Class<*>): Any {
         when (type) {
             ScreensNavigator::class.java -> {
-                return compositionRoot.screensNavigator
+                return component.screensNavigator()
             }
             MyPopUpMenu::class.java -> {
-                return compositionRoot.popUpMenu
+                return component.popUpMenu()
             }
             ViewMvcFactory::class.java -> {
-                return compositionRoot.viewMvcFactory
+                return component.viewMvcFactory()
             }
             MySharedPreferences::class.java -> {
-                return compositionRoot.mySharedPreferences
+                return component.mySharedPreferences()
             }
             else -> {
                 throw Exception("unsupported service type: $type")
