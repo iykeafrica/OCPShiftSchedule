@@ -1,7 +1,6 @@
 package com.i_africa.shiftcalenderobajana.screens.common.fragment
 
 import androidx.fragment.app.Fragment
-import com.i_africa.shiftcalenderobajana.common.Injector
 import com.i_africa.shiftcalenderobajana.common.di.presentation.DaggerPresentationComponent
 import com.i_africa.shiftcalenderobajana.common.di.presentation.PresentationComponent
 import com.i_africa.shiftcalenderobajana.common.di.presentation.PresentationModule
@@ -17,5 +16,5 @@ open class BaseFragment: Fragment() {
             .build()
     }
 
-    val injector get() = Injector(presentationComponent)
+    val injector get() = presentationComponent
 }

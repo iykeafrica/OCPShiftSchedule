@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.i_africa.shiftcalenderobajana.common.Service
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
-import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.screens.common.fragment.BaseFragment
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
@@ -21,13 +19,14 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_A
 import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_B
 import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_C
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
+import javax.inject.Inject
 
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    @field:Service private lateinit var screensNavigator: ScreensNavigator
-    @field:Service private lateinit var mySharedPreferences: MySharedPreferences
-    @field:Service private lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject lateinit var screensNavigator: ScreensNavigator
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

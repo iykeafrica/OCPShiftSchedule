@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.i_africa.shiftcalenderobajana.common.Service
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
@@ -13,16 +12,17 @@ import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
+import javax.inject.Inject
 
 private val TAG = ShiftActivity::class.simpleName
 
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
-    @field:Service private lateinit var screensNavigator: ScreensNavigator
-    @field:Service private lateinit var mySharedPreferences: MySharedPreferences
-    @field:Service private lateinit var myPopUpMenu: MyPopUpMenu
-    @field:Service private lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject lateinit var screensNavigator: ScreensNavigator
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var myPopUpMenu: MyPopUpMenu
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
 
     private lateinit var shift: String
 
