@@ -11,12 +11,8 @@ import dagger.Provides
 
 @Module
 class ActivityModule(
-    private val activity: AppCompatActivity,
-    private val appComponent: AppComponent
+    private val activity: AppCompatActivity
 ) {
-
-    @Provides
-    fun application() = appComponent.application()
 
     @Provides
     fun activity() = activity
@@ -27,9 +23,6 @@ class ActivityModule(
     @ActivityScope
     @Provides
     fun screensNavigator(activity: AppCompatActivity)  = ScreensNavigator(activity)
-
-    @Provides
-    fun mySharedPreferences() = appComponent.mySharedPreferences()
 
     @Provides
     fun popUpMenu() = MyPopUpMenu(activity)

@@ -13,7 +13,6 @@ import dagger.Provides
 
 @Module
 class PresentationModule() {
-
     @Provides
     fun viewMvcFactory(layoutInflater: LayoutInflater) = ViewMvcFactory(layoutInflater)
 }
