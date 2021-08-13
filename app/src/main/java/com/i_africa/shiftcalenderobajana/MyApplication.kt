@@ -1,8 +1,8 @@
 package com.i_africa.shiftcalenderobajana
 
 import android.app.Application
-import com.i_africa.shiftcalenderobajana.common.AppModule
-import com.i_africa.shiftcalenderobajana.common.DaggerAppComponent
+import com.i_africa.shiftcalenderobajana.common.di.app.AppModule
+import com.i_africa.shiftcalenderobajana.common.di.app.DaggerAppComponent
 
 class MyApplication: Application() {
 

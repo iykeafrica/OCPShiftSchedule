@@ -1,6 +1,6 @@
-package com.i_africa.shiftcalenderobajana.common
+package com.i_africa.shiftcalenderobajana.common.di.presentation
 
-import android.view.LayoutInflater
+import com.i_africa.shiftcalenderobajana.common.di.activity.ActivityComponent
 import dagger.Module
 import dagger.Provides
 

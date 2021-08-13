@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.common
+package com.i_africa.shiftcalenderobajana.common.di.app
 
 import android.app.Application
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
