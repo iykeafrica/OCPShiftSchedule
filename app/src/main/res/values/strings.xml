@@ -7,7 +7,7 @@
     <string name="calculate_ot">Calculate Overtime</string>
     <string name="rate_app">Rate App</string>
     <string name="about">About</string>
-    <string name="about_body">This is a shift schedule App modelled with the different shift patterns of workers in Dangote Obajana Cement Plant. It was designed using the standard shift groups A, B and C; assuming A shift on Morning, B shift on Night and C shift on Off. These shift groups have different patterns that overlaps each other namely:\n1. Plant operations (ShiftA, ShiftB and ShiftC). \n2. Central Maintenance (ShiftA, ShiftB and ShiftC) and \n3. Security (ShiftA, ShiftB and ShiftC)\nAnother feature of this app you may want to explore is the overtime calculator.</string>
+    <string name="about_body">This is a shift schedule App modelled with the different shift patterns of workers in Dangote Obajana Cement Plant. It was designed using the standard shift groups A, B and C; assuming A shift on Morning, B shift on Night and C shift on Off. These shift groups have different patterns that overlaps each other namely:\n1. Plant operations (ShiftA, ShiftB and ShiftC). \n2. Central Maintenance (ShiftA, ShiftB and ShiftC) and \n3. Security (ShiftA, ShiftB and ShiftC)\n\nAnother feature of this app you may want to explore is the overtime calculator.</string>
     <string name="about_app">About</string>
     <string name="select_your_shift">SELECT YOUR SHIFT</string>
     <string name="plant_nshift_a">Plant\nShift A</string>
