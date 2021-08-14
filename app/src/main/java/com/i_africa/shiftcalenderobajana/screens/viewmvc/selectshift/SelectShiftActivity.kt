@@ -26,4 +26,8 @@ class SelectShiftActivity : BaseActivity() {
                 .commit()
         }
     }
+
+    override fun onBackPressed() {
+       screensNavigator.backPressed()
+    }
 }

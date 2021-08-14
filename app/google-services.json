@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "881409962421",
+    "project_id": "shift-schedule-c8671",
+    "storage_bucket": "shift-schedule-c8671.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881409962421:android:e2e2630c3ad18c640f29fc",
+        "android_client_info": {
+          "package_name": "com.i_africa.shiftcalenderobajana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881409962421-09a0jpjrvlfapaarrn3fcpmq8v60f7pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjr4nrzLk-NHet0yO_kGp4zHibD-N_VEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881409962421-09a0jpjrvlfapaarrn3fcpmq8v60f7pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
