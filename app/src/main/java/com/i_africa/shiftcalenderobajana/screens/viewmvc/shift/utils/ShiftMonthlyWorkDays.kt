@@ -9,7 +9,7 @@ object ShiftMonthlyWorkDays {
 
     private var count: Int = 0
 
-    fun computeShiftDutyDays(
+    fun computeWorkingDays(
         daysInMonth: Int,
         month: String,
         year: String,

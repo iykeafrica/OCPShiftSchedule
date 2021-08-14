@@ -30,4 +30,7 @@ object Constant {
     const val FIRST_TIME_LOADING = "com.i_africa.shiftcalenderobajana.screens.common.constant_FIRST_TIME_LOADING"
     const val SHIFT_PREFERENCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_PREFERENCE_KEY"
 
+    const val DAY = "com.i_africa.shiftcalenderobajana.screens.common.constant_DAY"
+    const val MONTH = "com.i_africa.shiftcalenderobajana.screens.common.constant_MONTH"
+    const val YEAR = "com.i_africa.shiftcalenderobajana.screens.common.constant_YEAR"
 }

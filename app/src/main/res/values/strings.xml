@@ -1,11 +1,22 @@
 <resources>
-    <string name="app_name">ShiftCalenderObajana</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Shift Schedule</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="disclaimer"><u><b>Disclaimer</b></u> \nThis App is not connected to Dangote. \nIt was created solely for personal use \nwhile working  @OCP by IK.</string>
+    <string name="disclaimer"><u><b>Disclaimer</b></u> \nThis App is not connected to Dangote. \nIt\'s a personal project designed by IK.</string>
     <string name="refresh">Refresh</string>
     <string name="select_shift">Change Shift</string>
     <string name="calculate_ot">Calculate Overtime</string>
     <string name="rate_app">Rate App</string>
     <string name="about">About</string>
+    <string name="about_body">This is a shift schedule App modelled with the different shift patterns of workers in Dangote Obajana Cement Plant. It was designed using the standard shift groups A, B and C; assuming A shift on Morning, B shift on Night and C shift on Off. These shift groups have different patterns that overlaps each other namely:\n1. Plant operations (ShiftA, ShiftB and ShiftC). \n2. Central Maintenance (ShiftA, ShiftB and ShiftC) and \n3. Security (ShiftA, ShiftB and ShiftC)\nAnother feature of this app you may want to explore is the overtime calculator.</string>
+    <string name="about_app">About</string>
+    <string name="select_your_shift">SELECT YOUR SHIFT</string>
+    <string name="plant_nshift_a">Plant\nShift A</string>
+    <string name="plant_nshift_b">Plant\nShift B</string>
+    <string name="plant_nshift_c">Plant\nShift C</string>
+    <string name="c_mtce_nshift_a">C.Mtce\nShift A</string>
+    <string name="c_mtce_nshift_b">C.Mtce\nShift B</string>
+    <string name="c_mtce_nshift_c">C.Mtce\nShift C</string>
+    <string name="security_nshift_a">Security\nShift A</string>
+    <string name="security_nshift_b">Security\nShift B</string>
+    <string name="security_nshift_c">Security\nShift C</string>
 </resources>

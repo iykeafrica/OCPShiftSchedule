@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.about.AboutActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.ShiftActivity
 
@@ -47,7 +48,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
     }
 
     fun about() {
-        Log.d(TAG, "about: About")
+        activity.startActivity(Intent(activity, AboutActivity::class.java))
     }
 
 

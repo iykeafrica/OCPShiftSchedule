@@ -10,8 +10,11 @@ import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
+import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
 import javax.inject.Inject
 
 private val TAG = ShiftActivity::class.simpleName
@@ -33,17 +36,37 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
         setContentView(shiftViewMvc.rootView)
 
-        val shift = intent.getStringExtra(SHIFT_EXTRA_KEY)
-        Log.d(TAG, "onCreate: $shift")
+        shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
+
+        if (savedInstanceState == null) {
+            loadShiftView()
+        } else {
+            restoreState(savedInstanceState)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
+    private fun loadShiftView() {
         shiftViewMvc.getDayOfMonth()
         shiftViewMvc.getWeekDay()
         shiftViewMvc.getShiftDuty(shift)
         shiftViewMvc.getShiftMonthlyWorkingDays(shift)
+    }
+
+    private fun restoreState(savedInstanceState: Bundle) {
+        val dayOfMonth = savedInstanceState.getInt(DAY)
+        val month = savedInstanceState.getInt(MONTH)
+        val year = savedInstanceState.getInt(YEAR)
+
+        shiftViewMvc.restoreState(dayOfMonth, month, year)
+        loadShiftView()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(DAY, shiftViewMvc.getDay())
+        outState.putInt(MONTH, shiftViewMvc.getMonth())
+        outState.putInt(YEAR, shiftViewMvc.getYear())
+
+        super.onSaveInstanceState(outState)
     }
 
     override fun onBackPressed() {

@@ -9,7 +9,7 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.DateFormatter
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftCollection.setCollection
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftDuty.computeShiftDuty
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftMonthlyWorkDays.computeShiftDutyDays
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftMonthlyWorkDays.computeWorkingDays
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftUtil.setFormula
 import java.util.*
 
@@ -82,8 +82,27 @@ class ShiftViewMvc(
         setCalendar(calendar)
         Log.d(TAG, "getShiftMonthlyWorkingDays: $day/$month/$year")
 
-        count = computeShiftDutyDays(daysInMonth, month, year, setCollection(shift))
+        count = computeWorkingDays(daysInMonth, month, year, setCollection(shift))
         binding.workingDaysView.text = "${DateFormatter.month(date)} has $count working days."
+    }
+
+    fun getDay() : Int {
+        return calendar.get(Calendar.DAY_OF_MONTH)
+    }
+
+    fun getMonth() : Int {
+        return calendar.get(Calendar.MONTH)
+    }
+
+    fun getYear() : Int {
+        return calendar.get(Calendar.YEAR)
+    }
+
+    fun restoreState(dayOfMonth: Int, month: Int, year: Int) {
+        calendar.set(year, month, dayOfMonth)
+        date = calendar.time
+        daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        binding.calendarView.date = date.time
     }
 
 }

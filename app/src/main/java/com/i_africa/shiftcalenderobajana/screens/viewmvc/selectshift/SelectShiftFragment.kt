@@ -23,12 +23,16 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import javax.inject.Inject
 
 private val TAG = SelectShiftFragment::class.simpleName
+
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    @Inject lateinit var screensNavigator: ScreensNavigator
-    @Inject lateinit var mySharedPreferences: MySharedPreferences
-    @Inject lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject
+    lateinit var screensNavigator: ScreensNavigator
+    @Inject
+    lateinit var mySharedPreferences: MySharedPreferences
+    @Inject
+    lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,24 +114,7 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
     }
 
     private fun navigateToExistingShift(shift: String) {
-        if (shift == PLANT_SHIFT_A)
-            screensNavigator.navigateToShift(PLANT_SHIFT_A)
-        if (shift == PLANT_SHIFT_B)
-            screensNavigator.navigateToShift(PLANT_SHIFT_B)
-        if (shift == PLANT_SHIFT_C)
-            screensNavigator.navigateToShift(PLANT_SHIFT_C)
-        if (shift == CMTCE_SHIFT_A)
-            screensNavigator.navigateToShift(CMTCE_SHIFT_A)
-        if (shift == CMTCE_SHIFT_B)
-            screensNavigator.navigateToShift(CMTCE_SHIFT_B)
-        if (shift == CMTCE_SHIFT_C)
-            screensNavigator.navigateToShift(CMTCE_SHIFT_C)
-        if (shift == SECURITY_SHIFT_A)
-            screensNavigator.navigateToShift(SECURITY_SHIFT_A)
-        if (shift == SECURITY_SHIFT_B)
-            screensNavigator.navigateToShift(SECURITY_SHIFT_B)
-        if (shift == SECURITY_SHIFT_C)
-            screensNavigator.navigateToShift(SECURITY_SHIFT_C)
+        screensNavigator.navigateToShift(shift)
     }
 
     fun onBackPressed() {

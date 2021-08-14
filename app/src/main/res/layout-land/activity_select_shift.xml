@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite"
-                android:text="Shift Schedule App"
+                android:text="@string/app_name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="@id/app_bar_container"
                 app:layout_constraintTop_toTopOf="parent"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/martel"
-                    android:text="SELECT YOUR SHIFT"
+                    android:text="@string/select_your_shift"
                     android:textColor="@color/colorWhite"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +106,7 @@
                         android:gravity="center_horizontal"
                         android:background="@drawable/custom_button_1"
                         android:fontFamily="@font/roboto_black"
-                        android:text="Plant\nShift A" />
+                        android:text="@string/plant_nshift_a" />
 
                     <TextView
                         android:id="@+id/button2"
@@ -123,7 +123,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_2"
-                        android:text="Plant\nShift B" />
+                        android:text="@string/plant_nshift_b" />
 
                     <TextView
                         android:id="@+id/button3"
@@ -139,7 +139,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_3"
-                        android:text="Plant\nShift C" />
+                        android:text="@string/plant_nshift_c" />
 
                 </LinearLayout>
 
@@ -169,7 +169,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_4"
-                        android:text="C.Mtce\nShift A" />
+                        android:text="@string/c_mtce_nshift_a" />
 
                     <TextView
                         android:id="@+id/button5"
@@ -186,7 +186,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_5"
-                        android:text="C.Mtce\nShift B" />
+                        android:text="@string/c_mtce_nshift_b" />
 
                     <TextView
                         android:id="@+id/button6"
@@ -202,7 +202,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_6"
-                        android:text="C.Mtce\nShift C" />
+                        android:text="@string/c_mtce_nshift_c" />
 
                 </LinearLayout>
 
@@ -232,7 +232,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_7"
-                        android:text="Security\nShift A" />
+                        android:text="@string/security_nshift_a" />
 
                     <TextView
                         android:id="@+id/button8"
@@ -249,7 +249,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_8"
-                        android:text="Security\nShift B" />
+                        android:text="@string/security_nshift_b" />
 
                     <TextView
                         android:id="@+id/button9"
@@ -265,7 +265,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:background="@drawable/custom_button_9"
-                        android:text="Security\nShift C" />
+                        android:text="@string/security_nshift_c" />
 
                 </LinearLayout>
 
@@ -281,24 +281,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/martel"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="10dp"
-                    android:textColor="@color/colorWhite"
-                    android:text="@string/disclaimer"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 

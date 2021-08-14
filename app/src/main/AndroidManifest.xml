@@ -16,7 +16,7 @@
 
         <activity android:name=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity" />
 
-        <activity android:name=".screens.viewmvc.main.MainActivity" />
+        <activity android:name=".screens.viewmvc.about.AboutActivity" />
 
         <activity android:name=".screens.viewmvc.selectshift.SelectShiftActivity">
             <intent-filter>
