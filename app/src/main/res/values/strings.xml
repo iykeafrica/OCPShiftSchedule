@@ -9,10 +9,12 @@
     <string name="about_body">This is a shift schedule App modelled with the different shift patterns of workers in Dangote Obajana Cement Plant.
         It was designed using the standard three (3) days working shift i.e FIRST MORNING DUTY, SECOND MORNING DUTY, THIRD MORNING DUTY,
         FIRST NIGHT DUTY, SECOND NIGHT DUTY, THIRD NIGHT DUTY, FIRST OFF DUTY, SECOND OFF DUTY and THIRD OFF DUTY. This implies that for
-        every twenty four (24) hours one of the three (3) different shift groups assuming A, B and C; A will be on morning duty, B on night duty and C on off duty.
-        This app also factored in these shift groups with their different patterns that overlaps each other namely:\n1. Plant operations (ShiftA, ShiftB and ShiftC).
+        every twenty four (24) hours one of the three (3) different shift groups will be on duty, assuming shifts A, B and C;
+        if A is on morning duty, then B will be on night duty and C on off duty.
+        This app also factored in these shift groups with their different patterns that overlaps each other namely:
+        \n1. Plant operations (ShiftA, ShiftB and ShiftC).
         \n2. Central Maintenance (ShiftA, ShiftB and ShiftC) and \n3. Security (ShiftA, ShiftB and ShiftC)
-        \n\nAnother feature of this app you may want to explore is the overtime calculator.</string>
+        \n\nAnother feature of this app that you may want to explore is the overtime calculator.</string>
     <string name="about_app">About</string>
     <string name="select_your_shift">SELECT YOUR SHIFT</string>
     <string name="plant_nshift_a">Plant\nShift A</string>
