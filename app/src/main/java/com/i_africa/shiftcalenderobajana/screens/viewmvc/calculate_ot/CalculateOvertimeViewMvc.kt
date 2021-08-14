@@ -3,10 +3,9 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
 import com.i_africa.shiftcalenderobajana.databinding.ActivityCalculateOvertimeBinding
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.ConversionUtil.setOTCalculation
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.ConversionUtil.computeOTCalculation
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTHLY_HOURS
 import com.i_africa.shiftcalenderobajana.utils.Constant.OT_MULTIPLIER
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_WORK_HOURS
@@ -72,7 +71,7 @@ class CalculateOvertimeViewMvc(
 
         val overtimeHours = (workedDays.toInt() * SHIFT_WORK_HOURS) - MONTHLY_HOURS
 
-        val overtime = setOTCalculation(basic.toInt(), MONTHLY_HOURS, OT_MULTIPLIER, overtimeHours)
+        val overtime = computeOTCalculation(basic.toInt(), MONTHLY_HOURS, OT_MULTIPLIER, overtimeHours)
         displayOT(overtime)
     }
 

@@ -3,7 +3,7 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils
 import com.i_africa.shiftcalenderobajana.utils.Constant
 
 object ShiftCollection {
-    val plantA = listOf(
+    private val plantShiftA = listOf(
         Constant.SECOND_MORNING,
         Constant.THIRD_MORNING,
         Constant.FIRST_NIGHT,
@@ -14,7 +14,7 @@ object ShiftCollection {
         Constant.THIRD_OFF,
         Constant.FIRST_MORNING)
 
-    val plantB = listOf(
+    private val plantShiftB = listOf(
         Constant.SECOND_NIGHT,
         Constant.THIRD_NIGHT,
         Constant.FIRST_OFF,
@@ -25,7 +25,7 @@ object ShiftCollection {
         Constant.THIRD_MORNING,
         Constant.FIRST_NIGHT)
 
-    val plantC = listOf(
+    private val plantShiftC = listOf(
         Constant.SECOND_OFF,
         Constant.THIRD_OFF,
         Constant.FIRST_MORNING,
@@ -36,7 +36,7 @@ object ShiftCollection {
         Constant.THIRD_NIGHT,
         Constant.FIRST_OFF)
 
-    val cmtceA = listOf(
+    private val cmtceShiftA = listOf(
         Constant.FIRST_MORNING,
         Constant.SECOND_MORNING,
         Constant.THIRD_MORNING,
@@ -47,7 +47,7 @@ object ShiftCollection {
         Constant.SECOND_OFF,
         Constant.THIRD_OFF)
 
-    val cmtceB = listOf(
+    private val cmtceShiftB = listOf(
         Constant.FIRST_NIGHT,
         Constant.SECOND_NIGHT,
         Constant.THIRD_NIGHT,
@@ -58,7 +58,7 @@ object ShiftCollection {
         Constant.SECOND_MORNING,
         Constant.THIRD_MORNING)
 
-    val cmtceC = listOf(
+    private val cmtceShiftC = listOf(
         Constant.FIRST_OFF,
         Constant.SECOND_OFF,
         Constant.THIRD_OFF,
@@ -69,7 +69,7 @@ object ShiftCollection {
         Constant.SECOND_NIGHT,
         Constant.THIRD_NIGHT)
 
-    val securityA = listOf(
+    private val securityShiftA = listOf(
         Constant.THIRD_MORNING,
         Constant.FIRST_NIGHT,
         Constant.SECOND_NIGHT,
@@ -80,7 +80,7 @@ object ShiftCollection {
         Constant.FIRST_MORNING,
         Constant.SECOND_MORNING)
 
-    val securityB = listOf(
+    private val securityShiftB = listOf(
         Constant.THIRD_NIGHT,
         Constant.FIRST_OFF,
         Constant.SECOND_OFF,
@@ -91,7 +91,7 @@ object ShiftCollection {
         Constant.FIRST_NIGHT,
         Constant.SECOND_NIGHT)
 
-    val securityC = listOf(
+    private val securityShiftC = listOf(
         Constant.THIRD_OFF,
         Constant.FIRST_MORNING,
         Constant.SECOND_MORNING,
@@ -106,23 +106,23 @@ object ShiftCollection {
         var collection: List<String> = ArrayList()
 
         if (shift == Constant.PLANT_SHIFT_A)
-            collection = plantA
+            collection = plantShiftA
         if (shift == Constant.PLANT_SHIFT_B)
-            collection = plantB
+            collection = plantShiftB
         if (shift == Constant.PLANT_SHIFT_C)
-            collection = plantC
+            collection = plantShiftC
         if (shift == Constant.CMTCE_SHIFT_A)
-            collection = cmtceA
+            collection = cmtceShiftA
         if (shift == Constant.CMTCE_SHIFT_B)
-            collection = cmtceB
+            collection = cmtceShiftB
         if (shift == Constant.CMTCE_SHIFT_C)
-            collection = cmtceC
+            collection = cmtceShiftC
         if (shift == Constant.SECURITY_SHIFT_A)
-            collection = securityA
+            collection = securityShiftA
         if (shift == Constant.SECURITY_SHIFT_B)
-            collection = securityB
+            collection = securityShiftB
         if (shift == Constant.SECURITY_SHIFT_C)
-            collection = securityC
+            collection = securityShiftC
 
         return collection
     }

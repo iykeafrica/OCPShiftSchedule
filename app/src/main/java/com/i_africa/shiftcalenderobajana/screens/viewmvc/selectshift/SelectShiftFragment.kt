@@ -27,12 +27,9 @@ private val TAG = SelectShiftFragment::class.simpleName
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    @Inject
-    lateinit var screensNavigator: ScreensNavigator
-    @Inject
-    lateinit var mySharedPreferences: MySharedPreferences
-    @Inject
-    lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject lateinit var screensNavigator: ScreensNavigator
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,67 +51,62 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
         val isFirstTime = mySharedPreferences.getStoredBoolean(FIRST_TIME_LOADING)
 
         if (!isFirstTime) {
-            val shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
-            navigateToExistingShift(shift)
+            screensNavigator.navigateToShift()
         }
     }
 
     override fun clickPlantA() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_A)
-        screensNavigator.navigateToShift(PLANT_SHIFT_A)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantB() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_B)
-        screensNavigator.navigateToShift(PLANT_SHIFT_B)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantC() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_C)
-        screensNavigator.navigateToShift(PLANT_SHIFT_C)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickCmtcA() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, CMTCE_SHIFT_A)
-        screensNavigator.navigateToShift(CMTCE_SHIFT_A)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickCmtcB() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, CMTCE_SHIFT_B)
-        screensNavigator.navigateToShift(CMTCE_SHIFT_B)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickCmtcC() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, CMTCE_SHIFT_C)
-        screensNavigator.navigateToShift(CMTCE_SHIFT_C)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickSecurityA() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, SECURITY_SHIFT_A)
-        screensNavigator.navigateToShift(SECURITY_SHIFT_A)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickSecurityB() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, SECURITY_SHIFT_B)
-        screensNavigator.navigateToShift(SECURITY_SHIFT_B)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickSecurityC() {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, SECURITY_SHIFT_C)
-        screensNavigator.navigateToShift(SECURITY_SHIFT_C)
-    }
-
-    private fun navigateToExistingShift(shift: String) {
-        screensNavigator.navigateToShift(shift)
+        screensNavigator.navigateToShift()
     }
 
     fun onBackPressed() {

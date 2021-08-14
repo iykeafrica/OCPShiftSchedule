@@ -15,8 +15,8 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
 
     var zeroTime = 0L
 
-    fun navigateToShift(shift: String) {
-        ShiftActivity.showShift(activity, shift)
+    fun navigateToShift() {
+        activity.startActivity(Intent(activity, ShiftActivity::class.java))
         activity.finish()
     }
 

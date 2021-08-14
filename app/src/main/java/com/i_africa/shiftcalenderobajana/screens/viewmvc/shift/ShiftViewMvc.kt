@@ -55,11 +55,11 @@ class ShiftViewMvc(
         }
     }
 
-    fun getDayOfMonth() {
+    fun showDayOfMonth() {
         binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
     }
 
-    fun getWeekDay() {
+    fun showWeekDay() {
         binding.weekdayView.text = DateFormatter.weekDay(date)
     }
 
@@ -70,7 +70,7 @@ class ShiftViewMvc(
         daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
     }
 
-    fun getShiftDuty(shift: String) {
+    fun showShiftDuty(shift: String) {
         setCalendar(calendar)
         Log.d(TAG, "getShiftDuty: $day/$month/$year")
 
@@ -78,7 +78,7 @@ class ShiftViewMvc(
         binding.shiftView.text = shiftDuty
     }
 
-    fun getShiftMonthlyWorkingDays(shift: String) {
+    fun showShiftMonthlyWorkingDays(shift: String) {
         setCalendar(calendar)
         Log.d(TAG, "getShiftMonthlyWorkingDays: $day/$month/$year")
 
@@ -103,6 +103,10 @@ class ShiftViewMvc(
         date = calendar.time
         daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         binding.calendarView.date = date.time
+    }
+
+    fun showShift(shift: String) {
+        binding.shift.text = shift
     }
 
 }

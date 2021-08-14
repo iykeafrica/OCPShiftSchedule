@@ -1,14 +1,12 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils
 
-import com.i_africa.shiftcalenderobajana.utils.Constant
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 object ShiftUtil {
 
-    private val REFERENCE_DATE: String = "02/01/1970"
-    private val SHIFT_CYCLE_DAYS: Int = 9
+    private const val REFERENCE_DATE: String = "02/01/1970"
+    private const val SHIFT_CYCLE_DAYS: Int = 9
     private val FORMAT: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
 

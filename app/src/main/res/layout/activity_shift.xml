@@ -26,6 +26,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/line1">
 
+            <TextView
+                android:id="@+id/shift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="160dp"

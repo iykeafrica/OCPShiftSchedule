@@ -8,7 +8,7 @@ object ConversionUtil {
     private var decimalFormat: DecimalFormat = DecimalFormat("###,###,###.00")
     private const val SCALE = 3
 
-    fun setOTCalculation(
+    fun computeOTCalculation(
         basic: Int,
         maxMonthlyHours: Int,
         otMultiplier: Double,

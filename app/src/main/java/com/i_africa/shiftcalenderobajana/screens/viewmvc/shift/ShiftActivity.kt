@@ -1,7 +1,5 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,7 +10,6 @@ import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
-import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_EXTRA_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
 import javax.inject.Inject
@@ -39,17 +36,18 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
 
         if (savedInstanceState == null) {
-            loadShiftView()
+            loadShiftSchedule()
         } else {
             restoreState(savedInstanceState)
         }
     }
 
-    private fun loadShiftView() {
-        shiftViewMvc.getDayOfMonth()
-        shiftViewMvc.getWeekDay()
-        shiftViewMvc.getShiftDuty(shift)
-        shiftViewMvc.getShiftMonthlyWorkingDays(shift)
+    private fun loadShiftSchedule() {
+        shiftViewMvc.showDayOfMonth()
+        shiftViewMvc.showWeekDay()
+        shiftViewMvc.showShiftDuty(shift)
+        shiftViewMvc.showShiftMonthlyWorkingDays(shift)
+        shiftViewMvc.showShift(shift)
     }
 
     private fun restoreState(savedInstanceState: Bundle) {
@@ -58,7 +56,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         val year = savedInstanceState.getInt(YEAR)
 
         shiftViewMvc.restoreState(dayOfMonth, month, year)
-        loadShiftView()
+        loadShiftSchedule()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -74,10 +72,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     }
 
     override fun calendarClick() {
-        shiftViewMvc.getDayOfMonth()
-        shiftViewMvc.getWeekDay()
-        shiftViewMvc.getShiftDuty(shift)
-        shiftViewMvc.getShiftMonthlyWorkingDays(shift)
+        loadShiftSchedule()
     }
 
     override fun popUpMenuClick(v: View) {
@@ -112,13 +107,4 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         myPopUpMenu.unregisterListener(this)
         super.onStop()
     }
-
-    companion object {
-        fun showShift(context: Context, shift: String) {
-            val intent = Intent(context, ShiftActivity::class.java)
-            intent.putExtra(SHIFT_EXTRA_KEY, shift)
-            context.startActivity(intent)
-        }
-    }
-
 }
