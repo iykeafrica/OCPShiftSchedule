@@ -33,4 +33,13 @@ object Constant {
     const val DAY = "com.i_africa.shiftcalenderobajana.screens.common.constant_DAY"
     const val MONTH = "com.i_africa.shiftcalenderobajana.screens.common.constant_MONTH"
     const val YEAR = "com.i_africa.shiftcalenderobajana.screens.common.constant_YEAR"
+
+    const val MONTHLY_HOURS = 176
+    const val OT_MULTIPLIER = 1.5
+    const val SHIFT_WORK_HOURS = 12
+
+    const val BASIC = "com.i_africa.shiftcalenderobajana.screens.common.constant_BASIC"
+    const val WORKED_DAYS = "com.i_africa.shiftcalenderobajana.screens.common.constant_WORKED_DAYS"
+    const val OVERTIME = "com.i_africa.shiftcalenderobajana.screens.common.constant_OVERTIME"
+
 }

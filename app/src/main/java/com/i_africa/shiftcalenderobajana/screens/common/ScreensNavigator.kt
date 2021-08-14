@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.about.AboutActivity
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.ShiftActivity
 
@@ -40,7 +41,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
     }
 
     fun calculateOvertime() {
-        Log.d(TAG, "calculateOvertime: CalculateOvertime")
+        activity.startActivity(Intent(activity, CalculateOvertimeActivity::class.java))
     }
 
     fun rateApp() {

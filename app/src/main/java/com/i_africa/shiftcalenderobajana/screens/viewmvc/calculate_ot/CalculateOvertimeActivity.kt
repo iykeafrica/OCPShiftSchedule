@@ -1,12 +1,87 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.i_africa.shiftcalenderobajana.R
+import android.widget.Toast
+import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
+import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.utils.Constant.BASIC
+import com.i_africa.shiftcalenderobajana.utils.Constant.OVERTIME
+import com.i_africa.shiftcalenderobajana.utils.Constant.WORKED_DAYS
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import javax.inject.Inject
 
-class CalculateOvertimeActivity : AppCompatActivity() {
+class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Listener {
+
+    private lateinit var calculateOvertimeViewMvc: CalculateOvertimeViewMvc
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculate_overtime)
+
+        injector.inject(this)
+        calculateOvertimeViewMvc = viewMvcFactory.newCalculateOvertimeViewMvc(null)
+        setContentView(calculateOvertimeViewMvc.rootView)
+
+        if (savedInstanceState == null){
+            restoreFromPreference()
+        } else {
+            restoreFromSavedState(savedInstanceState)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(BASIC, calculateOvertimeViewMvc.basic())
+        outState.putString(WORKED_DAYS, calculateOvertimeViewMvc.workedDays())
+        outState.putString(OVERTIME, calculateOvertimeViewMvc.overtime())
+        super.onSaveInstanceState(outState)
+    }
+
+    private fun restoreFromPreference() {
+        val basic = mySharedPreferences.getStoredString(BASIC)
+        val workedDays = mySharedPreferences.getStoredString(WORKED_DAYS)
+        val overtime = mySharedPreferences.getStoredString(OVERTIME)
+        calculateOvertimeViewMvc.restorePreviousBasicAndWorkedDays(basic, workedDays, overtime)
+    }
+
+    private fun restoreFromSavedState(savedInstanceState: Bundle) {
+        val basic = savedInstanceState.getString(BASIC)!!
+        val workedDays = savedInstanceState.getString(WORKED_DAYS)!!
+        val overtime = savedInstanceState.getString(OVERTIME)!!
+        calculateOvertimeViewMvc.restorePreviousBasicAndWorkedDays(basic, workedDays, overtime)
+    }
+
+    override fun calculateOTClick() {
+        calculateOvertimeViewMvc.calculateOT()
+        storeBasicAndWorkedDays()
+    }
+
+    private fun storeBasicAndWorkedDays() {
+        mySharedPreferences.storeStringValue(BASIC, calculateOvertimeViewMvc.basic())
+        mySharedPreferences.storeStringValue(WORKED_DAYS, calculateOvertimeViewMvc.workedDays())
+        mySharedPreferences.storeStringValue(OVERTIME, calculateOvertimeViewMvc.overtime())
+    }
+
+    override fun basicAndWorkDaysEmpty(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun basicEmpty(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun workDaysEmpty(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        calculateOvertimeViewMvc.registerListener(this)
+    }
+
+    override fun onStop() {
+        calculateOvertimeViewMvc.unregisterListener(this)
+        storeBasicAndWorkedDays()
+        super.onStop()
     }
 }

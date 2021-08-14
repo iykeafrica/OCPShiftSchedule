@@ -19,4 +19,8 @@
     <string name="security_nshift_a">Security\nShift A</string>
     <string name="security_nshift_b">Security\nShift B</string>
     <string name="security_nshift_c">Security\nShift C</string>
+    <string name="calculate_overtime">Calculate Overtime</string>
+    <string name="basic_salary">Basic Salary&#160;&#160;&#160;</string>
+    <string name="worked_days">Worked Days&#160;&#160;</string>
+    <string name="calculate_ot_button">Calculate OT</string>
 </resources>
