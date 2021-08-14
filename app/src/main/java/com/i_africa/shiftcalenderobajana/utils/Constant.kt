@@ -42,4 +42,11 @@ object Constant {
     const val WORKED_DAYS = "com.i_africa.shiftcalenderobajana.screens.common.constant_WORKED_DAYS"
     const val OVERTIME = "com.i_africa.shiftcalenderobajana.screens.common.constant_OVERTIME"
 
+
+    const val FCM_DEFAULT_VALUE = ""
+    const val FCM_DEFAULT_KEY = "com.example.echange_app.utils.constants_FCM_DEFAULT_KEY"
+    const val E_CHANGE_SUBSCRIPTION = "/topics/deals"
+    const val BODY_KEY_FOREGROUND = "com.example.echange_app.foreground.service_BODY_KEY_FOREGROUND"
+    const val TITLE_KEY_FOREGROUND = "com.example.echange_app.foreground.service_TOKEN_TITLE"
+
 }
