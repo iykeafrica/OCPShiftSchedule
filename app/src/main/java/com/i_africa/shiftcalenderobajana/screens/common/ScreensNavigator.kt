@@ -44,10 +44,6 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         activity.startActivity(Intent(activity, CalculateOvertimeActivity::class.java))
     }
 
-    fun rateApp() {
-        Log.d(TAG, "rateApp: RateApp")
-    }
-
     fun about() {
         activity.startActivity(Intent(activity, AboutActivity::class.java))
     }

@@ -97,10 +97,6 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         screensNavigator.calculateOvertime()
     }
 
-    override fun rateApp() {
-        screensNavigator.rateApp()
-    }
-
     override fun about() {
         screensNavigator.about()
     }
