@@ -3,6 +3,7 @@
     package="com.i_africa.shiftcalenderobajana">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity" />
+        <activity android:name=".screens.viewmvc.about.AboutActivity" />
+        <activity android:name=".screens.viewmvc.selectshift.SelectShiftActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity" />
-        <activity android:name=".screens.viewmvc.about.AboutActivity" />
-        <activity android:name=".screens.viewmvc.selectshift.SelectShiftActivity">
-
         </activity>
         <activity android:name=".screens.viewmvc.shift.ShiftActivity" />
 

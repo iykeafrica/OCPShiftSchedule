@@ -1,7 +1,7 @@
 package com.i_africa.shiftcalenderobajana.utils
 
 object Constant {
-
+    const val BASE_URL = "https://docs.google.com/forms/d/e/"
     const val MY_PREF = "com.i_africa.shiftcalenderobajana.screens.common.constant_MY_PREF"
     const val SHIFT_EXTRA_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_EXTRA_KEY"
 
@@ -29,6 +29,9 @@ object Constant {
 
     const val FIRST_TIME_LOADING = "com.i_africa.shiftcalenderobajana.screens.common.constant_FIRST_TIME_LOADING"
     const val SHIFT_PREFERENCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_PREFERENCE_KEY"
+
+    const val INITIAL_FCM_TOKEN = "com.i_africa.shiftcalenderobajana.screens.common.constant_INITIAL_FCM_TOKEN"
+    const val NEW_FCM_TOKEN = "com.i_africa.shiftcalenderobajana.screens.common.constant_NEW_FCM_TOKEN"
 
     const val DAY = "com.i_africa.shiftcalenderobajana.screens.common.constant_DAY"
     const val MONTH = "com.i_africa.shiftcalenderobajana.screens.common.constant_MONTH"

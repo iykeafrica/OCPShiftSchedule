@@ -8,7 +8,8 @@
     <color name="colorAccent">#ffffff</color>
     <color name="colorRed">#FF6347</color>
     <color name="colorWhite">#ffffff</color>
-    <color name="colorBackground">#D5E1E6</color>
+    <color name="colorBackgroundOne">#263238</color>
+    <color name="colorBackgroundTwo">#D5E1E6</color>
 
     <color name="color1">#ef9a9a</color>
     <color name="color2">#4db6ac</color>

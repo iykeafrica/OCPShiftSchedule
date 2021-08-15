@@ -109,10 +109,6 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
         screensNavigator.navigateToShift()
     }
 
-    fun onBackPressed() {
-        screensNavigator.backPressed()
-    }
-
     override fun onStart() {
         super.onStart()
         selectShiftViewMvc.registerListener(this)

@@ -1,5 +1,6 @@
 package com.i_africa.shiftcalenderobajana.utils.mysharedpref
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.SharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.Constant
@@ -8,6 +9,7 @@ class MySharedPreferences(application: Application) {
 
     private val preferences: SharedPreferences = application.applicationContext.getSharedPreferences(
         Constant.MY_PREF, 0)
+    @SuppressLint("CommitPrefEdits")
     private val editor = preferences.edit()!!
 
     fun storeStringValue(key: String, value: String) {
@@ -18,7 +20,6 @@ class MySharedPreferences(application: Application) {
         editor.putBoolean(key, value).apply()
     }
 
-
     fun getStoredString(key: String): String {
         return preferences.getString(key,"")!!
     }
@@ -27,8 +28,9 @@ class MySharedPreferences(application: Application) {
         return preferences.getBoolean(key, true)
     }
 
-    fun clearPreferences() {
-        editor.clear().apply()
+    fun clearSelectedShiftPreferences() {
+        editor.remove(Constant.FIRST_TIME_LOADING).apply()
+        editor.remove(Constant.SHIFT_PREFERENCE_KEY).apply()
     }
 
 }
