@@ -18,6 +18,7 @@ import com.i_africa.shiftcalenderobajana.MainActivity
 import com.i_africa.shiftcalenderobajana.R
 import com.i_africa.shiftcalenderobajana.utils.Constant.BODY_KEY_FOREGROUND
 import com.i_africa.shiftcalenderobajana.utils.Constant.TITLE_KEY_FOREGROUND
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val processLater = false
@@ -26,6 +27,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val NOTIFICATION_FCM_TEST: CharSequence = "New notification"
     private val NOTIFICATION_ID = 6353
 
+    override fun onCreate() {
+        val mySharedPreferences = MySharedPreferences(application)
+        super.onCreate()
+    }
 
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: $token")
