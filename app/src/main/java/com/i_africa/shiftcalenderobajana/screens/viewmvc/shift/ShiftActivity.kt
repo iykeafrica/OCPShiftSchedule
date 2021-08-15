@@ -1,6 +1,8 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
@@ -12,7 +14,7 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
-import com.i_africa.shiftcalenderobajana.utils.Constant.IS_FCM_TOKEN_NOT_SUBMITTED
+import com.i_africa.shiftcalenderobajana.utils.Constant.NEW_FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
@@ -43,7 +45,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
 
         shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
         val token = mySharedPreferences.getStoredString(FCM_TOKEN)
-        val isTokenNotSubmitted = mySharedPreferences.getStoredBoolean(IS_FCM_TOKEN_NOT_SUBMITTED)
+        val newToken = mySharedPreferences.getStoredString(NEW_FCM_TOKEN)
 
         if (savedInstanceState == null) {
             loadShiftSchedule()
@@ -51,24 +53,23 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
             restoreState(savedInstanceState)
         }
 
-        postUserFCM(token, isTokenNotSubmitted)
+        postUserFCM(token, newToken)
     }
 
-    private fun postUserFCM(token: String, isTokenNotSubmitted: Boolean) {
+    private fun postUserFCM(token: String, newToken: String) {
+        val handler = Handler(Looper.getMainLooper())
 
         if (isInternetAvailable(this)){
-            if (isTokenNotSubmitted){
-                mySharedPreferences.storeBooleanValue(IS_FCM_TOKEN_NOT_SUBMITTED, false)
-
+            if (token != newToken){
                 coroutineScope.launch {
-                    val result = submitFCMUseCase.submitFCM(token)
                     try {
-                        when (result) {
+                        when (val result = submitFCMUseCase.submitFCM(token)) {
                             is SubmitFCMUseCase.Result.Success -> {
-                                Log.d(TAG, "postUserFCM: ${result.responseCode}")
+                                Log.d(TAG, "postUserFCM: success ${result.responseCode}")
+                                handler.post {mySharedPreferences.storeStringValue(NEW_FCM_TOKEN, token)}
                             }
                             is SubmitFCMUseCase.Result.Failure -> {
-                                Log.d(TAG, "postUserFCM: ${result.responseCode}")
+                                Log.d(TAG, "postUserFCM: failure ${result.responseCode}")
                             }
                         }
                     } finally {

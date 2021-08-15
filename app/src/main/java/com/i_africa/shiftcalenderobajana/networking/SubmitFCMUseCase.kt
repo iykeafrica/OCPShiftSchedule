@@ -17,7 +17,7 @@ class SubmitFCMUseCase @Inject constructor(private val googleFormApi: GoogleForm
         return withContext(Dispatchers.IO) {
             try {
                 val response = googleFormApi.sendFCMToken(fcmToken)
-                if (response.isSuccessful && response.body() != null) {
+                if (response.isSuccessful) {
                     return@withContext Result.Success(response.code())
                 } else {
                     return@withContext Result.Failure(response.code())

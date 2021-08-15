@@ -31,7 +31,7 @@ object Constant {
     const val SHIFT_PREFERENCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_PREFERENCE_KEY"
 
     const val FCM_TOKEN = "com.i_africa.shiftcalenderobajana.screens.common.constant_FCM_TOKEN"
-    const val IS_FCM_TOKEN_NOT_SUBMITTED = "com.i_africa.shiftcalenderobajana.screens.common.constant_IS_FCM_TOKEN_NOT_SUBMITTED"
+    const val NEW_FCM_TOKEN = "com.i_africa.shiftcalenderobajana.screens.common.constant_IS_FCM_TOKEN_NOT_SUBMITTED"
 
     const val DAY = "com.i_africa.shiftcalenderobajana.screens.common.constant_DAY"
     const val MONTH = "com.i_africa.shiftcalenderobajana.screens.common.constant_MONTH"
