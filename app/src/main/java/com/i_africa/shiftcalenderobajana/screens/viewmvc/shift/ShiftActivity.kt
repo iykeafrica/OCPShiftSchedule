@@ -3,7 +3,6 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
@@ -11,9 +10,9 @@ import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.CheckNetworkAvailability.isInternetAvailable
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
-import com.i_africa.shiftcalenderobajana.utils.Constant.INITIAL_FCM_TOKEN
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
-import com.i_africa.shiftcalenderobajana.utils.Constant.NEW_FCM_TOKEN
+import com.i_africa.shiftcalenderobajana.utils.Constant.IS_FCM_TOKEN_NOT_SUBMITTED
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
@@ -32,9 +31,6 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     @Inject lateinit var submitFCMUseCase: SubmitFCMUseCase
 
     private lateinit var shift: String
-    private lateinit var initialToken: String
-    private lateinit var newToken: String
-
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,11 +41,9 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
         setContentView(shiftViewMvc.rootView)
 
-//        mySharedPreferences.storeStringValue(INITIAL_FCM_TOKEN, "TEST")
-
         shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
-        initialToken = mySharedPreferences.getStoredString(INITIAL_FCM_TOKEN)
-        newToken = mySharedPreferences.getStoredString(NEW_FCM_TOKEN)
+        val token = mySharedPreferences.getStoredString(FCM_TOKEN)
+        val isTokenNotSubmitted = mySharedPreferences.getStoredBoolean(IS_FCM_TOKEN_NOT_SUBMITTED)
 
         if (savedInstanceState == null) {
             loadShiftSchedule()
@@ -57,15 +51,17 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
             restoreState(savedInstanceState)
         }
 
-        postUserFCM()
+        postUserFCM(token, isTokenNotSubmitted)
     }
 
-    private fun postUserFCM() {
+    private fun postUserFCM(token: String, isTokenNotSubmitted: Boolean) {
 
         if (isInternetAvailable(this)){
-            if (initialToken != newToken){
+            if (isTokenNotSubmitted){
+                mySharedPreferences.storeBooleanValue(IS_FCM_TOKEN_NOT_SUBMITTED, false)
+
                 coroutineScope.launch {
-                    val result = submitFCMUseCase.submitFCM(initialToken)
+                    val result = submitFCMUseCase.submitFCM(token)
                     try {
                         when (result) {
                             is SubmitFCMUseCase.Result.Success -> {
