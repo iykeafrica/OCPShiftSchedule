@@ -43,9 +43,6 @@ class MainActivity : AppCompatActivity() {
                 binding.textViewNotification.text = bundle.getString("Hello")
                 Toast.makeText(this, "${bundle.getString("Hi")}", Toast.LENGTH_LONG).show()
             }
-
-
-
         }
     }
 

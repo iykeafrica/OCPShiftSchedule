@@ -24,7 +24,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         val currentTime = System.currentTimeMillis()
         if (currentTime - zeroTime > 2500L) {
             zeroTime = currentTime
-            Toast.makeText(activity, "Press back again to exit", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "Press back again to exit", Toast.LENGTH_SHORT).show()
         } else {
             activity.finish()
         }

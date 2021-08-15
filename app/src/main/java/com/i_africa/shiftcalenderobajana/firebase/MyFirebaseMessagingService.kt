@@ -19,7 +19,6 @@ import com.i_africa.shiftcalenderobajana.R
 import com.i_africa.shiftcalenderobajana.utils.Constant.BODY_KEY_FOREGROUND
 import com.i_africa.shiftcalenderobajana.utils.Constant.TITLE_KEY_FOREGROUND
 
-
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     private val processLater = false
     private val NOTIFICATION_CHANEL_ID =

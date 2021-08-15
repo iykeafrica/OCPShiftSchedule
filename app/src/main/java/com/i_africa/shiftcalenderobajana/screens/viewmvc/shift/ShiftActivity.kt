@@ -3,6 +3,7 @@ package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
@@ -60,6 +61,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     }
 
     private fun postUserFCM() {
+
         if (isInternetAvailable(this)){
             if (initialToken != newToken){
                 coroutineScope.launch {

@@ -63,15 +63,15 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
     }
 
     override fun basicAndWorkDaysEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun basicEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun workDaysEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onStart() {
