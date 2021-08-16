@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
@@ -12,7 +13,9 @@ import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.CheckNetworkAvailability.isInternetAvailable
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
 import com.i_africa.shiftcalenderobajana.utils.Constant.NEW_FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
@@ -23,14 +26,20 @@ import javax.inject.Inject
 
 
 private val TAG = ShiftActivity::class.simpleName
+
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
-    @Inject lateinit var screensNavigator: ScreensNavigator
-    @Inject lateinit var mySharedPreferences: MySharedPreferences
-    @Inject lateinit var myPopUpMenu: MyPopUpMenu
-    @Inject lateinit var viewMvcFactory: ViewMvcFactory
-    @Inject lateinit var submitFCMUseCase: SubmitFCMUseCase
+    @Inject
+    lateinit var screensNavigator: ScreensNavigator
+    @Inject
+    lateinit var mySharedPreferences: MySharedPreferences
+    @Inject
+    lateinit var myPopUpMenu: MyPopUpMenu
+    @Inject
+    lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject
+    lateinit var submitFCMUseCase: SubmitFCMUseCase
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -39,7 +48,9 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         super.onCreate(savedInstanceState)
 
         injector.inject(this)
-        Log.d(TAG, "onCreate: $screensNavigator")
+        Log.d(TAG, "onCreate: ShiftActivity $screensNavigator")
+        Log.d(TAG, "onCreate: ShiftActivity $mySharedPreferences")
+
         shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
         setContentView(shiftViewMvc.rootView)
 
@@ -54,30 +65,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
         }
 
         postUserFCM(token, newToken)
-    }
-
-    private fun postUserFCM(token: String, newToken: String) {
-        val handler = Handler(Looper.getMainLooper())
-
-        if (isInternetAvailable(this)){
-            if (token != newToken){
-                coroutineScope.launch {
-                    try {
-                        when (val result = submitFCMUseCase.submitFCM(token)) {
-                            is SubmitFCMUseCase.Result.Success -> {
-                                Log.d(TAG, "postUserFCM: success ${result.responseCode}")
-                                handler.post {mySharedPreferences.storeStringValue(NEW_FCM_TOKEN, token)}
-                            }
-                            is SubmitFCMUseCase.Result.Failure -> {
-                                Log.d(TAG, "postUserFCM: failure ${result.responseCode}")
-                            }
-                        }
-                    } finally {
-                        Log.d(TAG, "postUserFCM: ....done")
-                    }
-                }
-            }
-        }
+        getNotification()
     }
 
     private fun loadShiftSchedule() {
@@ -132,6 +120,49 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
 
     override fun about() {
         screensNavigator.about()
+    }
+
+    private fun postUserFCM(token: String, newToken: String) {
+        val handler = Handler(Looper.getMainLooper())
+
+        if (isInternetAvailable(this)) {
+            if (token != newToken) {
+                coroutineScope.launch {
+                    try {
+                        when (val result = submitFCMUseCase.submitFCM(token)) {
+                            is SubmitFCMUseCase.Result.Success -> {
+                                Log.d(TAG, "postUserFCM: success ${result.responseCode}")
+                                handler.post {
+                                    mySharedPreferences.storeStringValue(
+                                        NEW_FCM_TOKEN,
+                                        token
+                                    )
+                                }
+                            }
+                            is SubmitFCMUseCase.Result.Failure -> {
+                                Log.d(TAG, "postUserFCM: failure ${result.responseCode}")
+                            }
+                        }
+                    } finally {
+                        Log.d(TAG, "postUserFCM: ....done")
+                    }
+                }
+            }
+        }
+    }
+
+    private fun getNotification() {
+        val intent = intent
+        if (intent != null) {
+            if (intent.getStringExtra(FCM_BODY_KEY) != null) {
+                if (intent.getStringExtra(FCM_LINK_KEY) != null) {
+                    if(intent.getStringExtra(FCM_LINK_KEY) != "") {
+                        Log.d(TAG, "updateApp: ${intent.getStringExtra(FCM_LINK_KEY)!!}")
+//                        screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                    }
+                }
+            }
+        }
     }
 
     override fun onStart() {

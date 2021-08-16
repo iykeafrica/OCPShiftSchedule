@@ -26,7 +26,9 @@ class CalculateOvertimeViewMvc(
         fun basicAndWorkDaysEmpty(message: String)
         fun basicEmpty(message: String)
         fun workDaysEmpty(message: String)
-
+        fun basicZero(message: String)
+        fun workedDaysZero(message: String)
+        fun basicAndWorkedDaysZero(message: String)
     }
 
     init {
@@ -42,7 +44,24 @@ class CalculateOvertimeViewMvc(
         workedDays = binding.WorkDaysInput.text.trim().toString()
 
         if (basic.isNotEmpty() && workedDays.isNotEmpty()) {
-            computeCalculation(basic, workedDays)
+
+            if (basic.startsWith('0') && workedDays.startsWith('0')) {
+                for (listener in listeners) {
+                    listener.basicAndWorkedDaysZero("Basic salary and worked days cannot start with 0.")
+                    binding.overtime.text = ""
+                }
+            }else if (basic.startsWith('0') || basic.toInt() !in 27000..1000000) {
+                for (listener in listeners) {
+                    listener.basicZero("Enter a basic salary between 27,000 and 1,000,000.")
+                    binding.overtime.text = ""
+                }
+            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 18..22) {
+                for (listener in listeners) {
+                    listener.workedDaysZero("Enter worked days between 18 and 22.")
+                    binding.overtime.text = ""
+                }
+            } else
+                computeCalculation(basic, workedDays)
         }
 
         if (basic.isEmpty() && workedDays.isEmpty()) {
@@ -71,7 +90,8 @@ class CalculateOvertimeViewMvc(
 
         val overtimeHours = (workedDays.toInt() * SHIFT_WORK_HOURS) - MONTHLY_HOURS
 
-        val overtime = computeOTCalculation(basic.toInt(), MONTHLY_HOURS, OT_MULTIPLIER, overtimeHours)
+        val overtime =
+            computeOTCalculation(basic.toInt(), MONTHLY_HOURS, OT_MULTIPLIER, overtimeHours)
         displayOT(overtime)
     }
 

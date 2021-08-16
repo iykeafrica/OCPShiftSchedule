@@ -1,6 +1,7 @@
 package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
@@ -10,6 +11,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.WORKED_DAYS
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import javax.inject.Inject
 
+private val TAG = CalculateOvertimeActivity::class.simpleName
 class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Listener {
 
     private lateinit var calculateOvertimeViewMvc: CalculateOvertimeViewMvc
@@ -20,6 +22,8 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
         super.onCreate(savedInstanceState)
 
         injector.inject(this)
+        Log.d(TAG, "onCreate: CalculateOvertimeActivity $mySharedPreferences")
+
         calculateOvertimeViewMvc = viewMvcFactory.newCalculateOvertimeViewMvc(null)
         setContentView(calculateOvertimeViewMvc.rootView)
 
@@ -63,15 +67,27 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
     }
 
     override fun basicAndWorkDaysEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun basicEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun workDaysEmpty(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun basicZero(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun workedDaysZero(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun basicAndWorkedDaysZero(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onStart() {

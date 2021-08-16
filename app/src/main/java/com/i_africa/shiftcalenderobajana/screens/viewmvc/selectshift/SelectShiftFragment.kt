@@ -5,13 +5,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.fragment.BaseFragment
 import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_A
 import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_B
 import com.i_africa.shiftcalenderobajana.utils.Constant.CMTCE_SHIFT_C
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FIRST_TIME_LOADING
 import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_A
 import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_B
@@ -27,14 +31,21 @@ private val TAG = SelectShiftFragment::class.simpleName
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    @Inject lateinit var screensNavigator: ScreensNavigator
-    @Inject lateinit var mySharedPreferences: MySharedPreferences
-    @Inject lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject
+    lateinit var screensNavigator: ScreensNavigator
+    @Inject
+    lateinit var mySharedPreferences: MySharedPreferences
+    @Inject
+    lateinit var viewMvcFactory: ViewMvcFactory
+
+    private lateinit var title: String
+    private lateinit var body: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
-        Log.d(TAG, "onCreate: $screensNavigator")
+        Log.d(TAG, "onCreate: SelectShiftFragment $screensNavigator")
+        Log.d(TAG, "onCreate: SelectShiftFragment $mySharedPreferences")
     }
 
     override fun onCreateView(
@@ -43,6 +54,7 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
         savedInstanceState: Bundle?
     ): View? {
         selectShiftViewMvc = viewMvcFactory.newSelectShiftViewMvc(container)
+        getNotification()
         return selectShiftViewMvc.rootView
     }
 
@@ -107,6 +119,20 @@ class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
         mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
         mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, SECURITY_SHIFT_C)
         screensNavigator.navigateToShift()
+    }
+
+    private fun getNotification() {
+        val intent = activity?.intent
+        if (intent != null) {
+            if (intent.getStringExtra(FCM_BODY_KEY) != null) {
+                if (intent.getStringExtra(FCM_LINK_KEY) != null) {
+                    if(intent.getStringExtra(FCM_LINK_KEY) != "") {
+                        Log.d(TAG, "updateApp: ${intent.getStringExtra(FCM_LINK_KEY)!!}")
+//                        screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                    }
+                }
+            }
+        }
     }
 
     override fun onStart() {

@@ -1,12 +1,13 @@
 package com.i_africa.shiftcalenderobajana
 
 import android.app.Application
+import com.i_africa.shiftcalenderobajana.common.di.app.AppComponent
 import com.i_africa.shiftcalenderobajana.common.di.app.AppModule
 import com.i_africa.shiftcalenderobajana.common.di.app.DaggerAppComponent
 
 class MyApplication: Application() {
 
-    val appComponent by lazy {
+    val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .build()
