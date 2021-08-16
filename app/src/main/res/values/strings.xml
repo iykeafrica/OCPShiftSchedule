@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shift Schedule</string>
+    <string name="app_name">Shift Schedule(OCP)</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="disclaimer"><u><b>Disclaimer</b></u> \nThis App is not connected to Dangote. \nIt\'s a personal project designed by IK.</string>
     <string name="refresh">Refresh</string>
