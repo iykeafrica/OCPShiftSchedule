@@ -6,7 +6,7 @@
     <string name="select_shift">Change Shift</string>
     <string name="calculate_ot">Calculate Overtime</string>
     <string name="about">About</string>
-    <string name="about_body">This is a shift schedule App modelled with the different shift patterns of workers in Dangote Obajana Cement Plant.
+    <string name="about_body">This is a shift schedule app modelled with the different shift patterns of workers in Dangote Obajana Cement Plant.
         It was designed using the standard three (3) days working shift i.e FIRST MORNING DUTY, SECOND MORNING DUTY, THIRD MORNING DUTY,
         FIRST NIGHT DUTY, SECOND NIGHT DUTY, THIRD NIGHT DUTY, FIRST OFF DUTY, SECOND OFF DUTY and THIRD OFF DUTY. This implies that for
         every twenty four (24) hours one of the three (3) different shift groups will be on duty, assuming shifts A, B and C;
