@@ -30,16 +30,11 @@ private val TAG = ShiftActivity::class.simpleName
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
-    @Inject
-    lateinit var screensNavigator: ScreensNavigator
-    @Inject
-    lateinit var mySharedPreferences: MySharedPreferences
-    @Inject
-    lateinit var myPopUpMenu: MyPopUpMenu
-    @Inject
-    lateinit var viewMvcFactory: ViewMvcFactory
-    @Inject
-    lateinit var submitFCMUseCase: SubmitFCMUseCase
+    @Inject lateinit var screensNavigator: ScreensNavigator
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var myPopUpMenu: MyPopUpMenu
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject lateinit var submitFCMUseCase: SubmitFCMUseCase
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)

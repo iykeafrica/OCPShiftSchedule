@@ -1,11 +1,13 @@
 package com.i_africa.shiftcalenderobajana.networking
 
+import com.i_africa.shiftcalenderobajana.common.di.app.AppScope
 import com.i_africa.shiftcalenderobajana.network_api.GoogleFormApi
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+@AppScope
 class SubmitFCMUseCase @Inject constructor(private val googleFormApi: GoogleFormApi) {
 
     sealed class Result {
