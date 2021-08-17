@@ -7,7 +7,6 @@ import com.i_africa.shiftcalenderobajana.common.di.app.AppScope
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import javax.inject.Inject
 
-@AppScope
 private val TAG = MyFirebaseMessaging::class.simpleName
 class MyFirebaseMessaging @Inject constructor(private val firebaseMessaging: FirebaseMessaging) {
 

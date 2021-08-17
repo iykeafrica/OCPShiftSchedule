@@ -7,7 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@AppScope
 class SubmitFCMUseCase @Inject constructor(private val googleFormApi: GoogleFormApi) {
 
     sealed class Result {
