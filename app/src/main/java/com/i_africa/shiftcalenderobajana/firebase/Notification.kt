@@ -21,7 +21,7 @@ object Notification {
         notificationIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         notificationIntent.putExtra(FCM_TITLE_KEY, title)
         notificationIntent.putExtra(FCM_BODY_KEY, body)
-        notificationIntent.putExtra(FCM_LINK_KEY, link);
+        notificationIntent.putExtra(FCM_LINK_KEY, link)
 
         val pendingIntent = PendingIntent.getActivity(
             applicationContext,

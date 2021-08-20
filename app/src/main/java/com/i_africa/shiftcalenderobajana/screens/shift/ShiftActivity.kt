@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
+import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
@@ -38,7 +38,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     @Inject
     lateinit var viewMvcFactory: ViewMvcFactory
     @Inject
-    lateinit var submitFCMUseCase: SubmitFCMUseCase
+    lateinit var submitFormUseCase: SubmitFormUseCase
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -128,8 +128,8 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
             if (token != newToken) {
                 coroutineScope.launch {
                     try {
-                        when (val result = submitFCMUseCase.submitFCM(token)) {
-                            is SubmitFCMUseCase.Result.Success -> {
+                        when (val result = submitFormUseCase.submitFCM(token)) {
+                            is SubmitFormUseCase.Result.Success -> {
                                 Log.d(TAG, "postUserFCM: success ${result.responseCode}")
                                 handler.post {
                                     mySharedPreferences.storeStringValue(
@@ -138,7 +138,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
                                     )
                                 }
                             }
-                            is SubmitFCMUseCase.Result.Failure -> {
+                            is SubmitFormUseCase.Result.Failure -> {
                                 Log.d(TAG, "postUserFCM: failure ${result.responseCode}")
                             }
                         }

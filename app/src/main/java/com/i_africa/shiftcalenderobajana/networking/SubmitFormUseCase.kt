@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SubmitFCMUseCase @Inject constructor(private val googleFormApi: GoogleFormApi) {
+class SubmitFormUseCase @Inject constructor(private val googleFormApi: GoogleFormApi) {
 
     sealed class Result {
         data class Success(val responseCode: Int) : Result()
