@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlack">
+    android:background="#000000"
+    tools:context=".screens.shift_materialcalender.ShiftMaterialCalendarActivity">
 
     <LinearLayout
         android:id="@+id/line1"
@@ -104,22 +106,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/colorBlack"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line1"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/line1">
 
-        <CalendarView
-            android:id="@+id/calendar_view"
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:dateTextAppearance="@style/CalenderViewDateCustomText"
-            android:theme="@style/CalenderViewCustom"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+            android:divider="@color/colorPrimary"
+            app:abbreviationsBarColor="@color/colorBlack"
+            app:abbreviationsLabelsColor="@color/colorPrimary"
+            app:anotherMonthsDaysLabelsColor="#000000"
+            app:daysLabelsColor="@color/colorWhite"
+            app:headerColor="@color/colorBlack"
+            app:headerLabelColor="@color/colorWhite"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:pagesColor="@color/colorBlack"
+            app:todayLabelColor="@color/colorRed"
+            app:highlightedDaysLabelsColor="@color/colorRed"
+            app:selectionLabelColor="@color/colorRed" />
 
         <LinearLayout
             android:id="@+id/linearLayout"

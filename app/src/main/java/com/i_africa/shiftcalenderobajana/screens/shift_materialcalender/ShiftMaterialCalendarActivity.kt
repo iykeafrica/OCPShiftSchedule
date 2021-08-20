@@ -1,4 +1,5 @@
-package com.i_africa.shiftcalenderobajana.screens.shift
+package com.i_africa.shiftcalenderobajana.screens.shift_materialcalender
+
 
 import android.os.Bundle
 import android.os.Handler
@@ -9,26 +10,16 @@ import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailability.isInternetAvailable
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailability
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
-import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
-import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
-import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
-import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
-import com.i_africa.shiftcalenderobajana.utils.Constant.MONTH
-import com.i_africa.shiftcalenderobajana.utils.Constant.NEW_FCM_TOKEN
-import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
-import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
+import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-
-private val TAG = ShiftActivity::class.simpleName
-
-class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
-
-    private lateinit var shiftViewMvc: ShiftViewMvc
+private val TAG = ShiftMaterialCalendarActivity::class.simpleName
+class ShiftMaterialCalendarActivity : BaseActivity(), ShiftMaterialCalendarViewMvc.Listener, MyPopUpMenu.Listener {
+    private lateinit var shiftMaterialCalendarViewMvc: ShiftMaterialCalendarViewMvc
     @Inject lateinit var screensNavigator: ScreensNavigator
     @Inject lateinit var mySharedPreferences: MySharedPreferences
     @Inject lateinit var myPopUpMenu: MyPopUpMenu
@@ -40,17 +31,13 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         injector.inject(this)
-        Log.d(TAG, "onCreate: ShiftActivity $screensNavigator")
-        Log.d(TAG, "onCreate: ShiftActivity $mySharedPreferences")
+        shiftMaterialCalendarViewMvc = viewMvcFactory.newShiftMaterialCalendarViewMvc(null)
+        setContentView(shiftMaterialCalendarViewMvc.rootView)
 
-        shiftViewMvc = viewMvcFactory.newShiftViewMvc(null)
-        setContentView(shiftViewMvc.rootView)
-
-        shift = mySharedPreferences.getStoredString(SHIFT_PREFERENCE_KEY)
-        val token = mySharedPreferences.getStoredString(FCM_TOKEN)
-        val newToken = mySharedPreferences.getStoredString(NEW_FCM_TOKEN)
+        shift = mySharedPreferences.getStoredString(Constant.SHIFT_PREFERENCE_KEY)
+        val token = mySharedPreferences.getStoredString(Constant.FCM_TOKEN)
+        val newToken = mySharedPreferences.getStoredString(Constant.NEW_FCM_TOKEN)
 
         if (savedInstanceState == null) {
             loadShiftSchedule()
@@ -63,26 +50,26 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     }
 
     private fun loadShiftSchedule() {
-        shiftViewMvc.showDayOfMonth()
-        shiftViewMvc.showWeekDay()
-        shiftViewMvc.showShiftDuty(shift)
-        shiftViewMvc.showShiftMonthlyWorkingDays(shift)
-        shiftViewMvc.showShift(shift)
+        shiftMaterialCalendarViewMvc.showDayOfMonth()
+        shiftMaterialCalendarViewMvc.showWeekDay()
+        shiftMaterialCalendarViewMvc.showShiftDuty(shift)
+        shiftMaterialCalendarViewMvc.showShiftMonthlyWorkingDays(shift)
+        shiftMaterialCalendarViewMvc.showShift(shift)
     }
 
     private fun restoreState(savedInstanceState: Bundle) {
-        val dayOfMonth = savedInstanceState.getInt(DAY)
-        val month = savedInstanceState.getInt(MONTH)
-        val year = savedInstanceState.getInt(YEAR)
+        val dayOfMonth = savedInstanceState.getInt(Constant.DAY)
+        val month = savedInstanceState.getInt(Constant.MONTH)
+        val year = savedInstanceState.getInt(Constant.YEAR)
 
-        shiftViewMvc.restoreState(dayOfMonth, month, year)
+        shiftMaterialCalendarViewMvc.restoreState(dayOfMonth, month, year)
         loadShiftSchedule()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putInt(DAY, shiftViewMvc.getDay())
-        outState.putInt(MONTH, shiftViewMvc.getMonth())
-        outState.putInt(YEAR, shiftViewMvc.getYear())
+        outState.putInt(Constant.DAY, shiftMaterialCalendarViewMvc.getDay())
+        outState.putInt(Constant.MONTH, shiftMaterialCalendarViewMvc.getMonth())
+        outState.putInt(Constant.YEAR, shiftMaterialCalendarViewMvc.getYear())
 
         super.onSaveInstanceState(outState)
     }
@@ -119,7 +106,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     private fun postUserFCM(token: String, newToken: String) {
         val handler = Handler(Looper.getMainLooper())
 
-        if (isInternetAvailable(this)) {
+        if (CheckNetworkAvailability.isInternetAvailable(this)) {
             if (token != newToken) {
                 coroutineScope.launch {
                     try {
@@ -128,7 +115,7 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
                                 Log.d(TAG, "postUserFCM: success ${result.responseCode}")
                                 handler.post {
                                     mySharedPreferences.storeStringValue(
-                                        NEW_FCM_TOKEN,
+                                        Constant.NEW_FCM_TOKEN,
                                         token
                                     )
                                 }
@@ -148,10 +135,12 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     private fun getNotification() {
         val intent = intent
         if (intent != null) {
-            if (intent.getStringExtra(FCM_BODY_KEY) != null) {
-                if (intent.getStringExtra(FCM_LINK_KEY) != null) {
-                    if(intent.getStringExtra(FCM_LINK_KEY) != "") {
-                        Log.d(TAG, "updateApp: ${intent.getStringExtra(FCM_LINK_KEY)!!}")
+            if (intent.getStringExtra(Constant.FCM_BODY_KEY) != null) {
+                if (intent.getStringExtra(Constant.FCM_LINK_KEY) != null) {
+                    if(intent.getStringExtra(Constant.FCM_LINK_KEY) != "") {
+                        Log.d(TAG, "updateApp: ${intent.getStringExtra(
+                                Constant.FCM_LINK_KEY
+                            )!!}")
 //                        screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
                     }
                 }
@@ -161,12 +150,12 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
 
     override fun onStart() {
         super.onStart()
-        shiftViewMvc.registerListener(this)
+        shiftMaterialCalendarViewMvc.registerListener(this)
         myPopUpMenu.registerListener(this)
     }
 
     override fun onStop() {
-        shiftViewMvc.unregisterListener(this)
+        shiftMaterialCalendarViewMvc.unregisterListener(this)
         myPopUpMenu.unregisterListener(this)
         coroutineScope.coroutineContext.cancelChildren()
         super.onStop()

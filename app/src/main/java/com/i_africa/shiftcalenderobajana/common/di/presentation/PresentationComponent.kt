@@ -4,6 +4,7 @@ import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeA
 import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftFragment
 import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.shift_materialcalender.ShiftMaterialCalendarActivity
 import dagger.Subcomponent
 
 @PresentationScope
@@ -13,4 +14,5 @@ interface PresentationComponent {
     fun inject(selectShiftActivity: SelectShiftActivity)
     fun inject(shiftActivity: ShiftActivity)
     fun inject(calculateOvertimeActivity: CalculateOvertimeActivity)
+    fun inject(shiftMaterialCalendarActivity: ShiftMaterialCalendarActivity)
 }

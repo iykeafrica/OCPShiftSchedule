@@ -14,19 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name="com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity" />
-        <activity android:name="com.i_africa.shiftcalenderobajana.screens.about.AboutActivity" />
-        <activity android:name="com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity">
+        <activity android:name=".screens.shift_materialcalender.ShiftMaterialCalendarActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".screens.calculate_ot.CalculateOvertimeActivity" />
+        <activity android:name=".screens.about.AboutActivity" />
+        <activity android:name=".screens.selectshift.SelectShiftActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity" />
+        <activity android:name=".screens.shift.ShiftActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"
