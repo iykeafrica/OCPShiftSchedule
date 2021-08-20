@@ -5,10 +5,10 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.about.AboutActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.CalculateOvertimeActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.ShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.about.AboutActivity
+import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
+import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
 
 
 private const val TAG = "ScreensNavigator"

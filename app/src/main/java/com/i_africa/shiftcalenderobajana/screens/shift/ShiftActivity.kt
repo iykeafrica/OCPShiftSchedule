@@ -1,17 +1,16 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
+package com.i_africa.shiftcalenderobajana.screens.shift
 
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.networking.SubmitFCMUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.CheckNetworkAvailability.isInternetAvailable
-import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailability.isInternetAvailable
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN

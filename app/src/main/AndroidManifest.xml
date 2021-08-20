@@ -17,16 +17,16 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity" />
-        <activity android:name=".screens.viewmvc.about.AboutActivity" />
-        <activity android:name=".screens.viewmvc.selectshift.SelectShiftActivity">
+        <activity android:name="com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity" />
+        <activity android:name="com.i_africa.shiftcalenderobajana.screens.about.AboutActivity" />
+        <activity android:name="com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screens.viewmvc.shift.ShiftActivity" />
+        <activity android:name="com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"

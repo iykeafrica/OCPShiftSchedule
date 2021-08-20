@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.common.di.firebase_messaging_service
+package com.i_africa.shiftcalenderobajana.common.di.firebase
 
 import com.i_africa.shiftcalenderobajana.firebase.MyFirebaseMessagingService
 import dagger.Subcomponent

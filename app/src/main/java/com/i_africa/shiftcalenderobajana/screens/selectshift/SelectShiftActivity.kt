@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift
+package com.i_africa.shiftcalenderobajana.screens.selectshift
 
 import android.os.Bundle
 import android.util.Log

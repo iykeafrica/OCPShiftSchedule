@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.i_africa.shiftcalenderobajana.R
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY

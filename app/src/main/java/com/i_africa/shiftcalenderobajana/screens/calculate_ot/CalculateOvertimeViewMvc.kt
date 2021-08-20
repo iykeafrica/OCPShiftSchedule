@@ -1,11 +1,11 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
+package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityCalculateOvertimeBinding
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.ConversionUtil.computeOTCalculation
+import com.i_africa.shiftcalenderobajana.screens.calculate_ot.ConversionUtil.computeOTCalculation
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTHLY_HOURS
 import com.i_africa.shiftcalenderobajana.utils.Constant.OT_MULTIPLIER
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_WORK_HOURS

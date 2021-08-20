@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
+package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 
 import java.math.BigDecimal
 import java.math.RoundingMode

@@ -1,10 +1,10 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvcfactory
+package com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot.CalculateOvertimeViewMvc
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.selectshift.SelectShiftViewMvc
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.ShiftViewMvc
+import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeViewMvc
+import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftViewMvc
+import com.i_africa.shiftcalenderobajana.screens.shift.ShiftViewMvc
 import javax.inject.Inject
 
 class ViewMvcFactory @Inject constructor(private val layoutInflater: LayoutInflater) {

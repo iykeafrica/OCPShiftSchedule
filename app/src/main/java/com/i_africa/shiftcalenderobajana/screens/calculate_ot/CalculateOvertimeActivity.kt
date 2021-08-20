@@ -1,10 +1,10 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.calculate_ot
+package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.viewmvcfactory.ViewMvcFactory
+import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.BASIC
 import com.i_africa.shiftcalenderobajana.utils.Constant.OVERTIME
 import com.i_africa.shiftcalenderobajana.utils.Constant.WORKED_DAYS

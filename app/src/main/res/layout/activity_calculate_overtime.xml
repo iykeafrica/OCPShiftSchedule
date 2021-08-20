@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundTwo"
     android:orientation="vertical"
-    tools:context=".screens.viewmvc.calculate_ot.CalculateOvertimeActivity">
+    tools:context=".screens.calculate_ot.CalculateOvertimeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

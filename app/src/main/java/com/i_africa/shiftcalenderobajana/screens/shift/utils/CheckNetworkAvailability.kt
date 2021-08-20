@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils
+package com.i_africa.shiftcalenderobajana.screens.shift.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

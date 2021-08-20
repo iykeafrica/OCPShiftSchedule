@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.shift
+package com.i_africa.shiftcalenderobajana.screens.shift
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityShiftBinding
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.DateFormatter
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftCollection.setCollection
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftDuty.computeShiftDuty
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftMonthlyWorkDays.computeWorkingDays
-import com.i_africa.shiftcalenderobajana.screens.viewmvc.shift.utils.ShiftUtil.setFormula
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.DateFormatter
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection.setCollection
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays.computeWorkingDays
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula
 import java.util.*
 
 private const val TAG = "ShiftViewMvc"

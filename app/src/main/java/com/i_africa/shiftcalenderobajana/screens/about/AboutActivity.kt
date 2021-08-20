@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.viewmvc.about
+package com.i_africa.shiftcalenderobajana.screens.about
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
