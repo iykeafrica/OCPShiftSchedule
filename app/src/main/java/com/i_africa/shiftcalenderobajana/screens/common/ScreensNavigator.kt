@@ -9,16 +9,16 @@ import com.i_africa.shiftcalenderobajana.screens.about.AboutActivity
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
-
+import com.i_africa.shiftcalenderobajana.screens.shift_materialcalender.ShiftMaterialCalendarActivity
 
 private const val TAG = "ScreensNavigator"
-
 class ScreensNavigator(private val activity: AppCompatActivity) {
 
     var zeroTime = 0L
 
     fun navigateToShift() {
-        activity.startActivity(Intent(activity, ShiftActivity::class.java))
+//        activity.startActivity(Intent(activity, ShiftActivity::class.java))
+        activity.startActivity(Intent(activity, ShiftMaterialCalendarActivity::class.java))
         activity.finish()
     }
 

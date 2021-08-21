@@ -29,15 +29,9 @@ private val TAG = SelectShiftFragment::class.simpleName
 class SelectShiftFragment : BaseFragment(), SelectShiftViewMvc.Listener {
 
     private lateinit var selectShiftViewMvc: SelectShiftViewMvc
-    @Inject
-    lateinit var screensNavigator: ScreensNavigator
-    @Inject
-    lateinit var mySharedPreferences: MySharedPreferences
-    @Inject
-    lateinit var viewMvcFactory: ViewMvcFactory
-
-    private lateinit var title: String
-    private lateinit var body: String
+    @Inject lateinit var screensNavigator: ScreensNavigator
+    @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var viewMvcFactory: ViewMvcFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

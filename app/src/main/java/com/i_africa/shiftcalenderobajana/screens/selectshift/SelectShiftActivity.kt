@@ -2,13 +2,11 @@ package com.i_africa.shiftcalenderobajana.screens.selectshift
 
 import android.os.Bundle
 import android.util.Log
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
-import com.google.firebase.messaging.FirebaseMessaging
 import com.i_africa.shiftcalenderobajana.R
+import com.i_africa.shiftcalenderobajana.firebase.MyFirebaseMessaging
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import javax.inject.Inject
@@ -18,6 +16,7 @@ class SelectShiftActivity : BaseActivity() {
 
     @Inject lateinit var screensNavigator: ScreensNavigator
     @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var myFirebaseMessaging: MyFirebaseMessaging
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,31 +45,15 @@ class SelectShiftActivity : BaseActivity() {
     }
 
     private fun subscribeUserToShiftCalendar() {
-        FirebaseMessaging.getInstance().subscribeToTopic(Constant.SUBSCRIBE_TO_SHIFT_CALENDAR)
-            .addOnCompleteListener { task ->
-                var msg = "Subscribed"
-                if (!task.isSuccessful) {
-                    msg = "Subscription Failed"
-                }
-                Log.d(TAG, msg)
-            }
+        myFirebaseMessaging.subscribe()
     }
 
     private fun getFirebaseUserToken() {
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-
-            // Get new FCM registration token
-            val token = task.result
-            mySharedPreferences.storeStringValue(FCM_TOKEN, token!!)
-            Log.d(TAG, "This is your token$token")
-        })
+        val token = myFirebaseMessaging.generateNewToken()
+        mySharedPreferences.storeStringValue(FCM_TOKEN, token)
     }
 
     override fun onBackPressed() {
-       screensNavigator.backPressed()
+        screensNavigator.backPressed()
     }
 }
