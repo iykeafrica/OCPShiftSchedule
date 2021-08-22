@@ -13,23 +13,25 @@ import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-object Notification {
-    fun setNotification(applicationContext: Context, title: String, body: String, link: String) {
+class Notification @Inject constructor(@ApplicationContext val context: Context) {
+    fun setNotification(title: String, body: String, link: String) {
 
-        val notificationIntent = Intent(applicationContext, SelectShiftActivity::class.java)
+        val notificationIntent = Intent(context, SelectShiftActivity::class.java)
         notificationIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         notificationIntent.putExtra(FCM_TITLE_KEY, title)
         notificationIntent.putExtra(FCM_BODY_KEY, body)
         notificationIntent.putExtra(FCM_LINK_KEY, link)
 
         val pendingIntent = PendingIntent.getActivity(
-            applicationContext,
+            context,
             0, notificationIntent, PendingIntent.FLAG_ONE_SHOT
         )
 
         val notificationManager =
-            applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
@@ -41,7 +43,7 @@ object Notification {
         }
 
         val notificationBuilder: NotificationCompat.Builder = NotificationCompat.Builder(
-            applicationContext, Constant.NOTIFICATION_CHANNEL_ID
+            context, Constant.NOTIFICATION_CHANNEL_ID
         )
             .setContentTitle(title)
             .setContentText(body)

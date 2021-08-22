@@ -1,13 +1,16 @@
 package com.i_africa.shiftcalenderobajana.common.di.app
 
 import android.app.Application
+import android.content.Context
 import com.google.firebase.messaging.FirebaseMessaging
+import com.i_africa.shiftcalenderobajana.firebase.MyFirebaseMessagingService
 import com.i_africa.shiftcalenderobajana.network_api.GoogleFormApi
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

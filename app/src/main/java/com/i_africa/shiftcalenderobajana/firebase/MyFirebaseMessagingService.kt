@@ -5,21 +5,23 @@ import android.os.Looper
 import android.util.Log
 import com.google.firebase.messaging.RemoteMessage
 import com.i_africa.shiftcalenderobajana.common.firebase_baseservice.BaseFirebaseMessagingService
-import com.i_africa.shiftcalenderobajana.firebase.Notification.setNotification
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 private val TAG = MyFirebaseMessagingService::class.simpleName
 
+@AndroidEntryPoint
 class MyFirebaseMessagingService : BaseFirebaseMessagingService() {
     private val processLater = false
     @Inject lateinit var mySharedPreferences: MySharedPreferences
+    @Inject lateinit var notification: Notification
 
     override fun onCreate() {
-        Log.d(TAG, "onCreate: MyFirebaseMessagingService $mySharedPreferences")
         super.onCreate()
+        Log.d(TAG, "onCreate: MyFirebaseMessagingService $mySharedPreferences")
     }
 
     override fun onNewToken(token: String) {
@@ -44,8 +46,7 @@ class MyFirebaseMessagingService : BaseFirebaseMessagingService() {
 
         handler.post {
             remoteMessage.notification?.let {
-                setNotification(
-                    applicationContext,
+                notification.setNotification(
                     remoteMessage.notification!!.title!!,
                     remoteMessage.notification!!.body!!,
                     remoteMessage.data[FCM_LINK_KEY]!!
