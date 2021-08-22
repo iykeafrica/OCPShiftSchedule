@@ -20,12 +20,14 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.NEW_FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_PREFERENCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.YEAR
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
 
 private val TAG = ShiftActivity::class.simpleName
 
+@AndroidEntryPoint
 class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listener {
 
     private lateinit var shiftViewMvc: ShiftViewMvc
@@ -41,7 +43,6 @@ class ShiftActivity : BaseActivity(), ShiftViewMvc.Listener, MyPopUpMenu.Listene
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        injector.inject(this)
         Log.d(TAG, "onCreate: ShiftActivity $screensNavigator")
         Log.d(TAG, "onCreate: ShiftActivity $mySharedPreferences")
 

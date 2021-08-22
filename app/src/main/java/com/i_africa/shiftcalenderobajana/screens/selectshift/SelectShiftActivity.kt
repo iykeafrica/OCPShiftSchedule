@@ -9,9 +9,12 @@ import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 private val TAG = SelectShiftActivity::class.simpleName
+
+@AndroidEntryPoint
 class SelectShiftActivity : BaseActivity() {
 
     @Inject lateinit var screensNavigator: ScreensNavigator
@@ -21,7 +24,6 @@ class SelectShiftActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        injector.inject(this)
         Log.d(TAG, "onCreate: SelectShiftActivity $screensNavigator")
         Log.d(TAG, "onCreate: SelectShiftActivity $mySharedPreferences")
         setContentView(R.layout.main)

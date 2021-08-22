@@ -1,21 +1,10 @@
 package com.i_africa.shiftcalenderobajana
 
 import android.app.Application
-import com.i_africa.shiftcalenderobajana.common.di.app.AppComponent
-import com.i_africa.shiftcalenderobajana.common.di.app.AppModule
-import com.i_africa.shiftcalenderobajana.common.di.app.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class MyApplication: Application() {
-
-    val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
-            .appModule(AppModule(this))
-            .build()
-    }
-
-    val appModule: AppModule by lazy {
-        AppModule(this)
-    }
 
     override fun onCreate() {
         super.onCreate()

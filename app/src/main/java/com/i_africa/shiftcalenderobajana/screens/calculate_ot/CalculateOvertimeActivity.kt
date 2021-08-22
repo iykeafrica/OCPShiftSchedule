@@ -9,9 +9,12 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.BASIC
 import com.i_africa.shiftcalenderobajana.utils.Constant.OVERTIME
 import com.i_africa.shiftcalenderobajana.utils.Constant.WORKED_DAYS
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 private val TAG = CalculateOvertimeActivity::class.simpleName
+
+@AndroidEntryPoint
 class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Listener {
 
     private lateinit var calculateOvertimeViewMvc: CalculateOvertimeViewMvc
@@ -21,7 +24,6 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        injector.inject(this)
         Log.d(TAG, "onCreate: CalculateOvertimeActivity $mySharedPreferences")
 
         calculateOvertimeViewMvc = viewMvcFactory.newCalculateOvertimeViewMvc(null)

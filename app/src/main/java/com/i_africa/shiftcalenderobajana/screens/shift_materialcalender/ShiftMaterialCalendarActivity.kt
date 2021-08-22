@@ -14,10 +14,13 @@ import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailab
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
 private val TAG = ShiftMaterialCalendarActivity::class.simpleName
+
+@AndroidEntryPoint
 class ShiftMaterialCalendarActivity : BaseActivity(), ShiftMaterialCalendarViewMvc.Listener, MyPopUpMenu.Listener {
     private lateinit var shiftMaterialCalendarViewMvc: ShiftMaterialCalendarViewMvc
     @Inject lateinit var screensNavigator: ScreensNavigator
@@ -31,7 +34,7 @@ class ShiftMaterialCalendarActivity : BaseActivity(), ShiftMaterialCalendarViewM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        injector.inject(this)
+
         shiftMaterialCalendarViewMvc = viewMvcFactory.newShiftMaterialCalendarViewMvc(null)
         setContentView(shiftMaterialCalendarViewMvc.rootView)
 

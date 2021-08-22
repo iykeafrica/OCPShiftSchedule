@@ -18,7 +18,6 @@ class MyFirebaseMessagingService : BaseFirebaseMessagingService() {
     @Inject lateinit var mySharedPreferences: MySharedPreferences
 
     override fun onCreate() {
-        injector.inject(this)
         Log.d(TAG, "onCreate: MyFirebaseMessagingService $mySharedPreferences")
         super.onCreate()
     }

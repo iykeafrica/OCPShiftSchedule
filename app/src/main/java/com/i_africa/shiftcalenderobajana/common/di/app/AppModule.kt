@@ -7,11 +7,14 @@ import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class AppModule(private val application: Application) {
+@InstallIn(SingletonComponent::class)
+class AppModule() {
 
     @Provides
     @AppScope
@@ -23,15 +26,8 @@ class AppModule(private val application: Application) {
     }
 
     @Provides
-    fun application() = application
-
-    @Provides
     @AppScope
     fun firebaseInstance(): FirebaseMessaging = FirebaseMessaging.getInstance()
-
-    @AppScope
-    @Provides
-    fun mySharedPreferences(application: Application) = MySharedPreferences(application)
 
     @Provides
     @AppScope

@@ -2,12 +2,15 @@ package com.i_africa.shiftcalenderobajana.utils.mysharedpref
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.Constant
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class MySharedPreferences(application: Application) {
+class MySharedPreferences @Inject constructor(@ApplicationContext context: Context) {
 
-    private val preferences: SharedPreferences = application.applicationContext.getSharedPreferences(
+    private val preferences: SharedPreferences = context.getSharedPreferences(
         Constant.MY_PREF, 0)
     @SuppressLint("CommitPrefEdits")
     private val editor = preferences.edit()!!
