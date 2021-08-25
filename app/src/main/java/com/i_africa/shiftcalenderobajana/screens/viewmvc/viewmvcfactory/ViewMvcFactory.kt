@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeViewMvc
 import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftViewMvc
 import com.i_africa.shiftcalenderobajana.screens.shift.ShiftViewMvc
-import com.i_africa.shiftcalenderobajana.screens.shift_materialcalender.ShiftMaterialCalendarViewMvc
 import javax.inject.Inject
 
 class ViewMvcFactory @Inject constructor(private val layoutInflater: LayoutInflater) {
@@ -20,9 +19,5 @@ class ViewMvcFactory @Inject constructor(private val layoutInflater: LayoutInfla
 
     fun newCalculateOvertimeViewMvc(parent: ViewGroup?): CalculateOvertimeViewMvc {
         return CalculateOvertimeViewMvc(layoutInflater, parent)
-    }
-
-    fun newShiftMaterialCalendarViewMvc(parent: ViewGroup?): ShiftMaterialCalendarViewMvc {
-        return ShiftMaterialCalendarViewMvc(layoutInflater, parent)
     }
 }
