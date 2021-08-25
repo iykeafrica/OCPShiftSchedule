@@ -18,7 +18,6 @@ To build this project, you require:
 
 ## Libraries
 *   [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
-*   [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 *   [Dagger Hilt](https://dagger.dev/hilt)
 *   [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
 *   [Retrofit](https://square.github.io/retrofit)
