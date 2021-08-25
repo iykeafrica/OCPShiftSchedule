@@ -27,7 +27,6 @@ To build this project, you require:
 <h4 align="center">
 <img src="https://res.cloudinary.com/iykeafrica/image/upload/v1629896876/9_bp8ete.jpg" width="30%" vspace="10" hspace="10">
 <img src="https://res.cloudinary.com/iykeafrica/image/upload/v1629896950/8_pfavqy.jpg" width="30%" vspace="10" hspace="10">
-<img src="https://res.cloudinary.com/iykeafrica/image/upload/v1629896982/5_iacia1.jpg" width="30%" vspace="10" hspace="10">
 <img src="https://res.cloudinary.com/iykeafrica/image/upload/v1629897003/7_cezavk.jpg" width="30%" vspace="10" hspace="10""><br>
 
 ## Download
