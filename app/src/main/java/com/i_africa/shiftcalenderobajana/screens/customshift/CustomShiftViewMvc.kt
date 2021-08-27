@@ -75,7 +75,7 @@ class CustomShiftViewMvc(
     }
 
     fun showWeekDay() {
-        binding.weekdayView.text = DateFormatter.weekDay(date)
+        binding.weekdayView.text = DateFormatter.weekDay(calendar.time)
     }
 
     private fun setCalendar(cal: Calendar) {
@@ -126,7 +126,7 @@ class CustomShiftViewMvc(
         binding.shift.text = shift
     }
 
-    fun reverseTextColor() {
+    private fun reverseTextColor() {
         binding.one.setTextColor(Color.parseColor("#000000"))
         binding.two.setTextColor(Color.parseColor("#000000"))
         binding.three.setTextColor(Color.parseColor("#000000"))
@@ -303,58 +303,94 @@ class CustomShiftViewMvc(
 
                 binding.twentynine.text = setCalendarStartOfCollection(startFirstDay)[28]
                 if (binding.twentynine.text.toString().trim().isNotEmpty()) {
-                    binding.fourthRow.visibility = View.VISIBLE
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[28]) == currentDay)
-                        binding.twentynine.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.twentynine.text.toString().trim()) > daysInMonth) {
+                        binding.twentynine.text = ""
+                    } else {
+                        binding.fourthRow.visibility = View.VISIBLE
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[28]) == currentDay)
+                            binding.twentynine.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirty.text = setCalendarStartOfCollection(startFirstDay)[29]
                 if (binding.thirty.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[29]) == currentDay)
-                        binding.thirty.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirty.text.toString().trim()) > daysInMonth) {
+                        binding.thirty.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[29]) == currentDay)
+                            binding.thirty.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtyone.text = setCalendarStartOfCollection(startFirstDay)[30]
                 if (binding.thirtyone.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[30]) == currentDay)
-                        binding.thirtyone.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtyone.text.toString().trim()) > daysInMonth) {
+                        binding.thirtyone.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[30]) == currentDay)
+                            binding.thirtyone.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtytwo.text = setCalendarStartOfCollection(startFirstDay)[31]
                 if (binding.thirtytwo.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[31]) == currentDay)
-                        binding.thirtytwo.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtytwo.text.toString().trim()) > daysInMonth) {
+                        binding.thirtytwo.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[31]) == currentDay)
+                            binding.thirtytwo.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtythree.text = setCalendarStartOfCollection(startFirstDay)[32]
                 if (binding.thirtythree.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[32]) == currentDay)
-                        binding.thirtythree.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtythree.text.toString().trim()) > daysInMonth) {
+                        binding.thirtythree.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[32]) == currentDay)
+                            binding.thirtythree.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtyfour.text = setCalendarStartOfCollection(startFirstDay)[33]
                 if (binding.thirtyfour.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[33]) == currentDay)
-                        binding.thirtyfour.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtyfour.text.toString().trim()) > daysInMonth) {
+                        binding.thirtyfour.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[33]) == currentDay)
+                            binding.thirtyfour.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtyfive.text = setCalendarStartOfCollection(startFirstDay)[34]
                 if (binding.thirtyfive.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[34]) == currentDay)
-                        binding.thirtyfive.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtyfive.text.toString().trim()) > daysInMonth) {
+                        binding.thirtyfive.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[34]) == currentDay)
+                            binding.thirtyfive.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtysix.text = setCalendarStartOfCollection(startFirstDay)[35]
                 if (binding.thirtysix.text.toString().trim().isNotEmpty()) {
-                    binding.fifthRow.visibility = View.VISIBLE
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[35]) == currentDay)
-                        binding.thirtysix.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtysix.text.toString().trim()) > daysInMonth) {
+                        binding.thirtysix.text = ""
+                    } else {
+                        binding.fifthRow.visibility = View.VISIBLE
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[35]) == currentDay)
+                            binding.thirtysix.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
 
                 binding.thirtyseven.text = setCalendarStartOfCollection(startFirstDay)[36]
                 if (binding.thirtyseven.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[36]) == currentDay)
-                        binding.thirtyseven.setTextColor(Color.parseColor("#FF6347"))
+                    if (Integer.parseInt(binding.thirtyseven.text.toString().trim()) > daysInMonth) {
+                        binding.thirtyseven.text = ""
+                    } else {
+                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[36]) == currentDay)
+                            binding.thirtyseven.setTextColor(Color.parseColor("#FF6347"))
+                    }
                 }
             }
         }
@@ -369,7 +405,8 @@ class CustomShiftViewMvc(
 
     private fun cellClick() {
         binding.one.setOnClickListener {
-            if (binding.one.text.toString().isNotEmpty()) {
+            if (binding.one.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.oneClick()
                 }
@@ -377,7 +414,8 @@ class CustomShiftViewMvc(
         }
 
         binding.two.setOnClickListener {
-            if (binding.two.text.toString().isNotEmpty()) {
+            if (binding.two.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.twoClick()
                 }
@@ -385,7 +423,8 @@ class CustomShiftViewMvc(
         }
 
         binding.three.setOnClickListener {
-            if (binding.three.text.toString().isNotEmpty()) {
+            if (binding.three.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.threeClick()
                 }
@@ -393,7 +432,8 @@ class CustomShiftViewMvc(
         }
 
         binding.four.setOnClickListener {
-            if (binding.four.text.toString().isNotEmpty()) {
+            if (binding.four.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.fourClick()
                 }
@@ -401,7 +441,8 @@ class CustomShiftViewMvc(
         }
 
         binding.five.setOnClickListener {
-            if (binding.five.text.toString().isNotEmpty()) {
+            if (binding.five.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.fiveClick()
                 }
@@ -409,7 +450,8 @@ class CustomShiftViewMvc(
         }
 
         binding.six.setOnClickListener {
-            if (binding.six.text.toString().isNotEmpty()) {
+            if (binding.six.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.sixClick()
                 }
@@ -417,6 +459,7 @@ class CustomShiftViewMvc(
         }
 
         binding.seven.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.sevenClick()
             }
@@ -424,139 +467,162 @@ class CustomShiftViewMvc(
         }
 
         binding.eight.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.eightClick()
             }
         }
 
         binding.nine.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.nineClick()
             }
         }
 
         binding.ten.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.tenClick()
             }
         }
 
         binding.eleven.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.elevenClick()
             }
         }
 
         binding.twelve.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twelveClick()
             }
         }
 
         binding.thirteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.thirteenClick()
             }
         }
 
         binding.fourteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.fourteenClick()
             }
         }
 
         binding.fifteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.fifteenClick()
             }
         }
 
         binding.sixteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.sixteenClick()
             }
         }
 
         binding.seventeen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.seventeenClick()
             }
         }
 
         binding.eighteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.eighteenClick()
             }
         }
 
         binding.nineteen.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.nineteenClick()
             }
         }
 
         binding.twenty.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyClick()
             }
         }
 
         binding.twenty.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyClick()
             }
         }
 
         binding.twentyone.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyOneClick()
             }
         }
 
         binding.twentytwo.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyTwoClick()
             }
         }
 
         binding.twentythree.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyThreeClick()
             }
         }
 
         binding.twentyfour.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyFourClick()
             }
         }
 
         binding.twentyfive.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyFiveClick()
             }
         }
 
         binding.twentysix.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentySixClick()
             }
         }
 
         binding.twentyseven.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentySevenClick()
             }
         }
 
         binding.twentyeight.setOnClickListener {
+            reverseTextColor()
             for (listener in listeners) {
                 listener.twentyEightClick()
             }
         }
 
         binding.twentynine.setOnClickListener {
-            if (binding.twentynine.text.toString().isNotEmpty()) {
+            if (binding.twentynine.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.twentyNineClick()
                 }
@@ -564,7 +630,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirty.setOnClickListener {
-            if (binding.thirty.text.toString().isNotEmpty()) {
+            if (binding.thirty.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyClick()
                 }
@@ -572,7 +639,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtyone.setOnClickListener {
-            if (binding.thirtyone.text.toString().isNotEmpty()) {
+            if (binding.thirtyone.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyOneClick()
                 }
@@ -580,7 +648,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtytwo.setOnClickListener {
-            if (binding.thirtytwo.text.toString().isNotEmpty()) {
+            if (binding.thirtytwo.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyTwoClick()
                 }
@@ -588,7 +657,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtythree.setOnClickListener {
-            if (binding.thirtythree.text.toString().isNotEmpty()) {
+            if (binding.thirtythree.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyThreeClick()
                 }
@@ -596,7 +666,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtyfour.setOnClickListener {
-            if (binding.thirtyfour.text.toString().isNotEmpty()) {
+            if (binding.thirtyfour.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyFourClick()
                 }
@@ -604,7 +675,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtyfive.setOnClickListener {
-            if (binding.thirtyfive.text.toString().isNotEmpty()) {
+            if (binding.thirtyfive.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtyClick()
                 }
@@ -612,7 +684,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtysix.setOnClickListener {
-            if (binding.thirtysix.text.toString().isNotEmpty()) {
+            if (binding.thirtysix.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtySixClick()
                 }
@@ -620,7 +693,8 @@ class CustomShiftViewMvc(
         }
 
         binding.thirtyseven.setOnClickListener {
-            if (binding.thirtyseven.text.toString().isNotEmpty()) {
+            if (binding.thirtyseven.text.toString().trim().isNotEmpty()) {
+                reverseTextColor()
                 for (listener in listeners) {
                     listener.thirtySevenClick()
                 }
@@ -647,195 +721,266 @@ class CustomShiftViewMvc(
     }
 
     fun set1() {
-        if (binding.one.text.toString().isNotEmpty()) {
+        if (binding.one.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.one.text.toString()))
+            currentDay = Integer.parseInt(binding.one.text.toString())
+            binding.one.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set2() {
-        if (binding.two.text.toString().isNotEmpty()) {
+        if (binding.two.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.two.text.toString()))
+            currentDay = Integer.parseInt(binding.two.text.toString())
+            binding.two.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set3() {
-        if (binding.three.text.toString().isNotEmpty()) {
+        if (binding.three.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.three.text.toString()))
+            currentDay = Integer.parseInt(binding.three.text.toString())
+            binding.three.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set4() {
-        if (binding.four.text.toString().isNotEmpty()) {
+        if (binding.four.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.four.text.toString()))
+            currentDay = Integer.parseInt(binding.four.text.toString())
+            binding.four.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set5() {
-        if (binding.five.text.toString().isNotEmpty()) {
+        if (binding.five.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.five.text.toString()))
+            currentDay = Integer.parseInt(binding.five.text.toString())
+            binding.five.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set6() {
-        if (binding.six.text.toString().isNotEmpty()) {
+        if (binding.six.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.six.text.toString()))
+            currentDay = Integer.parseInt(binding.six.text.toString())
+            binding.six.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set7() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.seven.text.toString()))
+        currentDay = Integer.parseInt(binding.seven.text.toString())
+        binding.seven.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set8() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eight.text.toString()))
+        currentDay = Integer.parseInt(binding.eight.text.toString())
+        binding.eight.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set9() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.nine.text.toString()))
+        currentDay = Integer.parseInt(binding.nine.text.toString())
+        binding.nine.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set10() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.ten.text.toString()))
+        currentDay = Integer.parseInt(binding.ten.text.toString())
+        binding.ten.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set11() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eleven.text.toString()))
+        currentDay = Integer.parseInt(binding.eleven.text.toString())
+        binding.eleven.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set12() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twelve.text.toString()))
+        currentDay = Integer.parseInt(binding.twelve.text.toString())
+        binding.twelve.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set13() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirteen.text.toString()))
+        currentDay = Integer.parseInt(binding.thirteen.text.toString())
+        binding.thirteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set14() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.fourteen.text.toString()))
+        currentDay = Integer.parseInt(binding.fourteen.text.toString())
+        binding.fourteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set15() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.fifteen.text.toString()))
+        currentDay = Integer.parseInt(binding.fifteen.text.toString())
+        binding.fifteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set16() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.sixteen.text.toString()))
+        currentDay = Integer.parseInt(binding.sixteen.text.toString())
+        binding.sixteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set17() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.seventeen.text.toString()))
+        currentDay = Integer.parseInt(binding.seventeen.text.toString())
+        binding.seventeen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set18() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eighteen.text.toString()))
+        currentDay = Integer.parseInt(binding.eighteen.text.toString())
+        binding.eighteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set19() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.nineteen.text.toString()))
+        currentDay = Integer.parseInt(binding.nineteen.text.toString())
+        binding.nineteen.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set20() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twenty.text.toString()))
+        currentDay = Integer.parseInt(binding.twenty.text.toString())
+        binding.twenty.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set21() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyone.text.toString()))
+        currentDay = Integer.parseInt(binding.twentyone.text.toString())
+        binding.twentyone.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set22() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentytwo.text.toString()))
+        currentDay = Integer.parseInt(binding.twentytwo.text.toString())
+        binding.twentytwo.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set23() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentythree.text.toString()))
+        currentDay = Integer.parseInt(binding.twentythree.text.toString())
+        binding.twentythree.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set24() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyfour.text.toString()))
+        currentDay = Integer.parseInt(binding.twentyfour.text.toString())
+        binding.twentyfour.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set25() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyfive.text.toString()))
+        currentDay = Integer.parseInt(binding.twentyfive.text.toString())
+        binding.twentyfive.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set26() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentysix.text.toString()))
+        currentDay = Integer.parseInt(binding.twentysix.text.toString())
+        binding.twentysix.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set27() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyseven.text.toString()))
+        currentDay = Integer.parseInt(binding.twentyseven.text.toString())
+        binding.twentyseven.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set28() {
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyeight.text.toString()))
+        currentDay = Integer.parseInt(binding.twentyeight.text.toString())
+        binding.twentyeight.setTextColor(Color.parseColor("#FF6347"))
     }
 
     fun set29() {
-        if (binding.twentynine.text.toString().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.twentynine.text.toString())
-            )
+        if (binding.twentynine.text.toString().trim().isNotEmpty()) {
+            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentynine.text.toString()))
+            currentDay = Integer.parseInt(binding.twentynine.text.toString())
+            binding.twentynine.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set30() {
-        if (binding.thirty.text.toString().isNotEmpty()) {
+        if (binding.thirty.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirty.text.toString()))
+            currentDay = Integer.parseInt(binding.thirty.text.toString())
+            binding.thirty.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set31() {
-        if (binding.thirtyone.text.toString().isNotEmpty()) {
+        if (binding.thirtyone.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtyone.text.toString()))
+            currentDay = Integer.parseInt(binding.thirtyone.text.toString())
+            binding.thirtyone.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set32() {
-        if (binding.thirtytwo.text.toString().isNotEmpty()) {
+        if (binding.thirtytwo.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtytwo.text.toString()))
+            currentDay = Integer.parseInt(binding.thirtytwo.text.toString())
+            binding.thirtytwo.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set33() {
-        if (binding.thirtythree.text.toString().isNotEmpty()) {
+        if (binding.thirtythree.text.toString().trim().isNotEmpty()) {
             calendar.set(
                 Calendar.DAY_OF_MONTH,
                 Integer.parseInt(binding.thirtythree.text.toString())
             )
+            currentDay = Integer.parseInt(binding.thirtythree.text.toString())
+            binding.thirtythree.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set34() {
-        if (binding.thirtyfour.text.toString().isNotEmpty()) {
+        if (binding.thirtyfour.text.toString().trim().isNotEmpty()) {
             calendar.set(
                 Calendar.DAY_OF_MONTH,
                 Integer.parseInt(binding.thirtyfour.text.toString())
             )
+            currentDay = Integer.parseInt(binding.thirtyfour.text.toString())
+            binding.thirtyfour.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set35() {
-        if (binding.thirtyfive.text.toString().isNotEmpty()) {
+        if (binding.thirtyfive.text.toString().trim().isNotEmpty()) {
             calendar.set(
                 Calendar.DAY_OF_MONTH,
                 Integer.parseInt(binding.thirtyfive.text.toString())
             )
+            currentDay = Integer.parseInt(binding.thirtyfive.text.toString())
+            binding.thirtyfive.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set36() {
-        if (binding.thirtysix.text.toString().isNotEmpty()) {
+        if (binding.thirtysix.text.toString().trim().isNotEmpty()) {
             calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtysix.text.toString()))
+            currentDay = Integer.parseInt(binding.thirtysix.text.toString())
+            binding.thirtysix.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 
     fun set37() {
-        if (binding.thirtyseven.text.toString().isNotEmpty()) {
+        if (binding.thirtyseven.text.toString().trim().isNotEmpty()) {
             calendar.set(
                 Calendar.DAY_OF_MONTH,
                 Integer.parseInt(binding.thirtyseven.text.toString())
             )
+            currentDay = Integer.parseInt(binding.thirtyseven.text.toString())
+            binding.thirtyseven.setTextColor(Color.parseColor("#FF6347"))
         }
     }
 

@@ -6,8 +6,8 @@ import java.util.*
 
 object DateFormatter {
     private val dayFormatter = SimpleDateFormat("EEEE")
-    private val monthFormatter: Format = SimpleDateFormat("MMMM")
-    private val monthYearHeader: Format = SimpleDateFormat("MMMM yyyy")
+    private val monthFormatter = SimpleDateFormat("MMMM")
+    private val monthYearHeader = SimpleDateFormat("MMMM yyyy")
 
     fun weekDay(date: Date): String {
         return dayFormatter.format(date)
