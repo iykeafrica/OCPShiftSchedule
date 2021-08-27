@@ -115,11 +115,12 @@ class CustomShiftViewMvc(
 
     fun restoreState(dayOfMonth: Int, month: Int, year: Int) {
         calendar.set(year, month, dayOfMonth)
+        reverseTextColor()
         date = calendar.time
         daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
+        isCurrentDate = true
         currentDay = dayOfMonth
         updateCell()
-//        binding.calendarView.date = date.time
     }
 
     fun showShift(shift: String) {

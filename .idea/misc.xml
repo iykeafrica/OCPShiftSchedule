@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/ic_menu.xml" value="0.14814814814814814" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_custom_shift.xml" value="0.2" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_shift.xml" value="0.18" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_shift_material_calendar.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_calculate_otactivity.xml" value="0.1875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_calculate_overtime.xml" value="0.1875" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_custom_shift.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_shift.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_shift_material_calendar.xml" value="0.20260416666666667" />
