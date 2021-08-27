@@ -1,0 +1,466 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/table_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cell_background"
+    android:paddingTop="1dp"
+    android:stretchColumns="0">
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingEnd="1dp"
+        android:paddingBottom="1dp"
+        tools:ignore="RtlSymmetry">
+
+            <TextView
+                android:id="@+id/one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="@dimen/date_size"
+                android:textColor="@color/date_color"
+                android:background="@color/date_background"
+                android:padding="@dimen/date_padding" />
+
+            <TextView
+                android:id="@+id/two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="@dimen/date_size"
+                android:textColor="@color/date_color"
+                android:background="@color/date_background"
+                android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/five"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/six"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/seven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingEnd="1dp"
+        android:paddingBottom="1dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/eight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/nine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/ten"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/eleven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twelve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/thirteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/fourteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+    </TableRow>
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingEnd="1dp"
+        android:paddingBottom="1dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/fifteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/sixteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/seventeen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/eighteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/nineteen"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twenty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentyone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingEnd="1dp"
+        android:paddingBottom="1dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/twentytwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentythree"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentyfour"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentyfive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentysix"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentyseven"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/twentyeight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+    </TableRow>
+
+    <TableRow
+        android:background="#CCC"
+        android:paddingEnd="1dp"
+        android:paddingBottom="1dp"
+        tools:ignore="RtlSymmetry">
+
+        <TextView
+            android:id="@+id/twentynine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/thirty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:id="@+id/thirtyone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/date_size"
+            android:textColor="@color/date_color"
+            android:background="@color/date_background"
+            android:padding="@dimen/date_padding" />
+
+    </TableRow>
+
+</TableLayout>

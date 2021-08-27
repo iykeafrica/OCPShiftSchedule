@@ -21,4 +21,12 @@
     <color name="color7">#cddc39</color>
     <color name="color8">#00e676</color>
     <color name="color9">#ffcc80</color>
+
+
+
+    <color name="cell_background">#CCC</color>
+    <color name="date_background">#FFFFFF</color>
+    <color name="date_color">#000000</color>
+
+
 </resources>
