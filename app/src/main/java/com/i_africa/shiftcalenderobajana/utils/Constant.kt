@@ -53,4 +53,10 @@ object Constant {
     const val NOTIFICATION_NAME = "New notification"
     const val NOTIFICATION_ID = 6353
 
+
+    const val DAY_TEXT_COLOR = "#FF6347"
+    const val BACKGROUND_COLOR_MORNING = "#B6DAF6"
+    const val BACKGROUND_COLOR_NIGHT = "#FFCCCCCC"
+    const val BACKGROUND_COLOR_OFF = "#f7eee1"
+
 }

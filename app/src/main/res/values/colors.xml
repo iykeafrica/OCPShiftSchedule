@@ -24,9 +24,16 @@
 
 
 
-    <color name="cell_background">#CCC</color>
+    <color name="cell_background">#8F8E8E</color>
     <color name="date_background">#FFFFFF</color>
     <color name="date_color">#000000</color>
+
+    <color name="morning_duty_color">#B7DBF6</color>
+    <color name="night_duty_color">#FFCCCCCC</color>
+    <color name="off_duty_color">#60F3E3B5</color>
+    <color name="off_duty_color2">#F4EFDE</color>
+
+
 
 
 </resources>

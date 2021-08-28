@@ -13,6 +13,7 @@ import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailability
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant
+import com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -29,6 +30,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     @Inject lateinit var myPopUpMenu: MyPopUpMenu
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
     @Inject lateinit var submitFormUseCase: SubmitFormUseCase
+//    @Inject lateinit var onSwipeTouchListener: com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -37,9 +39,9 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         super.onCreate(savedInstanceState)
 
         customShiftViewMvc = viewMvcFactory.newCustomShiftViewMvc(null)
+        shift = mySharedPreferences.getStoredString(Constant.SHIFT_PREFERENCE_KEY)
         setContentView(customShiftViewMvc.rootView)
 
-        shift = mySharedPreferences.getStoredString(Constant.SHIFT_PREFERENCE_KEY)
         val token = mySharedPreferences.getStoredString(Constant.FCM_TOKEN)
         val newToken = mySharedPreferences.getStoredString(Constant.NEW_FCM_TOKEN)
 
