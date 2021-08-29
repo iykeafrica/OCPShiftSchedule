@@ -16,8 +16,26 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FIRST_TIME_LOADING
 import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_A
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_A_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_A_TWO
 import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_B
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_B_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_B_TWO
 import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_C
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_C_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_C_TWO
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_D_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_D_TWO
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_E_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_E_TWO
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_F_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_F_TWO
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_G_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_H_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_I_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_J_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_K_FOUR
+import com.i_africa.shiftcalenderobajana.utils.Constant.PLANT_SHIFT_L_FOUR
 import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_A
 import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_B
 import com.i_africa.shiftcalenderobajana.utils.Constant.SECURITY_SHIFT_C
@@ -62,15 +80,15 @@ class SelectShiftAllFragment : BaseFragment(), SelectShiftAllViewMvc.Listener {
     }
 
     override fun twoDaysShift() {
-        TODO("Not yet implemented")
+        selectShiftAllViewMvc.enableTwoDaysChipGroup()
     }
 
     override fun threeDaysShift() {
-        TODO("Not yet implemented")
+        selectShiftAllViewMvc.enableThreeDaysChipGroup()
     }
 
     override fun fourDaysShift() {
-        TODO("Not yet implemented")
+        selectShiftAllViewMvc.enableFourDaysChipGroup()
     }
 
     override fun clickPlantA() {
@@ -128,75 +146,111 @@ class SelectShiftAllFragment : BaseFragment(), SelectShiftAllViewMvc.Listener {
     }
 
     override fun clickPlantATwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_A_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantBTwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_B_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantCTwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_C_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantDTwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_D_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantETwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_E_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantFTwo() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_F_TWO)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantAFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_A_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantBFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_B_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantCFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_C_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantDFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_D_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantEFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_E_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantFFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_F_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantGFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_G_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantHFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_H_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantIFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_I_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantJFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_J_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantKFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_K_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     override fun clickPlantLFour() {
-        TODO("Not yet implemented")
+        mySharedPreferences.storeBooleanValue(FIRST_TIME_LOADING, false)
+        mySharedPreferences.storeStringValue(SHIFT_PREFERENCE_KEY, PLANT_SHIFT_L_FOUR)
+        screensNavigator.navigateToShift()
     }
 
     private fun getNotification() {

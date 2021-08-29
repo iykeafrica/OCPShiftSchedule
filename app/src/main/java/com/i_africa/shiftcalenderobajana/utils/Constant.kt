@@ -33,27 +33,27 @@ object Constant {
 
 
     //Two Days shift
-    const val PLANT_SHIFT_A_TWO = "PLANT SHIFT A"
-    const val PLANT_SHIFT_B_TWO = "PLANT SHIFT B"
-    const val PLANT_SHIFT_C_TWO = "PLANT SHIFT C"
-    const val PLANT_SHIFT_D_TWO = "PLANT SHIFT D"
-    const val PLANT_SHIFT_E_TWO = "PLANT SHIFT E"
-    const val PLANT_SHIFT_F_TWO = "PLANT SHIFT F"
+    const val PLANT_SHIFT_A_TWO = "PLANT SHIFT A(2)"
+    const val PLANT_SHIFT_B_TWO = "PLANT SHIFT B(2)"
+    const val PLANT_SHIFT_C_TWO = "PLANT SHIFT C(2)"
+    const val PLANT_SHIFT_D_TWO = "PLANT SHIFT D(2)"
+    const val PLANT_SHIFT_E_TWO = "PLANT SHIFT E(2)"
+    const val PLANT_SHIFT_F_TWO = "PLANT SHIFT F(2)"
 
 
     //Four Days shift
-    const val PLANT_SHIFT_A_FOUR = "PLANT SHIFT A"
-    const val PLANT_SHIFT_B_FOUR = "PLANT SHIFT B"
-    const val PLANT_SHIFT_C_FOUR = "PLANT SHIFT C"
-    const val PLANT_SHIFT_D_FOUR = "PLANT SHIFT D"
-    const val PLANT_SHIFT_E_FOUR = "PLANT SHIFT E"
-    const val PLANT_SHIFT_F_FOUR = "PLANT SHIFT F"
-    const val PLANT_SHIFT_G_FOUR = "PLANT SHIFT G"
-    const val PLANT_SHIFT_H_FOUR = "PLANT SHIFT H"
-    const val PLANT_SHIFT_I_FOUR = "PLANT SHIFT I"
-    const val PLANT_SHIFT_J_FOUR = "PLANT SHIFT J"
-    const val PLANT_SHIFT_K_FOUR = "PLANT SHIFT K"
-    const val PLANT_SHIFT_L_FOUR = "PLANT SHIFT L"
+    const val PLANT_SHIFT_A_FOUR = "PLANT SHIFT A(4)"
+    const val PLANT_SHIFT_B_FOUR = "PLANT SHIFT B(4)"
+    const val PLANT_SHIFT_C_FOUR = "PLANT SHIFT C(4)"
+    const val PLANT_SHIFT_D_FOUR = "PLANT SHIFT D(4)"
+    const val PLANT_SHIFT_E_FOUR = "PLANT SHIFT E(4)"
+    const val PLANT_SHIFT_F_FOUR = "PLANT SHIFT F(4)"
+    const val PLANT_SHIFT_G_FOUR = "PLANT SHIFT G(4)"
+    const val PLANT_SHIFT_H_FOUR = "PLANT SHIFT H(4)"
+    const val PLANT_SHIFT_I_FOUR = "PLANT SHIFT I(4)"
+    const val PLANT_SHIFT_J_FOUR = "PLANT SHIFT J(4)"
+    const val PLANT_SHIFT_K_FOUR = "PLANT SHIFT K(4)"
+    const val PLANT_SHIFT_L_FOUR = "PLANT SHIFT L(4)"
 
 
 

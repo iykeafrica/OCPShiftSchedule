@@ -56,27 +56,18 @@ class SelectShiftAllViewMvc(
 
     init {
         binding.twoDaysShift.setOnClickListener {
-            binding.threeDaysChipGroup.visibility = View.GONE
-            binding.fourDaysChipGroup.visibility = View.GONE
-            binding.twoDaysChipGroup.visibility = View.VISIBLE
             for(listener in listeners) {
                 listener.twoDaysShift()
             }
         }
 
         binding.threeDaysShift.setOnClickListener {
-            binding.fourDaysChipGroup.visibility = View.GONE
-            binding.twoDaysChipGroup.visibility = View.GONE
-            binding.threeDaysChipGroup.visibility = View.VISIBLE
             for(listener in listeners) {
                 listener.threeDaysShift()
             }
         }
 
         binding.fourDaysShift.setOnClickListener {
-            binding.twoDaysChipGroup.visibility = View.GONE
-            binding.threeDaysChipGroup.visibility = View.GONE
-            binding.fourDaysChipGroup.visibility = View.VISIBLE
             for(listener in listeners) {
                 listener.fourDaysShift()
             }
@@ -85,8 +76,24 @@ class SelectShiftAllViewMvc(
         twoDaysChips()
         threeDaysChips()
         fourDaysChips()
+    }
 
+    fun enableTwoDaysChipGroup(){
+        binding.threeDaysChipGroup.visibility = View.GONE
+        binding.fourDaysChipGroup.visibility = View.GONE
+        binding.twoDaysChipGroup.visibility = View.VISIBLE
+    }
 
+    fun enableThreeDaysChipGroup(){
+        binding.fourDaysChipGroup.visibility = View.GONE
+        binding.twoDaysChipGroup.visibility = View.GONE
+        binding.threeDaysChipGroup.visibility = View.VISIBLE
+    }
+
+    fun enableFourDaysChipGroup(){
+        binding.twoDaysChipGroup.visibility = View.GONE
+        binding.threeDaysChipGroup.visibility = View.GONE
+        binding.fourDaysChipGroup.visibility = View.VISIBLE
     }
 
     private fun twoDaysChips() {
