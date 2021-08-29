@@ -14,8 +14,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".screens.selectshiftall.SelectShiftAllActivity">
+        <activity
+            android:name=".screens.SecondActivity"
+            android:exported="true" />
+        <activity
+            android:name=".screens.SplashScreenActivity"
+            android:noHistory="true"
+            android:exported="true"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,14 +30,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".screens.customshift.CustomShiftActivity"></activity>
-        <activity android:name=".screens.calculate_ot.CalculateOvertimeActivity" />
-        <activity android:name=".screens.about.AboutActivity" />
-
-        <activity android:name=".screens.selectshift.SelectShiftActivity">
+        <activity android:name=".screens.selectshiftall.SelectShiftAllActivity">
 
         </activity>
-
+        <activity android:name=".screens.customshift.CustomShiftActivity" />
+        <activity android:name=".screens.calculate_ot.CalculateOvertimeActivity" />
+        <activity android:name=".screens.about.AboutActivity" />
+        <activity android:name=".screens.selectshift.SelectShiftActivity" />
         <activity android:name=".screens.shift.ShiftActivity" />
 
         <service
