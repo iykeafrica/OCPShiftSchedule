@@ -9,7 +9,7 @@
         <item name="colorAccent">@color/colorBlue</item>
 
         //added for splash screen
-        <item name="android:windowFullscreen">true</item>
+<!--        <item name="android:windowFullscreen">true</item>-->
 <!--        <item name="android:background">@color/colorPrimary</item>-->
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>
