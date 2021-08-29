@@ -55,9 +55,9 @@ class CalculateOvertimeViewMvc(
                     listener.basicZero("Enter a basic salary between 27,000 and 1,000,000.")
                     binding.overtime.text = ""
                 }
-            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 18..22) {
+            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 1..31) {
                 for (listener in listeners) {
-                    listener.workedDaysZero("Enter worked days between 18 and 22.")
+                    listener.workedDaysZero("Enter worked days between 1 and 31.")
                     binding.overtime.text = ""
                 }
             } else
