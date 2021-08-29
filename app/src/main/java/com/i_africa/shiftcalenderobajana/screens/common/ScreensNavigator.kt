@@ -9,6 +9,7 @@ import com.i_africa.shiftcalenderobajana.screens.about.AboutActivity
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.customshift.CustomShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
 import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
 
 private const val TAG = "ScreensNavigator"
@@ -39,7 +40,8 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
     }
 
     fun changeShift() {
-        activity.startActivity(Intent(activity, SelectShiftActivity::class.java))
+//        activity.startActivity(Intent(activity, SelectShiftActivity::class.java))
+        activity.startActivity(Intent(activity, SelectShiftAllActivity::class.java))
         activity.finish()
     }
 

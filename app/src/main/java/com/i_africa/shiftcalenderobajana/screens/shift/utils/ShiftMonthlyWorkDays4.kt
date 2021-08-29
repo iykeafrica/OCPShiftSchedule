@@ -17,7 +17,7 @@ object ShiftMonthlyWorkDays4 {
     ): Int {
         count = 0
         for (i in 1..daysInMonth) {
-            val dateDifference = ShiftUtil.setFormula(i.toString(), month, year)
+            val dateDifference = ShiftUtil.setFormula4(i.toString(), month, year)
 
             for (j in 0..11) {
                 if (dateDifference == j && collection[j] != Constant.FIRST_OFF && collection[j] != Constant.SECOND_OFF

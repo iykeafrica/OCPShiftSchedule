@@ -16,7 +16,11 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".screens.selectshiftall.SelectShiftAllActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".screens.customshift.CustomShiftActivity"></activity>
@@ -24,13 +28,9 @@
         <activity android:name=".screens.about.AboutActivity" />
 
         <activity android:name=".screens.selectshift.SelectShiftActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        
+
         <activity android:name=".screens.shift.ShiftActivity" />
 
         <service
