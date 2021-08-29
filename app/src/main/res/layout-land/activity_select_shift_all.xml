@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundOne"
+    tools:context=".screens.selectshiftall.SelectShiftAllActivity">
+
+    <LinearLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/app_bar_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/app_bar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="@id/app_bar_container"
+                app:layout_constraintStart_toStartOf="@id/app_bar_container"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/martel"
+        android:text="@string/select_your_shift"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar" />
+
+    <Button
+        android:id="@+id/twoDaysShift"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_two_days_button"
+        android:fontFamily="@font/roboto_black"
+        android:padding="5dp"
+        android:text="2-2-2 Days Shift"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/threeDaysShift"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/custom_three_days_button"
+        android:fontFamily="@font/roboto_black"
+        android:padding="5dp"
+        android:text="3-3-3 Days Shift"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twoDaysShift"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/fourDaysShift"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/custom_four_days_button"
+        android:fontFamily="@font/roboto_black"
+        android:padding="5dp"
+        android:text="4-4-4 Days Shift"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/threeDaysShift"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <LinearLayout
+        android:id="@+id/twoDaysChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/twoDaysShift"
+        app:layout_constraintTop_toTopOf="@id/twoDaysShift">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:chipSpacing="5dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantATwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_a" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantBTwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_b" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantCTwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_c" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantDTwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_d" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantETwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_e" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantFTwo"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_f" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/threeDaysChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/threeDaysShift"
+        app:layout_constraintTop_toTopOf="@id/threeDaysShift">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:chipSpacing="5dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_a" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button2"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_b" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button3"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_c" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button4"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/c_mtce_shift_a" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button5"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/c_mtce_shift_b" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button6"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/c_mtce_shift_c" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button7"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_shift_a" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button8"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_shift_b" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/button9"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/security_shift_c" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fourDaysChipGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fourDaysShift"
+        app:layout_constraintTop_toTopOf="@id/fourDaysShift">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:chipSpacing="5dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantAFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_a" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantBFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_b" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantCFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_c" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantDFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_d" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantEFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_e" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantFFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_f" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantGFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_g" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantHFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_h" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantIFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_i" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantJFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_j" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantKFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_k" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/plantLFour"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/plant_shift_l" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

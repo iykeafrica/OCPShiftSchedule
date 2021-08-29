@@ -34,6 +34,15 @@
     <color name="off_duty_color2">#F4EFDE</color>
 
 
+    // Custom Chip Style
+    <color name="lightGray">#F9F9F9</color>
+    <color name="mediumGray">#D1D1D1</color>
+    <color name="lightMediumGray">#80D1D1D1</color>
+    <color name="darkGray">#4B4B4B</color>
 
+    <color name="checkedChipBackgroundColor">#FFCCCCCC</color>
+    <color name="chipBackgroundColor">@color/lightGray</color>
+    <color name="checkedChipTextColor">@color/colorPrimary</color>
+    <color name="chipTextColor">@color/darkGray</color>
 
 </resources>

@@ -37,4 +37,24 @@
     <string name="handle_notification_now">We are going to do something with our notification right now!</string>
     <string name="retrieve_token">Retrieve Token</string>
     <string name="sample_day">1</string>
+
+
+    <string name="plant_shift_a">Plant Shift A</string>
+    <string name="plant_shift_b">Plant Shift B</string>
+    <string name="plant_shift_c">Plant Shift C</string>
+    <string name="plant_shift_d">Plant Shift D</string>
+    <string name="plant_shift_e">Plant Shift E</string>
+    <string name="plant_shift_f">Plant Shift F</string>
+    <string name="plant_shift_g">Plant Shift G</string>
+    <string name="plant_shift_h">Plant Shift H</string>
+    <string name="plant_shift_i">Plant Shift I</string>
+    <string name="plant_shift_j">Plant Shift J</string>
+    <string name="plant_shift_k">Plant Shift K</string>
+    <string name="plant_shift_l">Plant Shift L</string>
+    <string name="c_mtce_shift_a">C.Mtce Shift A</string>
+    <string name="c_mtce_shift_b">C.Mtce Shift B</string>
+    <string name="c_mtce_shift_c">C.Mtce Shift C</string>
+    <string name="security_shift_a">Security Shift A</string>
+    <string name="security_shift_b">Security Shift B</string>
+    <string name="security_shift_c">Security Shift C</string>
 </resources>
