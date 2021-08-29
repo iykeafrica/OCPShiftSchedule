@@ -30,7 +30,6 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     @Inject lateinit var myPopUpMenu: MyPopUpMenu
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
     @Inject lateinit var submitFormUseCase: SubmitFormUseCase
-//    @Inject lateinit var onSwipeTouchListener: com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)

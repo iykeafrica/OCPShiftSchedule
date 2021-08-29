@@ -12,4 +12,24 @@ object ShiftDuty {
         return shiftDuty
     }
 
+    fun computeShiftDuty2(dateDifference: Int, collection: List<String>) : String {
+        var shiftDuty = ""
+
+        for (i in 0..5) {
+            if (dateDifference == i)
+                shiftDuty = collection[i]
+        }
+        return shiftDuty
+    }
+
+    fun computeShiftDuty4(dateDifference: Int, collection: List<String>) : String {
+        var shiftDuty = ""
+
+        for (i in 0..11) {
+            if (dateDifference == i)
+                shiftDuty = collection[i]
+        }
+        return shiftDuty
+    }
+
 }

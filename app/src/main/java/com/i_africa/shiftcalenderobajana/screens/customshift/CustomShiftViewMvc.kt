@@ -10,11 +10,21 @@ import com.i_africa.shiftcalenderobajana.databinding.ActivityCustomShiftBinding
 import com.i_africa.shiftcalenderobajana.screens.customshift.utils.CalendarCollection.setCalendarStartOfCollection
 import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
 import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor.updateCellBackground
+import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor2.updateCellBackground2
+import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor4.updateCellBackground4
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.DateFormatter
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection.setCollection
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection2.setCollection2
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection4.setCollection4
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty2
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty4
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays.computeWorkingDays
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays2.computeWorkingDays2
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays4.computeWorkingDays4
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula2
+import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula4
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY_TEXT_COLOR
 import com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
@@ -116,17 +126,39 @@ class CustomShiftViewMvc(
         setCalendar(calendar)
         Log.d(TAG, "getShiftDuty: $day/$month/$year")
 
-        val shiftDuty = computeShiftDuty(setFormula(day, month, year), setCollection(shift))
-        binding.shiftView.text = shiftDuty
+        val lastThreeCharacterInString = shift.substring(shift.length - 3)
 
-        updateCellBackground(binding, month, year, setCollection(shift))
+        var shiftDuty = ""
+
+        if (lastThreeCharacterInString == "(4)"){
+            shiftDuty = computeShiftDuty4(setFormula4(day, month, year), setCollection4(shift))
+            updateCellBackground4(binding, month, year, setCollection4(shift))
+        } else if (lastThreeCharacterInString == "(2)"){
+            shiftDuty = computeShiftDuty2(setFormula2(day, month, year), setCollection2(shift))
+            updateCellBackground2(binding, month, year, setCollection2(shift))
+        } else {
+            shiftDuty = computeShiftDuty(setFormula(day, month, year), setCollection(shift))
+            updateCellBackground(binding, month, year, setCollection(shift))
+        }
+
+        binding.shiftView.text = shiftDuty
     }
 
     fun showShiftMonthlyWorkingDays(shift: String) {
         setCalendar(calendar)
         Log.d(TAG, "getShiftMonthlyWorkingDays: $day/$month/$year")
 
-        count = computeWorkingDays(daysInMonth, month, year, setCollection(shift))
+        val lastThreeCharacterInString = shift.substring(shift.length - 3)
+
+        val count: Int
+
+        if (lastThreeCharacterInString == "(4)"){
+            count = computeWorkingDays4(daysInMonth, month, year, setCollection4(shift))
+        }  else if (lastThreeCharacterInString == "(2)"){
+            count = computeWorkingDays2(daysInMonth, month, year, setCollection2(shift))
+        } else {
+            count = computeWorkingDays(daysInMonth, month, year, setCollection(shift))
+        }
         binding.workingDaysView.text = "${DateFormatter.month(date)} has $count working days."
     }
 

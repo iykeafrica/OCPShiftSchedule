@@ -7,6 +7,8 @@ object ShiftUtil {
 
     private const val REFERENCE_DATE: String = "02/01/1970"
     private const val SHIFT_CYCLE_DAYS: Int = 9
+    private const val SHIFT_CYCLE_TWO_DAYS: Int = 6
+    private const val SHIFT_CYCLE_FOUR_DAYS: Int = 12
     private val FORMAT: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
 
@@ -18,6 +20,26 @@ object ShiftUtil {
 
         val differenceDate = referenceDate.time - currentDate.time
         return (kotlin.math.abs((differenceDate / (24 * 60 * 60 * 1000)) % SHIFT_CYCLE_DAYS).toInt())
+    }
+
+    fun setFormula2(day: String, month: String, year: String): Int {
+        val clickedDate = "$day/$month/$year"
+
+        val referenceDate: Date = FORMAT.parse(REFERENCE_DATE)!!
+        val currentDate: Date = FORMAT.parse(clickedDate)!!
+
+        val differenceDate = referenceDate.time - currentDate.time
+        return (kotlin.math.abs((differenceDate / (24 * 60 * 60 * 1000)) % SHIFT_CYCLE_TWO_DAYS).toInt())
+    }
+
+    fun setFormula4(day: String, month: String, year: String): Int {
+        val clickedDate = "$day/$month/$year"
+
+        val referenceDate: Date = FORMAT.parse(REFERENCE_DATE)!!
+        val currentDate: Date = FORMAT.parse(clickedDate)!!
+
+        val differenceDate = referenceDate.time - currentDate.time
+        return (kotlin.math.abs((differenceDate / (24 * 60 * 60 * 1000)) % SHIFT_CYCLE_FOUR_DAYS).toInt())
     }
 
 
