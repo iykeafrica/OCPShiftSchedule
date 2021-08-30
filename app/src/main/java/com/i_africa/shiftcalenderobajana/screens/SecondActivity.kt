@@ -18,7 +18,7 @@ class SecondActivity : AppCompatActivity() {
         Handler().postDelayed(Runnable {
             startActivity(Intent(this@SecondActivity, SelectShiftAllActivity::class.java))
             finish()
-        }, 1200)
+        }, 300)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

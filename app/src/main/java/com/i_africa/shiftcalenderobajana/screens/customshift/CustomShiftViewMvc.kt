@@ -3,31 +3,27 @@ package com.i_africa.shiftcalenderobajana.screens.customshift
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityCustomShiftBinding
-import com.i_africa.shiftcalenderobajana.screens.customshift.utils.CalendarCollection.setCalendarStartOfCollection
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.CalendarCollection.setCalendarStartOfCollection
 import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
-import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor.updateCellBackground
-import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor2.updateCellBackground2
-import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ShiftMonthlyWorkDaysWithCellColor4.updateCellBackground4
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.DateFormatter
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection.setCollection
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection2.setCollection2
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftCollection4.setCollection4
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty2
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftDuty.computeShiftDuty4
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays.computeWorkingDays
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays2.computeWorkingDays2
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftMonthlyWorkDays4.computeWorkingDays4
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula2
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.ShiftUtil.setFormula4
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCollection.setCollection
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftDuty.computeShiftDuty
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftMonthlyWorkDays.computeWorkingDays
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalculator.setFormula
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 import com.i_africa.shiftcalenderobajana.utils.Constant.DAY_TEXT_COLOR
-import com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
+import com.i_africa.shiftcalenderobajana.utils.Constant.FOUR_DAYS_LOOP
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_4_4_4_DAYS
+import com.i_africa.shiftcalenderobajana.utils.Constant.LAST_THREE_SUBSTRING_2_DAYS
+import com.i_africa.shiftcalenderobajana.utils.Constant.LAST_THREE_SUBSTRING_4_DAYS
+import com.i_africa.shiftcalenderobajana.utils.Constant.THREE_DAYS_LOOP
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_3_3_3_DAYS
+import com.i_africa.shiftcalenderobajana.utils.Constant.TWO_DAYS_LOOP
+import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_2_2_2_DAYS
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalendarCellColor.updateShiftCalendarCellColor
 import java.util.*
 
 
@@ -49,11 +45,9 @@ class CustomShiftViewMvc(
     private var startFirstDay: Int = 0
     private var daysInMonth: Int = 0
     private var currentDay: Int = 1
-    private var count = 0
     private var isCurrentDate = true
 
     init {
-//        Log.d(TAG, "SharedPref: $mySharedPreferences")
         hideFourthAndFifthRow()
         calendar.time = date
         currentDay = calendar.get(Calendar.DAY_OF_MONTH)
@@ -71,27 +65,6 @@ class CustomShiftViewMvc(
                 listener.previousMonthClick()
             }
         }
-
-        binding.calendarCard.setOnTouchListener(object : OnSwipeTouchListener(layoutInflater.context) {
-
-            override fun onSwipeRight() {
-                hideFourthAndFifthRow()
-                for (listener in listeners) {
-                    listener.nextMonthClick()
-                }
-            }
-
-            override fun onSwipeLeft() {
-                hideFourthAndFifthRow()
-                for (listener in listeners) {
-                    listener.previousMonthClick()
-                }
-            }
-
-            override fun onTouch(v: View, event: MotionEvent): Boolean {
-                return gestureDetector.onTouchEvent(event)
-            }
-        })
 
         cellClick()
 
@@ -127,18 +100,27 @@ class CustomShiftViewMvc(
         Log.d(TAG, "getShiftDuty: $day/$month/$year")
 
         val lastThreeCharacterInString = shift.substring(shift.length - 3)
-
         var shiftDuty = ""
 
-        if (lastThreeCharacterInString == "(4)"){
-            shiftDuty = computeShiftDuty4(setFormula4(day, month, year), setCollection4(shift))
-            updateCellBackground4(binding, month, year, setCollection4(shift))
-        } else if (lastThreeCharacterInString == "(2)"){
-            shiftDuty = computeShiftDuty2(setFormula2(day, month, year), setCollection2(shift))
-            updateCellBackground2(binding, month, year, setCollection2(shift))
-        } else {
-            shiftDuty = computeShiftDuty(setFormula(day, month, year), setCollection(shift))
-            updateCellBackground(binding, month, year, setCollection(shift))
+        when(lastThreeCharacterInString){
+            LAST_THREE_SUBSTRING_4_DAYS -> {
+                val dateDifference = setFormula(day, month, year, SHIFT_4_4_4_DAYS)
+                val collection = setCollection(shift, FOUR_DAYS_LOOP)
+                shiftDuty = computeShiftDuty(dateDifference, collection, FOUR_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_4_4_4_DAYS, FOUR_DAYS_LOOP)
+            }
+            LAST_THREE_SUBSTRING_2_DAYS -> {
+                val dateDifference = setFormula(day, month, year, SHIFT_2_2_2_DAYS)
+                val collection = setCollection(shift, TWO_DAYS_LOOP)
+                shiftDuty = computeShiftDuty(dateDifference, collection, TWO_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_2_2_2_DAYS, TWO_DAYS_LOOP)
+            }
+            else -> { //3 days
+                val dateDifference = setFormula(day, month, year, SHIFT_3_3_3_DAYS)
+                val collection = setCollection(shift, THREE_DAYS_LOOP)
+                shiftDuty = computeShiftDuty(dateDifference, collection, THREE_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_3_3_3_DAYS, THREE_DAYS_LOOP)
+            }
         }
 
         binding.shiftView.text = shiftDuty
@@ -148,17 +130,21 @@ class CustomShiftViewMvc(
         setCalendar(calendar)
         Log.d(TAG, "getShiftMonthlyWorkingDays: $day/$month/$year")
 
-        val lastThreeCharacterInString = shift.substring(shift.length - 3)
-
-        val count: Int
-
-        if (lastThreeCharacterInString == "(4)"){
-            count = computeWorkingDays4(daysInMonth, month, year, setCollection4(shift))
-        }  else if (lastThreeCharacterInString == "(2)"){
-            count = computeWorkingDays2(daysInMonth, month, year, setCollection2(shift))
-        } else {
-            count = computeWorkingDays(daysInMonth, month, year, setCollection(shift))
+        val count: Int = when(shift.substring(shift.length - 3)){
+            LAST_THREE_SUBSTRING_4_DAYS -> {
+                val collection = setCollection(shift, FOUR_DAYS_LOOP)
+                computeWorkingDays(daysInMonth, month, year, collection, SHIFT_4_4_4_DAYS, FOUR_DAYS_LOOP)
+            }
+            LAST_THREE_SUBSTRING_2_DAYS -> {
+                val collection = setCollection(shift, TWO_DAYS_LOOP)
+                computeWorkingDays(daysInMonth, month, year, collection, SHIFT_2_2_2_DAYS, TWO_DAYS_LOOP)
+            }
+            else -> { //3 days
+                val collection = setCollection(shift, THREE_DAYS_LOOP)
+                computeWorkingDays(daysInMonth, month, year, collection, SHIFT_3_3_3_DAYS, THREE_DAYS_LOOP)
+            }
         }
+
         binding.workingDaysView.text = "${DateFormatter.month(date)} has $count working days."
     }
 
@@ -743,267 +729,252 @@ class CustomShiftViewMvc(
 
     fun set1() {
         if (binding.one.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.one.text.toString()))
             currentDay = Integer.parseInt(binding.one.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.one.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set2() {
         if (binding.two.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.two.text.toString()))
             currentDay = Integer.parseInt(binding.two.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.two.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set3() {
         if (binding.three.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.three.text.toString()))
             currentDay = Integer.parseInt(binding.three.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.three.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set4() {
         if (binding.four.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.four.text.toString()))
             currentDay = Integer.parseInt(binding.four.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.four.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set5() {
         if (binding.five.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.five.text.toString()))
             currentDay = Integer.parseInt(binding.five.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.five.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set6() {
         if (binding.six.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.six.text.toString()))
             currentDay = Integer.parseInt(binding.six.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.six.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set7() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.seven.text.toString()))
         currentDay = Integer.parseInt(binding.seven.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.seven.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set8() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eight.text.toString()))
         currentDay = Integer.parseInt(binding.eight.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.eight.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set9() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.nine.text.toString()))
         currentDay = Integer.parseInt(binding.nine.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.nine.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set10() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.ten.text.toString()))
         currentDay = Integer.parseInt(binding.ten.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.ten.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set11() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eleven.text.toString()))
         currentDay = Integer.parseInt(binding.eleven.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.eleven.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set12() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twelve.text.toString()))
         currentDay = Integer.parseInt(binding.twelve.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twelve.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set13() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirteen.text.toString()))
         currentDay = Integer.parseInt(binding.thirteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.thirteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set14() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.fourteen.text.toString()))
         currentDay = Integer.parseInt(binding.fourteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.fourteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set15() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.fifteen.text.toString()))
         currentDay = Integer.parseInt(binding.fifteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.fifteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set16() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.sixteen.text.toString()))
         currentDay = Integer.parseInt(binding.sixteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.sixteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set17() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.seventeen.text.toString()))
         currentDay = Integer.parseInt(binding.seventeen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.seventeen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set18() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.eighteen.text.toString()))
         currentDay = Integer.parseInt(binding.eighteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.eighteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set19() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.nineteen.text.toString()))
         currentDay = Integer.parseInt(binding.nineteen.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.nineteen.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set20() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twenty.text.toString()))
         currentDay = Integer.parseInt(binding.twenty.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twenty.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set21() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyone.text.toString()))
         currentDay = Integer.parseInt(binding.twentyone.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentyone.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set22() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentytwo.text.toString()))
         currentDay = Integer.parseInt(binding.twentytwo.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentytwo.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set23() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentythree.text.toString()))
         currentDay = Integer.parseInt(binding.twentythree.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentythree.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set24() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyfour.text.toString()))
         currentDay = Integer.parseInt(binding.twentyfour.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentyfour.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set25() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyfive.text.toString()))
         currentDay = Integer.parseInt(binding.twentyfive.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentyfive.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set26() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentysix.text.toString()))
         currentDay = Integer.parseInt(binding.twentysix.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentysix.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set27() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyseven.text.toString()))
         currentDay = Integer.parseInt(binding.twentyseven.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentyseven.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set28() {
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.twentyeight.text.toString()))
         currentDay = Integer.parseInt(binding.twentyeight.text.toString())
+        calendar.set(Calendar.DAY_OF_MONTH, currentDay)
         binding.twentyeight.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
     }
 
     fun set29() {
         if (binding.twentynine.text.toString().trim().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.twentynine.text.toString())
-            )
             currentDay = Integer.parseInt(binding.twentynine.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.twentynine.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set30() {
         if (binding.thirty.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirty.text.toString()))
             currentDay = Integer.parseInt(binding.thirty.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirty.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set31() {
         if (binding.thirtyone.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtyone.text.toString()))
             currentDay = Integer.parseInt(binding.thirtyone.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtyone.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set32() {
         if (binding.thirtytwo.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtytwo.text.toString()))
             currentDay = Integer.parseInt(binding.thirtytwo.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtytwo.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set33() {
         if (binding.thirtythree.text.toString().trim().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.thirtythree.text.toString())
-            )
             currentDay = Integer.parseInt(binding.thirtythree.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtythree.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set34() {
         if (binding.thirtyfour.text.toString().trim().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.thirtyfour.text.toString())
-            )
             currentDay = Integer.parseInt(binding.thirtyfour.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtyfour.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set35() {
         if (binding.thirtyfive.text.toString().trim().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.thirtyfive.text.toString())
-            )
             currentDay = Integer.parseInt(binding.thirtyfive.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtyfive.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set36() {
         if (binding.thirtysix.text.toString().trim().isNotEmpty()) {
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(binding.thirtysix.text.toString()))
             currentDay = Integer.parseInt(binding.thirtysix.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtysix.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }
 
     fun set37() {
         if (binding.thirtyseven.text.toString().trim().isNotEmpty()) {
-            calendar.set(
-                Calendar.DAY_OF_MONTH,
-                Integer.parseInt(binding.thirtyseven.text.toString())
-            )
             currentDay = Integer.parseInt(binding.thirtyseven.text.toString())
+            calendar.set(Calendar.DAY_OF_MONTH, currentDay)
             binding.thirtyseven.setTextColor(Color.parseColor(DAY_TEXT_COLOR))
         }
     }

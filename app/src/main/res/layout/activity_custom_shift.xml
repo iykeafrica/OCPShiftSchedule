@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="195dp"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:gravity="center_horizontal"
@@ -825,7 +825,7 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp"
                         android:textStyle="normal"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />

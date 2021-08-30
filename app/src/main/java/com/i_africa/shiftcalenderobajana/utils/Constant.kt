@@ -55,8 +55,19 @@ object Constant {
     const val PLANT_SHIFT_K_FOUR = "PLANT SHIFT K(4)"
     const val PLANT_SHIFT_L_FOUR = "PLANT SHIFT L(4)"
 
+    //loop days
+    const val TWO_DAYS_LOOP = 5
+    const val THREE_DAYS_LOOP = 8
+    const val FOUR_DAYS_LOOP = 11
 
+    //shift days
+    const val SHIFT_2_2_2_DAYS = 2
+    const val SHIFT_3_3_3_DAYS = 3
+    const val SHIFT_4_4_4_DAYS = 4
 
+    //
+    const val LAST_THREE_SUBSTRING_4_DAYS = "(4)"
+    const val LAST_THREE_SUBSTRING_2_DAYS = "(2)"
 
 
 

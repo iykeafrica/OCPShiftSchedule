@@ -9,11 +9,9 @@ import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.shift.ShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.shift.utils.CheckNetworkAvailability
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant
-import com.i_africa.shiftcalenderobajana.utils.OnSwipeTouchListener
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -52,6 +50,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
 
         postUserFCM(token, newToken)
         getNotification()
+
     }
 
     private fun loadShiftSchedule() {

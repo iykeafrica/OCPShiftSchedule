@@ -1,4 +1,4 @@
-package com.i_africa.shiftcalenderobajana.screens.customshift.utils
+package com.i_africa.shiftcalenderobajana.utils.shift_calendar
 
 import java.util.*
 import kotlin.collections.ArrayList
