@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityCustomShiftBinding
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.CalendarCollection.setCalendarStartOfCollection
-import com.i_africa.shiftcalenderobajana.screens.customshift.utils.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
-import com.i_africa.shiftcalenderobajana.screens.shift.utils.DateFormatter
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.DateFormatter
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCollection.setCollection
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftDuty.computeShiftDuty
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftMonthlyWorkDays.computeWorkingDays
@@ -23,6 +22,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.THREE_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_3_3_3_DAYS
 import com.i_africa.shiftcalenderobajana.utils.Constant.TWO_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_2_2_2_DAYS
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalendarCellColor.updateShiftCalendarCellColor
 import java.util.*
 

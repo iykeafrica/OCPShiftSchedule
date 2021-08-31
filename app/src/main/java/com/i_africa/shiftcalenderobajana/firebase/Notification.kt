@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.i_africa.shiftcalenderobajana.R
-import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
+import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class Notification @Inject constructor(@ApplicationContext val context: Context) {
     fun setNotification(title: String, body: String, link: String) {
 
-        val notificationIntent = Intent(context, SelectShiftActivity::class.java)
+        val notificationIntent = Intent(context, SelectShiftAllActivity::class.java)
         notificationIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         notificationIntent.putExtra(FCM_TITLE_KEY, title)
         notificationIntent.putExtra(FCM_BODY_KEY, body)

@@ -1,16 +1,12 @@
 package com.i_africa.shiftcalenderobajana.screens.selectshiftall
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.i_africa.shiftcalenderobajana.R
-import com.i_africa.shiftcalenderobajana.databinding.ActivitySelectShiftAllBinding
 import com.i_africa.shiftcalenderobajana.firebase.MyFirebaseMessaging
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftActivity
-import com.i_africa.shiftcalenderobajana.screens.selectshift.SelectShiftFragment
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
