@@ -2,7 +2,7 @@ package com.i_africa.shiftcalenderobajana.common.di.activity
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
-import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
+import com.i_africa.shiftcalenderobajana.screens.customshift.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import dagger.Module
 import dagger.Provides

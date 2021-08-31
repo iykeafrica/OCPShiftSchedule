@@ -5,7 +5,7 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.i_africa.shiftcalenderobajana.screens.about.AboutActivity
+import com.i_africa.shiftcalenderobajana.screens.AboutActivity
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.customshift.CustomShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity

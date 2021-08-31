@@ -6,7 +6,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
-import com.i_africa.shiftcalenderobajana.screens.common.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.CheckNetworkAvailability

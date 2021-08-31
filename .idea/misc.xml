@@ -3,18 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_button.xml" value="0.1" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_dialog.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_four_days_button.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_three_days_button.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_two_days_button.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/ic_cal.xml" value="0.21875" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/ic_cal_1.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/ic_menu.xml" value="0.14814814814814814" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/twitter_logo_white.xml" value="0.21875" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/font/cairo_extralight.xml" value="0.2328125" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_custom_shift.xml" value="0.2" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_select_shift.xml" value="0.3504504504504504" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_select_shift_all.xml" value="0.2" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_shift.xml" value="0.18" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout-land/activity_shift_material_calendar.xml" value="0.18854166666666666" />
-        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_about.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_about.xml" value="0.33" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_calculate_otactivity.xml" value="0.1875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_calculate_overtime.xml" value="0.1875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_custom_shift.xml" value="0.20260416666666667" />

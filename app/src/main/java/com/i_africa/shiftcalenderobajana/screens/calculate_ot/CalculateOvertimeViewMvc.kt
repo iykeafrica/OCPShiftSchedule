@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.i_africa.shiftcalenderobajana.databinding.ActivityCalculateOvertimeBinding
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
-import com.i_africa.shiftcalenderobajana.screens.calculate_ot.ConversionUtil.computeOTCalculation
+import com.i_africa.shiftcalenderobajana.utils.overtime.ConversionUtil.computeOTCalculation
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTHLY_HOURS
 import com.i_africa.shiftcalenderobajana.utils.Constant.OT_MULTIPLIER
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_WORK_HOURS
@@ -55,9 +55,9 @@ class CalculateOvertimeViewMvc(
                     listener.basicZero("Enter a basic salary between 27,000 and 1,000,000.")
                     binding.overtime.text = ""
                 }
-            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 1..31) {
+            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 17..31) {
                 for (listener in listeners) {
-                    listener.workedDaysZero("Enter worked days between 1 and 31.")
+                    listener.workedDaysZero("Enter worked days between 17 and 31.")
                     binding.overtime.text = ""
                 }
             } else

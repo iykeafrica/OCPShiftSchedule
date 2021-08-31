@@ -1,20 +1,16 @@
 <resources>
     <string name="app_name">Shift Schedule(OCP)</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="disclaimer"><u><b>Disclaimer</b></u> \nThis App is not connected to Dangote. \nIt\'s a personal project designed by IK.</string>
+    <string name="disclaimer">This is a personal project designed by Ikechi, licensed under the Apache License 2.0 <a href="http://www.apache.org/licenses/LICENSE-2.0.txt">License</a></string>
     <string name="refresh">Refresh</string>
     <string name="select_shift">Change Shift</string>
     <string name="calculate_ot">Calculate Overtime</string>
     <string name="about">About</string>
-    <string name="about_body">This is a shift schedule app modelled with the different shift patterns of workers in Dangote Obajana Cement Plant.
-        It was designed using the standard three (3) days working shift i.e FIRST MORNING DUTY, SECOND MORNING DUTY, THIRD MORNING DUTY,
-        FIRST NIGHT DUTY, SECOND NIGHT DUTY, THIRD NIGHT DUTY, FIRST OFF DUTY, SECOND OFF DUTY and THIRD OFF DUTY. This implies that for
-        every twenty four (24) hours one of the three (3) different shift groups will be on duty, assuming shifts A, B and C;
-        if A is on morning duty, then B will be on night duty and C on off duty.
-        This app also factored in these shift groups with their different patterns that overlaps each other namely:
-        \n1. Plant operations (ShiftA, ShiftB and ShiftC).
-        \n2. Central Maintenance (ShiftA, ShiftB and ShiftC) and \n3. Security (ShiftA, ShiftB and ShiftC)
-        \n\nAnother feature of this app that you may want to explore is the overtime calculator.</string>
+    <string name="about_body">This is a shift schedule app modelled with the different shift patterns of workers across Dangote Industry Limited.
+        The maiden version was designed using Obajana Cement Plant (standard three 3 days working shift).
+        This updated version has 2 days, 3 days and 4 days shift schedule of MORNING, NIGHT and OFF Duties.
+        This app factored in different types of the above mentioned shifts.
+        \nAnother feature of this app that you may want to explore is the overtime calculator.</string>
     <string name="about_app">About</string>
     <string name="select_your_shift">SELECT YOUR SHIFT</string>
     <string name="plant_nshift_a">Plant\nShift A</string>
@@ -30,14 +26,6 @@
     <string name="basic_salary">Basic Salary&#160;&#160;&#160;</string>
     <string name="worked_days">Worked Days&#160;&#160;</string>
     <string name="calculate_ot_button">Calculate OT</string>
-
-
-    <string name="token_prefix">Token: %s</string>
-    <string name="token_error">getInstanceId failed</string>
-    <string name="handle_notification_now">We are going to do something with our notification right now!</string>
-    <string name="retrieve_token">Retrieve Token</string>
-    <string name="sample_day">1</string>
-
 
     <string name="plant_shift_a">Plant Shift A</string>
     <string name="plant_shift_b">Plant Shift B</string>
@@ -57,13 +45,5 @@
     <string name="security_shift_a">Security Shift A</string>
     <string name="security_shift_b">Security Shift B</string>
     <string name="security_shift_c">Security Shift C</string>
-    <string name="title_activity_splash_screen">SplashScreenActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
