@@ -16,7 +16,7 @@ object ConversionUtil {
         overtimeHours: Int,
         maxOvertimeHours: Int,
         workDaysDuringLeave: Int,
-        daysOfLeave: Int
+        leaveState: Boolean
     ): String {
 
         val basicBD = BigDecimal.valueOf(basic.toDouble())
@@ -32,7 +32,7 @@ object ConversionUtil {
         val basicDivideByMonthlyHours =
             basicBD.divide(maxMonthlyHoursBD, SCALE, RoundingMode.CEILING)
 
-        ot = if (daysOfLeave == 0) {  //overtime = ((basic / MONTHLY_HOURS) * OT_MULTIPLIER) * overtimeHours
+        ot = if (!leaveState) {  //overtime = ((basic / MONTHLY_HOURS) * OT_MULTIPLIER) * overtimeHours
             val otMultiplierMultiplyByOvertimeHours = otMultiplierBD.multiply(overtimeHoursBD)
             val overtime = basicDivideByMonthlyHours.multiply(otMultiplierMultiplyByOvertimeHours)
 

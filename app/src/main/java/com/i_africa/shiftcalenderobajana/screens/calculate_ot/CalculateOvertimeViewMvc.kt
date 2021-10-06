@@ -3,6 +3,7 @@ package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 import android.app.Activity
 import android.content.Context
 import android.text.InputType
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -26,7 +27,6 @@ class CalculateOvertimeViewMvc(
 
     private var basic = ""
     private var workedDays = ""
-    private var leaveDays = ""
 
     interface Listener {
         fun calculateOTClick()
@@ -39,6 +39,8 @@ class CalculateOvertimeViewMvc(
     }
 
     init {
+        hideOpeningKeyBoard(binding.BasicInput)
+
         binding.submitButton.setOnClickListener {
             for (listener in listeners) {
                 listener.calculateOTClick()
@@ -50,7 +52,6 @@ class CalculateOvertimeViewMvc(
     fun calculateOT() {
         basic = binding.BasicInput.text.trim().toString()
         workedDays = binding.WorkDaysInput.text.trim().toString()
-        leaveDays = binding.LeaveDaysInput.text.trim().toString()
 
         if (basic.isNotEmpty() && workedDays.isNotEmpty()) {
 
@@ -64,27 +65,14 @@ class CalculateOvertimeViewMvc(
                     listener.basicZero("Enter a basic salary between 27,000 and 1,000,000.")
                     binding.overtime.text = ""
                 }
-            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 17..31) {
+            } else if (workedDays.startsWith('0') || workedDays.toInt() !in 1..31) {
                 for (listener in listeners) {
-                    listener.workedDaysZero("Enter worked days between 17 and 31.")
+                    listener.workedDaysZero("Enter worked days between 1 and 31.")
                     binding.overtime.text = ""
                 }
             } else {
-                val daysOfLeave: String = if (leaveDays.isEmpty() || leaveDays.startsWith('0')){
-                    "0"
-                } else {
-                    leaveDays
-                }
-
-                if (daysOfLeave.toInt() !in 0..31) {
-                    for (listener in listeners) {
-                        listener.workedDaysZero("AL/CL/SL Days must be between 0 and 28")
-                        binding.overtime.text = ""
-                    }
-                } else {
-                    binding.LeaveDaysInput.setText(daysOfLeave)
-                    computeCalculation(basic, workedDays, daysOfLeave)
-                }
+                val leaveState: Boolean = binding.switchState.isChecked
+                computeCalculation(basic, workedDays, leaveState)
             }
 
         }
@@ -109,16 +97,16 @@ class CalculateOvertimeViewMvc(
         }
     }
 
-    private fun computeCalculation(basic: String, workedDays: String, daysOfLeave: String) {
+    private fun computeCalculation(basic: String, workedDays: String, leaveState: Boolean) {
         this.basic = basic
         this.workedDays = workedDays
 
         val overtimeHours = (workedDays.toInt() * SHIFT_WORK_HOURS) - MONTHLY_HOURS
         val maxOvertimeHours = (MAX_SHIFT_WORK_DAYS * SHIFT_WORK_HOURS) - MONTHLY_HOURS
-        val workDaysDuringLeave = (workedDays.toInt()) - daysOfLeave.toInt()
+        val workDaysDuringLeave = workedDays.toInt()
 
         val overtime =
-            computeOTCalculation(basic.toInt(), overtimeHours, maxOvertimeHours, workDaysDuringLeave, daysOfLeave.toInt())
+            computeOTCalculation(basic.toInt(), overtimeHours, maxOvertimeHours, workDaysDuringLeave, leaveState)
         displayOT(overtime)
     }
 
