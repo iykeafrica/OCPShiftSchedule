@@ -1,6 +1,8 @@
 package com.i_africa.shiftcalenderobajana.screens.selectshiftall
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +54,8 @@ class SelectShiftAllFragment : BaseFragment(), SelectShiftAllViewMvc.Listener {
     @Inject lateinit var screensNavigator: ScreensNavigator
     @Inject lateinit var mySharedPreferences: MySharedPreferences
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
+
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -260,7 +264,9 @@ class SelectShiftAllFragment : BaseFragment(), SelectShiftAllViewMvc.Listener {
                 if (intent.getStringExtra(FCM_LINK_KEY) != null) {
                     if(intent.getStringExtra(FCM_LINK_KEY) != "") {
                         Log.d(TAG, "updateApp: ${intent.getStringExtra(FCM_LINK_KEY)!!}")
-//                        screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                        handler.post {
+                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                        }
                     }
                 }
             }

@@ -33,11 +33,11 @@
         <activity android:name=".screens.selectshiftall.SelectShiftAllActivity">
 
         </activity>
-        <activity android:name=".screens.customshift.CustomShiftActivity" />
+
+        <activity android:name=".screens.customshift.CustomShiftActivity"/>
+
         <activity android:name=".screens.calculate_ot.CalculateOvertimeActivity" />
         <activity android:name=".screens.AboutActivity" />
-        <activity android:name=".screens.selectshift.SelectShiftActivity" />
-        <activity android:name=".screens.shift.ShiftActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"

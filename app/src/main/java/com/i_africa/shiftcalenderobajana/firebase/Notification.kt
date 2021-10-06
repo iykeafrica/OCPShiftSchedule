@@ -1,18 +1,23 @@
 package com.i_africa.shiftcalenderobajana.firebase
 
+import android.app.Notification.DEFAULT_SOUND
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationCompat.DEFAULT_SOUND
+import com.google.firebase.messaging.Constants.MessageNotificationKeys.DEFAULT_SOUND
 import com.i_africa.shiftcalenderobajana.R
 import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
-import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -47,6 +52,7 @@ class Notification @Inject constructor(@ApplicationContext val context: Context)
         )
             .setContentTitle(title)
             .setContentText(body)
+            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
             .setSmallIcon(R.drawable.ic_notification)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)

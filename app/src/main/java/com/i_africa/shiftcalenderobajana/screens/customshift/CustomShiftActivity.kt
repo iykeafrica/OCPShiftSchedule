@@ -11,6 +11,8 @@ import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.CheckNetworkAvailability
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -30,6 +32,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,7 +102,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     private fun postUserFCM(token: String, newToken: String) {
-        val handler = Handler(Looper.getMainLooper())
+
 
         if (CheckNetworkAvailability.isInternetAvailable(this)) {
             if (token != newToken) {
@@ -130,13 +133,16 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     private fun getNotification() {
         val intent = intent
         if (intent != null) {
-            if (intent.getStringExtra(Constant.FCM_BODY_KEY) != null) {
-                if (intent.getStringExtra(Constant.FCM_LINK_KEY) != null) {
-                    if(intent.getStringExtra(Constant.FCM_LINK_KEY) != "") {
+            if (intent.getStringExtra(FCM_BODY_KEY) != null) {
+                if (intent.getStringExtra(FCM_LINK_KEY) != null) {
+                    if(intent.getStringExtra(FCM_LINK_KEY) != "") {
                         Log.d(TAG, "updateApp: ${intent.getStringExtra(
-                                Constant.FCM_LINK_KEY
+                                FCM_LINK_KEY
                             )!!}")
-//                        screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+
+                        handler.post {
+                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                        }
                     }
                 }
             }

@@ -28,7 +28,7 @@
     <string name="worked_days">Worked Days&#160;&#160;&#160;</string>
     <string name="leave_days">AL/CL/SL Days</string>
     <string name="note"><font color="red">*</font> This shift calculation has been verified only with OCP.
-        \nDon\'t forget to use previous month\'s work days when calculating overtime.
+        \nDon\'t forget to use last month\'s work days when calculating this month\'s overtime.
     </string>
     <string name="calculate_ot_button">Calculate OT</string>
 

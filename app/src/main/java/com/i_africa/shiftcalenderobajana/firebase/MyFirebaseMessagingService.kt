@@ -5,8 +5,10 @@ import android.os.Looper
 import android.util.Log
 import com.google.firebase.messaging.RemoteMessage
 import com.i_africa.shiftcalenderobajana.common.firebase_baseservice.BaseFirebaseMessagingService
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TOKEN
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_TITLE_KEY
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -44,16 +46,13 @@ class MyFirebaseMessagingService : BaseFirebaseMessagingService() {
     private fun handleNow(remoteMessage: RemoteMessage) {
         val handler = Handler(Looper.getMainLooper())
 
+        val title = remoteMessage.data[FCM_TITLE_KEY]!!
+        val body = remoteMessage.data[FCM_BODY_KEY]!!
+        val link = remoteMessage.data[FCM_LINK_KEY]!!
         handler.post {
-            remoteMessage.notification?.let {
-                notification.setNotification(
-                    remoteMessage.notification!!.title!!,
-                    remoteMessage.notification!!.body!!,
-                    remoteMessage.data[FCM_LINK_KEY]!!
-                )
-            }
+            notification.setNotification(title, body, link)
         }
-    }
 
+    }
 
 }
