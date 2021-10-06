@@ -56,7 +56,7 @@ class CalculateOvertimeViewMvc(
 
             if (basic.startsWith('0') && workedDays.startsWith('0')) {
                 for (listener in listeners) {
-                    listener.basicAndWorkedDaysZero("Basic salary and month's work days cannot start with 0.")
+                    listener.basicAndWorkedDaysZero("Basic salary and worked days cannot start with 0.")
                     binding.overtime.text = ""
                 }
             }else if (basic.startsWith('0') || basic.toInt() !in 27000..1000000) {
@@ -66,7 +66,7 @@ class CalculateOvertimeViewMvc(
                 }
             } else if (workedDays.startsWith('0') || workedDays.toInt() !in 17..31) {
                 for (listener in listeners) {
-                    listener.workedDaysZero("Enter month's work days between 17 and 31.")
+                    listener.workedDaysZero("Enter worked days between 17 and 31.")
                     binding.overtime.text = ""
                 }
             } else {
@@ -76,15 +76,22 @@ class CalculateOvertimeViewMvc(
                     leaveDays
                 }
 
-                binding.LeaveDaysInput.setText(daysOfLeave)
-                computeCalculation(basic, workedDays, daysOfLeave)
+                if (daysOfLeave.toInt() !in 0..31) {
+                    for (listener in listeners) {
+                        listener.workedDaysZero("AL/CL/SL Days must be between 0 and 28")
+                        binding.overtime.text = ""
+                    }
+                } else {
+                    binding.LeaveDaysInput.setText(daysOfLeave)
+                    computeCalculation(basic, workedDays, daysOfLeave)
+                }
             }
 
         }
 
         if (basic.isEmpty() && workedDays.isEmpty()) {
             for (listener in listeners) {
-                listener.basicAndWorkDaysEmpty("Please, enter your basic salary and month's work days.")
+                listener.basicAndWorkDaysEmpty("Please, enter your basic salary and worked days.")
                 binding.overtime.text = ""
             }
 
@@ -96,7 +103,7 @@ class CalculateOvertimeViewMvc(
 
         } else if (workedDays.isEmpty()) {
             for (listener in listeners) {
-                listener.workDaysEmpty("Please, enter number of month's work days.")
+                listener.workDaysEmpty("Please, enter number of worked days.")
                 binding.overtime.text = ""
             }
         }

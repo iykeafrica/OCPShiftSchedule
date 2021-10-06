@@ -39,7 +39,9 @@ object ConversionUtil {
             decimalFormat.format(overtime).toString()
 
         } else {
-            //overtime = ((basic / MONTHLY_HOURS) * OT_MULTIPLIER) * overtimeHours
+            //maxOvertime = ((basic / MONTHLY_HOURS) * OT_MULTIPLIER) * maxOvertimeHours
+            //oneDayOvertime = maxOvertime / 22
+            //overtime = oneDayOvertime / workDaysDuringLeave
 
             val otMultiplierMultiplyByMaxOvertimeHours = otMultiplierBD.multiply(maxOvertimeHoursBD)
             val maxOvertime = basicDivideByMonthlyHours.multiply(otMultiplierMultiplyByMaxOvertimeHours)

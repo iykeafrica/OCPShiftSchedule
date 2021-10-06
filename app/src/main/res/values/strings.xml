@@ -10,7 +10,8 @@
         The maiden version was designed using Obajana Cement Plant (standard three 3 days working shift).
         This updated version has 2 days, 3 days and 4 days shift schedule of MORNING, NIGHT and OFF Duties.
         This app factored in different types of the above mentioned shifts.
-        \nAnother feature of this app that you may want to explore is the overtime calculator.</string>
+        \nAnother feature of this app that you may want to explore is the overtime calculator.
+    </string>
     <string name="about_app">About</string>
     <string name="select_your_shift">SELECT YOUR SHIFT</string>
     <string name="plant_nshift_a">Plant\nShift A</string>
@@ -24,10 +25,11 @@
     <string name="security_nshift_c">Security\nShift C</string>
     <string name="calculate_overtime">Calculate Overtime</string>
     <string name="basic_salary">Basic Salary&#160;&#160;&#160;&#160;</string>
-    <string name="worked_days">Work Days&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="worked_days">Worked Days&#160;&#160;&#160;</string>
     <string name="leave_days">AL/CL/SL Days</string>
     <string name="note"><font color="red">*</font> This shift calculation has been verified only with OCP.
-        Also, it is calculated by using the previous month\'s work days.</string>
+        \nDon\'t forget to use previous month\'s work days when calculating overtime.
+    </string>
     <string name="calculate_ot_button">Calculate OT</string>
 
     <string name="plant_shift_a">Plant Shift A</string>
@@ -49,7 +51,7 @@
     <string name="security_shift_b">Security Shift B</string>
     <string name="security_shift_c">Security Shift C</string>
     <string name="basic">Basic</string>
-    <string name="month_s_work_days">Month\'s work days</string>
-    <string name="total_leave_days">Total leave days</string>
+    <string name="month_s_work_days">See shift calendar</string>
+    <string name="total_leave_days">Days on leave or 0</string>
 
 </resources>
