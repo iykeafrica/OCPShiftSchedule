@@ -41,8 +41,12 @@
     <color name="darkGray">#4B4B4B</color>
 
     <color name="checkedChipBackgroundColor">#FFCCCCCC</color>
+    <color name="checkedChipBackgroundColor2">@color/colorPrimary</color>
     <color name="chipBackgroundColor">@color/lightGray</color>
+    <color name="chipBackgroundColor2">#D1D1D1</color>
     <color name="checkedChipTextColor">@color/colorPrimary</color>
+    <color name="checkedChipTextColor2">@color/colorWhite</color>
     <color name="chipTextColor">@color/darkGray</color>
+    <color name="chipTextColor2">@color/colorBlack</color>
 
 </resources>

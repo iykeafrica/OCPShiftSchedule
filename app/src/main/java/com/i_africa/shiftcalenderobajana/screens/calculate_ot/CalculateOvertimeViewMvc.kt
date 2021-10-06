@@ -3,7 +3,6 @@ package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 import android.app.Activity
 import android.content.Context
 import android.text.InputType
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -14,7 +13,6 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
 import com.i_africa.shiftcalenderobajana.utils.Constant.MAX_SHIFT_WORK_DAYS
 import com.i_africa.shiftcalenderobajana.utils.overtime.ConversionUtil.computeOTCalculation
 import com.i_africa.shiftcalenderobajana.utils.Constant.MONTHLY_HOURS
-import com.i_africa.shiftcalenderobajana.utils.Constant.OT_MULTIPLIER
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_WORK_HOURS
 
 class CalculateOvertimeViewMvc(
@@ -36,10 +34,12 @@ class CalculateOvertimeViewMvc(
         fun basicZero(message: String)
         fun workedDaysZero(message: String)
         fun basicAndWorkedDaysZero(message: String)
+        fun basicSalaryClick()
+        fun workedDaysClick()
     }
 
     init {
-        hideOpeningKeyBoard(binding.BasicInput)
+        binding.BasicInput.inputType = InputType.TYPE_NULL
 
         binding.submitButton.setOnClickListener {
             for (listener in listeners) {
@@ -47,6 +47,35 @@ class CalculateOvertimeViewMvc(
                 hideKeyboard()
             }
         }
+
+        binding.BasicInput.setOnClickListener{
+            reFocusKeyBoard(binding.BasicInput)
+            hideAsterisksNote()
+            for (listener in listeners) {
+                listener.basicSalaryClick()
+            }
+        }
+
+        binding.WorkDaysInput.setOnClickListener {
+            hideAsterisksNote()
+            for (listener in listeners) {
+                listener.workedDaysClick()
+            }
+        }
+    }
+
+    private fun reFocusKeyBoard(editText: EditText) {
+        editText.requestFocus()
+        editText.isActivated = true
+        editText.isPressed = true
+        editText.isCursorVisible = true
+        editText.inputType = InputType.TYPE_CLASS_NUMBER
+        val imm: InputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED)
+    }
+
+    fun hideAsterisksNote() {
+        binding.asterisksNote.visibility = View.INVISIBLE
     }
 
     fun calculateOT() {
@@ -143,16 +172,6 @@ class CalculateOvertimeViewMvc(
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    private fun hideOpeningKeyBoard(editText: EditText) {
-        editText.inputType = InputType.TYPE_NULL
-        editText.setOnClickListener {
-            editText.inputType = InputType.TYPE_CLASS_NUMBER
-            editText.requestFocus()
-            val imm: InputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED)
-        }
-    }
-
     fun restorePreviousBasicAndWorkedDays(basic: String, workedDays: String, overtime: String) {
         binding.BasicInput.setText(basic)
         binding.WorkDaysInput.setText(workedDays)
@@ -163,5 +182,7 @@ class CalculateOvertimeViewMvc(
             binding.overtime.visibility = View.VISIBLE
             binding.overtime.text = overtime
         }
+        hideKeyboard()
+        hideAsterisksNote()
     }
 }

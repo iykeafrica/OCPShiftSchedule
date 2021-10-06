@@ -29,9 +29,7 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
         calculateOvertimeViewMvc = viewMvcFactory.newCalculateOvertimeViewMvc(null)
         setContentView(calculateOvertimeViewMvc.rootView)
 
-        if (savedInstanceState == null){
-            restoreFromPreference()
-        } else {
+        if (savedInstanceState != null){
             restoreFromSavedState(savedInstanceState)
         }
     }
@@ -90,6 +88,14 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
 
     override fun basicAndWorkedDaysZero(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun basicSalaryClick() {
+        calculateOvertimeViewMvc.hideAsterisksNote()
+    }
+
+    override fun workedDaysClick() {
+        calculateOvertimeViewMvc.hideAsterisksNote()
     }
 
     override fun onStart() {
