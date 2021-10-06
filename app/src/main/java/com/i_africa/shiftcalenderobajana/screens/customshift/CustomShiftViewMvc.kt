@@ -161,6 +161,7 @@ class CustomShiftViewMvc(
     }
 
     fun restoreState(dayOfMonth: Int, month: Int, year: Int) {
+        hideFourthAndFifthRow()
         calendar.set(year, month, dayOfMonth)
         reverseTextAndBackgroundColor(binding)
         date = calendar.time

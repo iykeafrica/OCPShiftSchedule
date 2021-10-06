@@ -81,6 +81,7 @@ object Constant {
     const val MONTHLY_HOURS = 176
     const val OT_MULTIPLIER = 1.5
     const val SHIFT_WORK_HOURS = 12
+    const val MAX_SHIFT_WORK_DAYS = 22
 
     const val BASIC = "com.i_africa.shiftcalenderobajana.screens.common.constant_BASIC"
     const val WORKED_DAYS = "com.i_africa.shiftcalenderobajana.screens.common.constant_WORKED_DAYS"
