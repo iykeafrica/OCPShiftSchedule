@@ -38,8 +38,13 @@
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/xml/activity_main_scene.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_thumb.xml" value="0.1787037037037037" />
         <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_track.xml" value="0.1787037037037037" />
+        <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/ic_cal_splash_screen.xml" value="0.1787037037037037" />
+        <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/splash_background.xml" value="0.1787037037037037" />
         <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_about.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_calculate_overtime.xml" value="0.19199999414062519" />
+        <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_second.xml" value="0.23072916666666668" />
+        <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_select_shift_all.xml" value="0.23072916666666668" />
+        <entry key="..\:/Users/ikech/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/layout/activity_splash_screen.xml" value="0.23072916666666668" />
       </map>
     </option>
   </component>
