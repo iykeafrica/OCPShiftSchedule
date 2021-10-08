@@ -53,5 +53,10 @@
     <string name="basic">Basic</string>
     <string name="month_s_work_days">See shift calendar</string>
     <string name="total_leave_days">Days on leave or 0</string>
+    <string name="update"><font fgcolor='#FF6347'>Update</font></string>
+    <string name="settings">Settings</string>
 
 </resources>
+
+<!--<font fgcolor='#FF6347'>Update</font>-->
+<!--<font color="red">\u25CF</font>&#160;&#160;-->

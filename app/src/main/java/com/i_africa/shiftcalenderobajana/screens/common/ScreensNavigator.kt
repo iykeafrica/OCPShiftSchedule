@@ -51,7 +51,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         activity.startActivity(Intent(activity, AboutActivity::class.java))
     }
 
-    fun updateApp(url: String, title: String) {
+    fun updateApp(url: String) {
         var link = ""
         link = if (!url.startsWith("http://") && !url.startsWith("https://"))
             "http://$url"
@@ -60,7 +60,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
 
         val i = Intent(Intent.ACTION_VIEW)
         i.data = Uri.parse(link)
-        val chooser = Intent.createChooser(i, title)
+        val chooser = Intent.createChooser(i, "Update App")
         activity.startActivity(chooser)
         Log.d(TAG, "updateApp: $link")
     }

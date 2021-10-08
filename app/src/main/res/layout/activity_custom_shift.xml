@@ -61,6 +61,15 @@
                 app:layout_constraintTop_toTopOf="@id/calender_container" />
 
             <ImageView
+                android:id="@+id/notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:src="@drawable/ic_notification_important"
+                app:layout_constraintTop_toTopOf="@id/menu"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
                 android:id="@+id/menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -5,6 +5,10 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import com.i_africa.shiftcalenderobajana.BuildConfig
+import com.i_africa.shiftcalenderobajana.common.di.app.RetrofitGet
+import com.i_africa.shiftcalenderobajana.networking.FetchVersionNameCodeUseCase
 import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
@@ -13,6 +17,7 @@ import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcF
 import com.i_africa.shiftcalenderobajana.utils.Constant
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_BODY_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.FCM_LINK_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.UPDATE_APP_URL_LINK
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -29,10 +34,12 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     @Inject lateinit var myPopUpMenu: MyPopUpMenu
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
     @Inject lateinit var submitFormUseCase: SubmitFormUseCase
+    @Inject lateinit var fetchVersionNameCodeUseCase: FetchVersionNameCodeUseCase
 
     private lateinit var shift: String
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private val handler = Handler(Looper.getMainLooper())
+    private var state = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +59,17 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
 
         postUserFCM(token, newToken)
         getNotification()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        customShiftViewMvc.updateInvisible()
+        val versionName = BuildConfig.VERSION_NAME
+        val newVersionName = mySharedPreferences.getStoredString(Constant.NEW_PREFERENCE_VERSION_NAME_KEY)
+
+        if (versionName == newVersionName)
+            state = false
+        getVersionName()
     }
 
     private fun loadShiftSchedule() {
@@ -81,7 +98,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     override fun popUpMenuClick(v: View) {
-        myPopUpMenu.popup(v)
+        myPopUpMenu.popup(v, state)
     }
 
     override fun refresh() {
@@ -101,8 +118,49 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         screensNavigator.about()
     }
 
-    private fun postUserFCM(token: String, newToken: String) {
+    override fun update() {
+        screensNavigator.updateApp(UPDATE_APP_URL_LINK)
+    }
 
+    override fun settings() {
+        TODO("Not yet implemented")
+    }
+
+    private fun getVersionName() {
+        if (CheckNetworkAvailability.isInternetAvailable(this)) {
+            coroutineScope.launch {
+                try {
+                    when (val result = fetchVersionNameCodeUseCase.fetchVersionCodeName()) {
+                        is FetchVersionNameCodeUseCase.Result.Success -> {
+                            val updateVersionName = result.versionNameCode[1][0]
+
+                            if (updateVersionName != BuildConfig.VERSION_NAME){
+                                handler.post {
+                                    Log.d(TAG, "getVersionName: success $updateVersionName")
+                                    mySharedPreferences.storeStringValue(Constant.NEW_PREFERENCE_VERSION_NAME_KEY, updateVersionName)
+                                    customShiftViewMvc.updateVisible()
+                                    state = true
+                                }
+                            } else {
+                               handler.post {
+                                   customShiftViewMvc.updateInvisible()
+                                   state = false
+                               }
+                            }
+                        }
+                        is FetchVersionNameCodeUseCase.Result.Failure -> {
+                            Log.d(TAG, "getVersionName: failure ${result.responseCode}")
+                        }
+                    }
+
+                } finally {
+                    Log.d(TAG, "getVersionName: done")
+                }
+            }
+        }
+    }
+
+    private fun postUserFCM(token: String, newToken: String) {
 
         if (CheckNetworkAvailability.isInternetAvailable(this)) {
             if (token != newToken) {
@@ -141,7 +199,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
                             )!!}")
 
                         handler.post {
-                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!, "update using..")
+                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!)
                         }
                     }
                 }
@@ -347,6 +405,11 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     override fun thirtySevenClick() {
         customShiftViewMvc.set37()
         loadShiftSchedule()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        myPopUpMenu.dismiss()
     }
 
     override fun onStart() {

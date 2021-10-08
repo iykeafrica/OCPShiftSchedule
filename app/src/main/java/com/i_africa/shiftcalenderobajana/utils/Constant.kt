@@ -2,8 +2,9 @@ package com.i_africa.shiftcalenderobajana.utils
 
 object Constant {
     const val BASE_URL = "https://docs.google.com/forms/d/e/"
+    const val BASE_URL_GET = "https://sheets.googleapis.com/v4/spreadsheets/"
     const val MY_PREF = "com.i_africa.shiftcalenderobajana.screens.common.constant_MY_PREF"
-    const val SHIFT_EXTRA_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_SHIFT_EXTRA_KEY"
+    const val NEW_PREFERENCE_VERSION_NAME_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NEW_PREFERENCE_VERSION_NAME_KEY"
 
     //Three Days shift
     const val PLANT_SHIFT_A = "PLANT SHIFT A"
@@ -104,4 +105,5 @@ object Constant {
     const val BACKGROUND_COLOR_NIGHT = "#FFCCCCCC"
     const val BACKGROUND_COLOR_OFF = "#f7eee1"
 
+    const val UPDATE_APP_URL_LINK = "https://play.google.com/store/apps/details?id=com.i_africa.shiftcalenderobajana"
 }

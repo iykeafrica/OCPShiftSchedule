@@ -33,7 +33,6 @@ class CustomShiftViewMvc(
     layoutInflater: LayoutInflater,
     parent: ViewGroup?
 ) : BaseViewMvc<CustomShiftViewMvc.Listener>() {
-
     private val binding = ActivityCustomShiftBinding.inflate(layoutInflater, parent, false)
     val rootView = binding.root
 
@@ -158,6 +157,14 @@ class CustomShiftViewMvc(
 
     fun getYear(): Int {
         return calendar.get(Calendar.YEAR)
+    }
+
+    fun updateInvisible() {
+        binding.notification?.visibility = View.GONE
+    }
+
+    fun updateVisible() {
+        binding.notification?.visibility = View.VISIBLE
     }
 
     fun restoreState(dayOfMonth: Int, month: Int, year: Int) {
