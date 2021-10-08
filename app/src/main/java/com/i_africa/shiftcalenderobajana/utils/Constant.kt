@@ -100,6 +100,11 @@ object Constant {
     const val NOTIFICATION_ID = 6353
 
 
+    const val MORNING_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_MORNING_BACKGROUND_COLOR_KEY"
+    const val NIGHT_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NIGHT_BACKGROUND_COLOR_KEY"
+    const val OFF_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_OFF_BACKGROUND_COLOR_KEY"
+
+
     const val DAY_TEXT_COLOR = "#FF6347"
     const val BACKGROUND_COLOR_MORNING = "#B6DAF6"
     const val BACKGROUND_COLOR_NIGHT = "#FFCCCCCC"

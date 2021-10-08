@@ -123,7 +123,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     override fun settings() {
-        TODO("Not yet implemented")
+        screensNavigator.navigateToSettings()
     }
 
     private fun getVersionName() {

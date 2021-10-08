@@ -55,8 +55,26 @@
     <string name="total_leave_days">Days on leave or 0</string>
     <string name="update"><font fgcolor='#FF6347'>Update</font></string>
     <string name="settings">Settings</string>
+    <string name="color_picker"><u>Color Picker</u></string>
+    <string name="color_picker_message">Change shift calendar cell color background from the color picker options.</string>
+    <string name="drop_down_arrow">color picker drop down arrow</string>
+    <string name="sample_colors">sample colors</string>
+    <string name="save">Save</string>
+    <string name="day">Day</string>
+    <string name="change">Change</string>
+    <string name="night">Night</string>
+    <string name="off">Off</string>
+    <string name="default_colors">Default Colors</string>
+    <string name="privacy_header"><u>Privacy</u></string>
+    <string name="about_header"><u>About</u></string>
+    <string name="version"><u>Version</u></string>
+    <string name="version_number">V2.0</string>
+    <string name="terms_of_use_body">AGREEMENT TO TERMS
+
+ the Content to which you have properly gained access solely for your personal, non-commercial use. We reserve all rights not expressly granted to you in and to the Site, the Content and the Marks.</string>
+    <string name="terms_of_use"><u>Terms of Use</u></string>
 
 </resources>
 
-<!--<font fgcolor='#FF6347'>Update</font>-->
-<!--<font color="red">\u25CF</font>&#160;&#160;-->
+    <!--<font fgcolor='#FF6347'>Update</font>-->
+    <!--<font color="red">\u25CF</font>&#160;&#160;-->

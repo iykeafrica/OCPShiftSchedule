@@ -3,6 +3,7 @@ package com.i_africa.shiftcalenderobajana.screens.calculate_ot
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.BASIC
@@ -20,6 +21,7 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
     private lateinit var calculateOvertimeViewMvc: CalculateOvertimeViewMvc
     @Inject lateinit var mySharedPreferences: MySharedPreferences
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
+    @Inject lateinit var screensNavigator: ScreensNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +98,10 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
 
     override fun workedDaysClick() {
         calculateOvertimeViewMvc.hideAsterisksNote()
+    }
+
+    override fun onBackPressed() {
+        screensNavigator.backPressedFromMenuToCustomShiftActivity()
     }
 
     override fun onStart() {

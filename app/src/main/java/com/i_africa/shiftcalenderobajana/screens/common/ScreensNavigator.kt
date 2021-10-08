@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.screens.AboutActivity
+import com.i_africa.shiftcalenderobajana.screens.SettingsActivity
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.customshift.CustomShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
@@ -29,6 +30,11 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         } else {
             activity.finish()
         }
+    }
+
+    fun backPressedFromMenuToCustomShiftActivity() {
+        activity.startActivity(Intent(activity, CustomShiftActivity::class.java))
+        activity.finish()
     }
 
     fun refresh() {
@@ -63,6 +69,10 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         val chooser = Intent.createChooser(i, "Update App")
         activity.startActivity(chooser)
         Log.d(TAG, "updateApp: $link")
+    }
+
+    fun navigateToSettings() {
+        activity.startActivity(Intent(activity, SettingsActivity::class.java))
     }
 
 }
