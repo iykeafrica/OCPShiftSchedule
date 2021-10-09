@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.SettingsActivity">
+    tools:context=".screens.settings.SettingsActivity">
 
     <LinearLayout
         android:id="@+id/app_bar"
@@ -96,7 +96,8 @@
                     android:id="@+id/color_picker_drop_down_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:padding="5dp"
                     android:contentDescription="@string/drop_down_arrow"
                     android:src="@drawable/ic_arrow_drop_down"
                     app:layout_constraintBottom_toBottomOf="@id/color_picker_header"
@@ -125,8 +126,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="5dp">
+                            android:layout_height="match_parent">
 
                             <LinearLayout
                                 android:id="@+id/row_one_info"
@@ -139,7 +139,8 @@
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp">
 
                                     <TextView
                                         android:id="@+id/day"
@@ -409,47 +410,124 @@
                                 android:orientation="horizontal"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:baselineAligned="false">
 
-                                <ImageView
-                                    android:id="@+id/color_1"
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color1" />
+                                    android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/color_2"
+                                    <ImageView
+                                        android:id="@+id/color_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color1" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color2" />
+                                    android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/color_3"
+                                    <ImageView
+                                        android:id="@+id/color_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color2" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color3" />
+                                    android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/color_4"
+                                    <ImageView
+                                        android:id="@+id/color_3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color3" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color4" />
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color4" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                             </LinearLayout>
 
@@ -465,45 +543,121 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/row_one_color">
 
-                                <ImageView
-                                    android:id="@+id/color_5"
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color5" />
+                                    android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/color_6"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color6" />
+                                    <ImageView
+                                        android:id="@+id/color_5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color5" />
 
-                                <ImageView
-                                    android:id="@+id/color_7"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color7" />
+                                    <ImageView
+                                        android:id="@+id/color_check_5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
 
-                                <ImageView
-                                    android:id="@+id/color_8"
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color8" />
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color6" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_7"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color7" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_7"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_8"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color8" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_8"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                             </LinearLayout>
 
@@ -520,45 +674,121 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/row_two_color">
 
-                                <ImageView
-                                    android:id="@+id/color_9"
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color9" />
+                                    android:layout_weight="1">
 
-                                <ImageView
-                                    android:id="@+id/color_10"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color10" />
+                                    <ImageView
+                                        android:id="@+id/color_9"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color9" />
 
-                                <ImageView
-                                    android:id="@+id/color_11"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color11" />
+                                    <ImageView
+                                        android:id="@+id/color_check_9"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
 
-                                <ImageView
-                                    android:id="@+id/color_12"
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:contentDescription="@string/sample_colors"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_color_circle"
-                                    app:tint="@color/color12" />
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_10"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color10" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_10"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_11"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color11" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_11"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/color_12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_color_circle"
+                                        app:tint="@color/color12" />
+
+                                    <ImageView
+                                        android:id="@+id/color_check_12"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:contentDescription="@string/sample_colors"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:visibility="invisible"
+                                        android:padding="5dp"
+                                        android:src="@drawable/ic_check" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                             </LinearLayout>
 
@@ -592,7 +822,7 @@
                                 app:layout_constraintStart_toStartOf="parent" />
 
                             <Button
-                                android:id="@+id/twoDaysShift"
+                                android:id="@+id/save"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginStart="20dp"
@@ -646,7 +876,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/martel"
-                    android:text="@string/disclaimer"
+                    android:text="@string/license_agreement"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -683,7 +913,6 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/martel"
-                    android:text="@string/version_number"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -697,7 +926,6 @@
                     android:background="@color/mediumGray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/version" />
-
 
                 <TextView
                     android:id="@+id/terms_of_use_header"
@@ -713,10 +941,23 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/terms_of_use_separator" />
 
+                <ImageView
+                    android:id="@+id/terms_of_use_down_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:padding="5dp"
+                    android:contentDescription="@string/drop_down_arrow"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    app:layout_constraintBottom_toBottomOf="@id/terms_of_use_header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/terms_of_use_header" />
+
                 <TextView
                     android:id="@+id/terms_of_use"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="10dp"
                     android:fontFamily="@font/martel"
@@ -727,13 +968,87 @@
                     app:layout_constraintTop_toBottomOf="@id/terms_of_use_header" />
 
                 <View
-                    android:id="@+id/about_separator"
+                    android:id="@+id/catalog_separator"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
                     android:background="@color/mediumGray"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/terms_of_use" />
+
+
+                <TextView
+                    android:id="@+id/catalog_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/martel"
+                    android:text="@string/catalog"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalog_separator" />
+
+                <TextView
+                    android:id="@+id/catalog_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/martel"
+                    android:text="@string/date"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalog_header" />
+
+                <View
+                    android:id="@+id/contact_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/mediumGray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/catalog_date" />
+
+
+                <TextView
+                    android:id="@+id/contact_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/martel"
+                    android:text="@string/contact_us"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contact_separator" />
+
+                <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/martel"
+                    android:text="@string/send_message"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contact_header" />
+
+                <View
+                    android:id="@+id/about_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/mediumGray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contact" />
 
 
                 <TextView
@@ -763,16 +1078,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/about_header" />
 
-                <ImageView
-                    android:id="@+id/about_drop_down_arrow"
-                    android:layout_width="wrap_content"
+                <View
+                    android:id="@+id/last_separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/mediumGray"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/about_info" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/drop_down_arrow"
-                    android:src="@drawable/ic_arrow_drop_down"
-                    app:layout_constraintBottom_toBottomOf="@id/about_header"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/martel"
+                    android:text="@string/copyright"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/about_header" />
+                    app:layout_constraintTop_toBottomOf="@id/last_separator" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

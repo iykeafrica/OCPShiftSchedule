@@ -5,11 +5,10 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.i_africa.shiftcalenderobajana.screens.AboutActivity
-import com.i_africa.shiftcalenderobajana.screens.SettingsActivity
 import com.i_africa.shiftcalenderobajana.screens.calculate_ot.CalculateOvertimeActivity
 import com.i_africa.shiftcalenderobajana.screens.customshift.CustomShiftActivity
 import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
+import com.i_africa.shiftcalenderobajana.screens.settings.SettingsActivity
 
 private const val TAG = "ScreensNavigator"
 class ScreensNavigator(private val activity: AppCompatActivity) {
@@ -53,11 +52,7 @@ class ScreensNavigator(private val activity: AppCompatActivity) {
         activity.startActivity(Intent(activity, CalculateOvertimeActivity::class.java))
     }
 
-    fun about() {
-        activity.startActivity(Intent(activity, AboutActivity::class.java))
-    }
-
-    fun updateApp(url: String) {
+    fun visitUrl(url: String) {
         var link = ""
         link = if (!url.startsWith("http://") && !url.startsWith("https://"))
             "http://$url"

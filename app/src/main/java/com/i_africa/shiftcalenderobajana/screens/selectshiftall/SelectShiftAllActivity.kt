@@ -30,6 +30,23 @@ class SelectShiftAllActivity : BaseActivity() {
 
         initFCM()
 
+        if(mySharedPreferences.getStoredString(Constant.MORNING_BACKGROUND_COLOR_STRING_KEY) == "")
+            mySharedPreferences.storeStringValue(Constant.MORNING_BACKGROUND_COLOR_STRING_KEY,
+                Constant.BACKGROUND_COLOR_1
+            )
+
+        if(mySharedPreferences.getStoredString(Constant.NIGHT_BACKGROUND_COLOR_STRING_KEY) == "")
+            mySharedPreferences.storeStringValue(
+                Constant.NIGHT_BACKGROUND_COLOR_STRING_KEY,
+                Constant.BACKGROUND_COLOR_2
+            )
+
+        if(mySharedPreferences.getStoredString(Constant.OFF_BACKGROUND_COLOR_STRING_KEY) == "")
+            mySharedPreferences.storeStringValue(
+                Constant.OFF_BACKGROUND_COLOR_STRING_KEY,
+                Constant.BACKGROUND_COLOR_3
+            )
+
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction()
                 .add(R.id.frame_layout, SelectShiftAllFragment())

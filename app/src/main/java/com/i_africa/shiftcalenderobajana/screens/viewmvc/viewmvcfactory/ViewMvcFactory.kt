@@ -24,6 +24,6 @@ class ViewMvcFactory @Inject constructor(private val activity: Activity) {
     }
 
     fun newSettingsViewMvc(parent: ViewGroup?): SettingsViewMvc {
-        return SettingsViewMvc(activity.layoutInflater, parent)
+        return SettingsViewMvc(activity, parent)
     }
 }

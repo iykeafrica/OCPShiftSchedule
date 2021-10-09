@@ -14,10 +14,6 @@
         android:title="@string/calculate_ot"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/about"
-        android:title="@string/about"
-        app:showAsAction="never"/>
-
     <item android:id="@+id/update"
         android:title="@string/update"
         android:visible="false"

@@ -19,12 +19,20 @@ class MySharedPreferences @Inject constructor(@ApplicationContext context: Conte
         editor.putString(key, value).apply()
     }
 
+    fun storeIntValue(key: String, value: Int) {
+        editor.putInt(key, value).apply()
+    }
+
     fun storeBooleanValue(key: String, value: Boolean) {
         editor.putBoolean(key, value).apply()
     }
 
     fun getStoredString(key: String): String {
         return preferences.getString(key,"")!!
+    }
+
+    fun getStoredInt(key: String): Int {
+        return preferences.getInt(key,0)
     }
 
     fun getStoredBoolean(key: String): Boolean {

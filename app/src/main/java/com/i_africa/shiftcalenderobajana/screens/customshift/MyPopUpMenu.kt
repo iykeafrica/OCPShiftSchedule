@@ -14,7 +14,6 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
         fun refresh()
         fun changeShift()
         fun calculateOvertime()
-        fun about()
         fun update()
         fun settings()
     }
@@ -44,11 +43,6 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
                 R.id.calculate_ot -> {
                     for (listener in listeners) {
                         listener.calculateOvertime()
-                    }
-                }
-                R.id.about -> {
-                    for (listener in listeners) {
-                        listener.about()
                     }
                 }
                 R.id.update -> {

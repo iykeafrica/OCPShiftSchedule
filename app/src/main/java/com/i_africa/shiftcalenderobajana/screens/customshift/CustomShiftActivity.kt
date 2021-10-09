@@ -5,9 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.i_africa.shiftcalenderobajana.BuildConfig
-import com.i_africa.shiftcalenderobajana.common.di.app.RetrofitGet
 import com.i_africa.shiftcalenderobajana.networking.FetchVersionNameCodeUseCase
 import com.i_africa.shiftcalenderobajana.networking.SubmitFormUseCase
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
@@ -63,19 +61,20 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
 
     override fun onResume() {
         super.onResume()
-        customShiftViewMvc.updateInvisible()
+        customShiftViewMvc.makeNotificationIconInvisible()
         val versionName = BuildConfig.VERSION_NAME
         val newVersionName = mySharedPreferences.getStoredString(Constant.NEW_PREFERENCE_VERSION_NAME_KEY)
 
         if (versionName == newVersionName)
             state = false
         getVersionName()
+        loadShiftSchedule()
     }
 
     private fun loadShiftSchedule() {
         customShiftViewMvc.showDayOfMonth()
         customShiftViewMvc.showWeekDay()
-        customShiftViewMvc.showShiftDuty(shift)
+        customShiftViewMvc.showShiftDuty(shift, mySharedPreferences)
         customShiftViewMvc.showShiftMonthlyWorkingDays(shift)
         customShiftViewMvc.showShift(shift)
     }
@@ -114,12 +113,8 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         screensNavigator.calculateOvertime()
     }
 
-    override fun about() {
-        screensNavigator.about()
-    }
-
     override fun update() {
-        screensNavigator.updateApp(UPDATE_APP_URL_LINK)
+        screensNavigator.visitUrl(UPDATE_APP_URL_LINK)
     }
 
     override fun settings() {
@@ -138,12 +133,12 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
                                 handler.post {
                                     Log.d(TAG, "getVersionName: success $updateVersionName")
                                     mySharedPreferences.storeStringValue(Constant.NEW_PREFERENCE_VERSION_NAME_KEY, updateVersionName)
-                                    customShiftViewMvc.updateVisible()
+                                    customShiftViewMvc.makeNotificationIconVisible()
                                     state = true
                                 }
                             } else {
                                handler.post {
-                                   customShiftViewMvc.updateInvisible()
+                                   customShiftViewMvc.makeNotificationIconInvisible()
                                    state = false
                                }
                             }
@@ -199,7 +194,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
                             )!!}")
 
                         handler.post {
-                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!)
+                            screensNavigator.visitUrl(intent.getStringExtra(FCM_LINK_KEY)!!)
                         }
                     }
                 }

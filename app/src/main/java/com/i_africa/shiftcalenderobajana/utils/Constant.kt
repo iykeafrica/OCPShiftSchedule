@@ -5,6 +5,8 @@ object Constant {
     const val BASE_URL_GET = "https://sheets.googleapis.com/v4/spreadsheets/"
     const val MY_PREF = "com.i_africa.shiftcalenderobajana.screens.common.constant_MY_PREF"
     const val NEW_PREFERENCE_VERSION_NAME_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NEW_PREFERENCE_VERSION_NAME_KEY"
+    const val EMAIL_US = "https://iykeafrica.github.io/contact_form.html"
+    const val APACHE_LICENSE = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 
     //Three Days shift
     const val PLANT_SHIFT_A = "PLANT SHIFT A"
@@ -99,16 +101,31 @@ object Constant {
     const val NOTIFICATION_NAME = "New notification"
     const val NOTIFICATION_ID = 6353
 
-
-    const val MORNING_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_MORNING_BACKGROUND_COLOR_KEY"
-    const val NIGHT_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NIGHT_BACKGROUND_COLOR_KEY"
-    const val OFF_BACKGROUND_COLOR_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_OFF_BACKGROUND_COLOR_KEY"
-
+    const val MORNING_BACKGROUND_COLOR_RESOURCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_MORNING_BACKGROUND_COLOR_RESOURCE_KEY"
+    const val NIGHT_BACKGROUND_COLOR_RESOURCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NIGHT_BACKGROUND_COLOR_RESOURCE_KEY"
+    const val OFF_BACKGROUND_COLOR_RESOURCE_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_OFF_BACKGROUND_COLOR_RESOURCE_KEY"
+    const val MORNING_BACKGROUND_COLOR_STRING_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_MORNING_BACKGROUND_COLOR_STRING_KEY"
+    const val NIGHT_BACKGROUND_COLOR_STRING_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_NIGHT_BACKGROUND_COLOR_STRING_KEY"
+    const val OFF_BACKGROUND_COLOR_STRING_KEY = "com.i_africa.shiftcalenderobajana.screens.common.constant_OFF_BACKGROUND_COLOR_STRING_KEY"
 
     const val DAY_TEXT_COLOR = "#FF6347"
     const val BACKGROUND_COLOR_MORNING = "#B6DAF6"
     const val BACKGROUND_COLOR_NIGHT = "#FFCCCCCC"
     const val BACKGROUND_COLOR_OFF = "#f7eee1"
+
+    const val BACKGROUND_COLOR_1 = "#B6DAF6"
+    const val BACKGROUND_COLOR_2 = "#FFCCCCCC"
+    const val BACKGROUND_COLOR_3 = "#f7eee1"
+    const val BACKGROUND_COLOR_4 = "#ef9a9a"
+    const val BACKGROUND_COLOR_5 = "#4db6ac"
+    const val BACKGROUND_COLOR_6 = "#fff176"
+    const val BACKGROUND_COLOR_7 = "#ce93d8"
+    const val BACKGROUND_COLOR_8 = "#ffc107"
+    const val BACKGROUND_COLOR_9 = "#66bb6a"
+    const val BACKGROUND_COLOR_10 = "#cddc39"
+    const val BACKGROUND_COLOR_11 = "#00e676"
+    const val BACKGROUND_COLOR_12 = "#ffcc80"
+
 
     const val UPDATE_APP_URL_LINK = "https://play.google.com/store/apps/details?id=com.i_africa.shiftcalenderobajana"
 }

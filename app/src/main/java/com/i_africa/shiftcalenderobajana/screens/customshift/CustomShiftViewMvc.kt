@@ -22,6 +22,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.THREE_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_3_3_3_DAYS
 import com.i_africa.shiftcalenderobajana.utils.Constant.TWO_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_2_2_2_DAYS
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalendarCellColor.updateShiftCalendarCellColor
 import java.util.*
@@ -94,7 +95,7 @@ class CustomShiftViewMvc(
         daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
     }
 
-    fun showShiftDuty(shift: String) {
+    fun showShiftDuty(shift: String, mySharedPreferences: MySharedPreferences) {
         setCalendar(calendar)
         Log.d(TAG, "getShiftDuty: $day/$month/$year")
 
@@ -106,19 +107,19 @@ class CustomShiftViewMvc(
                 val dateDifference = setFormula(day, month, year, SHIFT_4_4_4_DAYS)
                 val collection = setCollection(shift, FOUR_DAYS_LOOP)
                 shiftDuty = computeShiftDuty(dateDifference, collection, FOUR_DAYS_LOOP)
-                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_4_4_4_DAYS, FOUR_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_4_4_4_DAYS, FOUR_DAYS_LOOP, mySharedPreferences)
             }
             LAST_THREE_SUBSTRING_2_DAYS -> {
                 val dateDifference = setFormula(day, month, year, SHIFT_2_2_2_DAYS)
                 val collection = setCollection(shift, TWO_DAYS_LOOP)
                 shiftDuty = computeShiftDuty(dateDifference, collection, TWO_DAYS_LOOP)
-                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_2_2_2_DAYS, TWO_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_2_2_2_DAYS, TWO_DAYS_LOOP, mySharedPreferences)
             }
             else -> { //3 days
                 val dateDifference = setFormula(day, month, year, SHIFT_3_3_3_DAYS)
                 val collection = setCollection(shift, THREE_DAYS_LOOP)
                 shiftDuty = computeShiftDuty(dateDifference, collection, THREE_DAYS_LOOP)
-                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_3_3_3_DAYS, THREE_DAYS_LOOP)
+                updateShiftCalendarCellColor(binding, month, year, collection, SHIFT_3_3_3_DAYS, THREE_DAYS_LOOP, mySharedPreferences)
             }
         }
 
@@ -159,11 +160,11 @@ class CustomShiftViewMvc(
         return calendar.get(Calendar.YEAR)
     }
 
-    fun updateInvisible() {
+    fun makeNotificationIconInvisible() {
         binding.notification?.visibility = View.GONE
     }
 
-    fun updateVisible() {
+    fun makeNotificationIconVisible() {
         binding.notification?.visibility = View.VISIBLE
     }
 

@@ -265,7 +265,7 @@ class SelectShiftAllFragment : BaseFragment(), SelectShiftAllViewMvc.Listener {
                     if(intent.getStringExtra(FCM_LINK_KEY) != "") {
                         Log.d(TAG, "updateApp: ${intent.getStringExtra(FCM_LINK_KEY)!!}")
                         handler.post {
-                            screensNavigator.updateApp(intent.getStringExtra(FCM_LINK_KEY)!!)
+                            screensNavigator.visitUrl(intent.getStringExtra(FCM_LINK_KEY)!!)
                         }
                     }
                 }
