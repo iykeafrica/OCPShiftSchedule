@@ -100,7 +100,7 @@ class CalculateOvertimeActivity : BaseActivity(), CalculateOvertimeViewMvc.Liste
         calculateOvertimeViewMvc.hideAsterisksNote()
     }
 
-    override fun onBackPressed() {
+    override fun backPressed() {
         screensNavigator.backPressedFromMenuToCustomShiftActivity()
     }
 

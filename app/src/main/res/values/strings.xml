@@ -58,7 +58,7 @@
     <string name="update"><font fgcolor='#FF6347'>Update</font></string>
     <string name="settings">Settings</string>
     <string name="color_picker"><u>Color Picker</u></string>
-    <string name="color_picker_message">Change shift calendar cell background color from the color picker options.</string>
+    <string name="color_picker_message">Change shift calendar cell background color as well as date text color from the color picker options.</string>
     <string name="drop_down_arrow">color picker drop down arrow</string>
     <string name="sample_colors">sample colors</string>
     <string name="save">Save</string>
@@ -79,6 +79,9 @@
     <string name="date">Friday, 8 October 2021 07:22:09</string>
     <string name="copyright">This is a personal project designed by Ikechi, licensed under the Apache License 2.0 \nCopyright © i_africa solutions</string>
     <string name="contact_us"><u>Contact Us</u></string>
+    <string name="cell_background">Cell background</string>
+    <string name="date_text">Date text</string>
+    <string name="default_color">Default Color</string>
 
 </resources>
 

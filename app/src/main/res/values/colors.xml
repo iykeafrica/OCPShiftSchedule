@@ -41,7 +41,7 @@
     <color name="chipTextColor">@color/darkGray</color>
     <color name="chipTextColor2">@color/colorBlack</color>
 
-<!--    color pickers-->
+<!--    color pickers cell background-->
     <color name="color1">#B6DAF6</color>
     <color name="color2">#FFCCCCCC</color>
     <color name="color3">#f7eee1</color>
@@ -54,5 +54,12 @@
     <color name="color10">#cddc39</color>
     <color name="color11">#00e676</color>
     <color name="color12">#ffcc80</color>
+
+    <!--    color pickers date text-->
+    <color name="color13">#FF6347</color>
+    <color name="color14">#2B62B8</color>
+    <color name="color15">#F50057</color>
+    <color name="color16">#678B40</color>
+
 
 </resources>

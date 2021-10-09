@@ -16,6 +16,7 @@ import com.i_africa.shiftcalenderobajana.R
 import com.i_africa.shiftcalenderobajana.databinding.ActivitySettingsBinding
 import com.i_africa.shiftcalenderobajana.screens.selectshiftall.SelectShiftAllActivity
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ConvertToIntegerResource.convertColorIntToResources
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.DateFormatter
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +29,7 @@ class SettingsViewMvc(
     private var day = 0
     private var night = 0
     private var off = 0
+    private var dateDay = 0
 
     interface Listener {
         fun backPressed()
@@ -40,6 +42,10 @@ class SettingsViewMvc(
         fun licenseAgreementClick()
         fun termsOfUseDropDown()
         fun contactUsClick()
+
+        fun changeDateTextColor()
+        fun changeDateTextDefaultColor()
+        fun saveDateTextColor()
     }
 
     private val binding = ActivitySettingsBinding.inflate(activity.layoutInflater, parent, false)
@@ -52,6 +58,7 @@ class SettingsViewMvc(
 
         binding.colorPicker.visibility = View.GONE
         binding.save.isEnabled = false
+        binding.saveDateColor.isEnabled = false
 
         binding.backButton.setOnClickListener {
             for (listener in listeners) {
@@ -123,6 +130,28 @@ class SettingsViewMvc(
             }
         }
 
+        binding.changeColorDateDay.setOnClickListener {
+            for (listener in listeners) {
+                listener.changeDateTextColor()
+            }
+        }
+
+        binding.restoreDefaultDateSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            for (listener in listeners) {
+                if (buttonView.isShown) {
+                    if (buttonView.isChecked){
+                        listener.changeDateTextDefaultColor()
+                    }
+                }
+            }
+        }
+
+        binding.saveDateColor.setOnClickListener {
+            for (listener in listeners) {
+                listener.saveDateTextColor()
+            }
+        }
+
     }
 
     private fun resetButtonAlpha() {
@@ -176,6 +205,30 @@ class SettingsViewMvc(
         binding.color12.isEnabled = true
     }
 
+    private fun resetDateButtonAlpha() {
+        binding.changeColorDateDay.alpha = 1F
+    }
+
+    private fun hideAllDateCheckColor() {
+        binding.colorCheck13.visibility = View.GONE
+        binding.colorCheck14.visibility = View.GONE
+        binding.colorCheck15.visibility = View.GONE
+        binding.colorCheck16.visibility = View.GONE
+    }
+    private fun disableDateTextColors() {
+        binding.color13.isEnabled = false
+        binding.color14.isEnabled = false
+        binding.color15.isEnabled = false
+        binding.color16.isEnabled = false
+    }
+
+    private fun enableDateTextColors() {
+        binding.color13.isEnabled = true
+        binding.color14.isEnabled = true
+        binding.color15.isEnabled = true
+        binding.color16.isEnabled = true
+    }
+
     fun colorPickerDropDown() {
         if (!binding.colorPicker.isVisible)
             binding.colorPicker.visibility = View.VISIBLE
@@ -192,7 +245,9 @@ class SettingsViewMvc(
     fun offCellColor(): Int {
         return off
     }
-
+    fun dateTextColor(): Int {
+        return dateDay
+    }
 
     fun changeDayColor() {
         hideAllCheckColor()
@@ -253,39 +308,69 @@ class SettingsViewMvc(
         binding.colorOff.setColorFilter(activity.resources.getColor(convertColorIntToResources(offColorResource)))
     }
 
-    private fun convertColorIntToResources(colorResource: Int): Int {
-        var integerResource = 0
-
-        if (colorResource == 1)
-            integerResource = R.color.color1
-        if (colorResource == 2)
-            integerResource = R.color.color2
-        if (colorResource == 3)
-            integerResource = R.color.color3
-        if (colorResource == 4)
-            integerResource = R.color.color4
-        if (colorResource == 5)
-            integerResource = R.color.color5
-        if (colorResource == 6)
-            integerResource = R.color.color6
-        if (colorResource == 7)
-            integerResource = R.color.color7
-        if (colorResource == 8)
-            integerResource = R.color.color8
-        if (colorResource == 9)
-            integerResource = R.color.color9
-        if (colorResource == 10)
-            integerResource = R.color.color10
-        if (colorResource == 11)
-            integerResource = R.color.color11
-        if (colorResource == 12)
-            integerResource = R.color.color12
-
-        return integerResource
-    }
-
     private fun sameBackgroundError() {
         customToast("Two cells cannot use the same background")
+    }
+
+    fun changeDateText() {
+        hideAllDateCheckColor()
+        resetDateButtonAlpha()
+        binding.changeColorDateDay.alpha = 0.6F
+        changeDateTextColor()
+    }
+
+    private fun changeDateTextColor() {
+        enableDateTextColors()
+        binding.color13.setOnClickListener {
+            dateDay = 13
+            binding.saveDateColor.isEnabled = true
+            hideAllDateCheckColor()
+            binding.colorCheck13.visibility = View.VISIBLE
+            binding.colorDateDay.setColorFilter(activity.resources.getColor(R.color.color13))
+        }
+
+        binding.color14.setOnClickListener {
+            dateDay = 14
+            binding.saveDateColor.isEnabled = true
+            hideAllDateCheckColor()
+            binding.colorCheck14.visibility = View.VISIBLE
+            binding.colorDateDay.setColorFilter(activity.resources.getColor(R.color.color14))
+        }
+
+        binding.color15.setOnClickListener {
+            dateDay = 15
+            binding.saveDateColor.isEnabled = true
+            hideAllDateCheckColor()
+            binding.colorCheck15.visibility = View.VISIBLE
+            binding.colorDateDay.setColorFilter(activity.resources.getColor(R.color.color15))
+        }
+
+        binding.color16.setOnClickListener {
+            dateDay = 16
+            binding.saveDateColor.isEnabled = true
+            hideAllDateCheckColor()
+            binding.colorCheck16.visibility = View.VISIBLE
+            binding.colorDateDay.setColorFilter(activity.resources.getColor(R.color.color16))
+        }
+    }
+
+    fun restoreDefaultDateTextColor(dateDayColorResource: Int) {
+        dateDay = dateDayColorResource
+        binding.colorDateDay.setColorFilter(activity.resources.getColor(convertColorIntToResources(dateDayColorResource)))
+        Handler().postDelayed(Runnable {binding.restoreDefaultDateSwitch.isChecked = false}, 2000)
+    }
+
+    fun saveDateTextColor() {
+        resetDateButtonAlpha()
+        hideAllDateCheckColor()
+        binding.saveDateColor.isEnabled = false
+        disableDateTextColors()
+        customToast("Date text color saved")
+    }
+
+    fun onResumeRestoreDateTextColor(dateDayColorResource: Int) {
+        dateDay = dateDayColorResource
+        binding.colorDateDay.setColorFilter(activity.resources.getColor(convertColorIntToResources(dateDayColorResource)))
     }
 
     private fun changeDayColorCell() {
@@ -699,6 +784,5 @@ class SettingsViewMvc(
             }
         }
     }
-
 
 }

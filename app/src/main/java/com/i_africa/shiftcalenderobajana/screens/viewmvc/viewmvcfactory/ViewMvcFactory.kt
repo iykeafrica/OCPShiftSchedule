@@ -16,7 +16,7 @@ class ViewMvcFactory @Inject constructor(private val activity: Activity) {
     }
 
     fun newCustomShiftViewMvc(parent: ViewGroup?): CustomShiftViewMvc {
-        return CustomShiftViewMvc(activity.layoutInflater, parent)
+        return CustomShiftViewMvc(activity, parent)
     }
 
     fun newSelectShiftAllViewMvc(parent: ViewGroup?): SelectShiftAllViewMvc {

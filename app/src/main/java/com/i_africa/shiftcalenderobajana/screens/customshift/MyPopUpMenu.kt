@@ -6,6 +6,8 @@ import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.R
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.BaseViewMvc
+import com.i_africa.shiftcalenderobajana.utils.Constant
+import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import kotlin.properties.Delegates
 
 class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUpMenu.Listener>() {
@@ -18,16 +20,18 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
         fun settings()
     }
 
-    lateinit var popup: PopupMenu
+    private var popup: PopupMenu? = null
 
-    fun popup(v: View, state: Boolean) {
+    fun popup(v: View, state: Boolean, mySharedPreferences: MySharedPreferences) {
         popup = PopupMenu(activity, v)
-        val inflater = popup.menuInflater
-        inflater.inflate(R.menu.shift_menu, popup.menu)
+        val inflater = popup!!.menuInflater
+        inflater.inflate(R.menu.shift_menu, popup!!.menu)
 
-        popup.menu.findItem(R.id.update).isVisible = state != false
+        val dayOfMonthColor = mySharedPreferences.getStoredInt(Constant.DATE_TEXT_COLOR_RESOURCE_KEY)
 
-        popup.setOnMenuItemClickListener { menuItem ->
+        popup!!.menu.findItem(R.id.update).isVisible = state != false
+
+        popup!!.setOnMenuItemClickListener { menuItem ->
 
             when (menuItem.itemId) {
                 R.id.refresh -> {
@@ -60,11 +64,11 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
             true
 
         }
-        popup.show()
+        popup!!.show()
     }
 
     fun dismiss () {
-        popup.dismiss()
+        popup?.dismiss()
     }
 
 }

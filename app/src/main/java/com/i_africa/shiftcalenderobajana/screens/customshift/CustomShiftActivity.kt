@@ -72,7 +72,8 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     private fun loadShiftSchedule() {
-        customShiftViewMvc.showDayOfMonth()
+        customShiftViewMvc.updateCell(mySharedPreferences)
+        customShiftViewMvc.showDayOfMonth(mySharedPreferences)
         customShiftViewMvc.showWeekDay()
         customShiftViewMvc.showShiftDuty(shift, mySharedPreferences)
         customShiftViewMvc.showShiftMonthlyWorkingDays(shift)
@@ -84,7 +85,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         val month = savedInstanceState.getInt(Constant.MONTH)
         val year = savedInstanceState.getInt(Constant.YEAR)
 
-        customShiftViewMvc.restoreState(dayOfMonth, month, year)
+        customShiftViewMvc.restoreState(dayOfMonth, month, year, mySharedPreferences)
         loadShiftSchedule()
     }
 
@@ -97,7 +98,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     override fun popUpMenuClick(v: View) {
-        myPopUpMenu.popup(v, state)
+        myPopUpMenu.popup(v, state, mySharedPreferences)
     }
 
     override fun refresh() {
@@ -133,7 +134,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
                                 handler.post {
                                     Log.d(TAG, "getVersionName: success $updateVersionName")
                                     mySharedPreferences.storeStringValue(Constant.NEW_PREFERENCE_VERSION_NAME_KEY, updateVersionName)
-                                    customShiftViewMvc.makeNotificationIconVisible()
+                                    customShiftViewMvc.makeNotificationIconVisible(mySharedPreferences)
                                     state = true
                                 }
                             } else {
@@ -208,203 +209,204 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     override fun nextMonthClick() {
-        customShiftViewMvc.setNextMonth()
+        customShiftViewMvc.setNextMonth(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun previousMonthClick() {
-        customShiftViewMvc.setPreviousMonth()
+        customShiftViewMvc.setPreviousMonth(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun oneClick() {
-        customShiftViewMvc.set1()
+        customShiftViewMvc.set1(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twoClick() {
-        customShiftViewMvc.set2()
+        customShiftViewMvc.set2(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun threeClick() {
-        customShiftViewMvc.set3()
+        customShiftViewMvc.set3(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun fourClick() {
-        customShiftViewMvc.set4()
+        customShiftViewMvc.set4(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun fiveClick() {
-        customShiftViewMvc.set5()
+        customShiftViewMvc.set5(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun sixClick() {
-        customShiftViewMvc.set6()
+        customShiftViewMvc.set6(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun sevenClick() {
-        customShiftViewMvc.set7()
+        customShiftViewMvc.set7(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun eightClick() {
-        customShiftViewMvc.set8()
+        customShiftViewMvc.set8(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun nineClick() {
-        customShiftViewMvc.set9()
+        customShiftViewMvc.set9(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun tenClick() {
-        customShiftViewMvc.set10()
+        customShiftViewMvc.set10(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun elevenClick() {
-        customShiftViewMvc.set11()
+        customShiftViewMvc.set11(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twelveClick() {
-        customShiftViewMvc.set12()
+        customShiftViewMvc.set12(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirteenClick() {
-        customShiftViewMvc.set13()
+        customShiftViewMvc.set13(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun fourteenClick() {
-        customShiftViewMvc.set14()
+        customShiftViewMvc.set14(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun fifteenClick() {
-        customShiftViewMvc.set15()
+        customShiftViewMvc.set15(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun sixteenClick() {
-        customShiftViewMvc.set16()
+        customShiftViewMvc.set16(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun seventeenClick() {
-        customShiftViewMvc.set17()
+        customShiftViewMvc.set17(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun eighteenClick() {
-        customShiftViewMvc.set18()
+        customShiftViewMvc.set18(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun nineteenClick() {
-        customShiftViewMvc.set19()
+        customShiftViewMvc.set19(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyClick() {
-        customShiftViewMvc.set20()
+        customShiftViewMvc.set20(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyOneClick() {
-        customShiftViewMvc.set21()
+        customShiftViewMvc.set21(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyTwoClick() {
-        customShiftViewMvc.set22()
+        customShiftViewMvc.set22(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyThreeClick() {
-        customShiftViewMvc.set23()
+        customShiftViewMvc.set23(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyFourClick() {
-        customShiftViewMvc.set24()
+        customShiftViewMvc.set24(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyFiveClick() {
-        customShiftViewMvc.set25()
+        customShiftViewMvc.set25(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentySixClick() {
-        customShiftViewMvc.set26()
+        customShiftViewMvc.set26(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentySevenClick() {
-        customShiftViewMvc.set27()
+        customShiftViewMvc.set27(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyEightClick() {
-        customShiftViewMvc.set28()
+        customShiftViewMvc.set28(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun twentyNineClick() {
-        customShiftViewMvc.set29()
+        customShiftViewMvc.set29(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyClick() {
-        customShiftViewMvc.set30()
+        customShiftViewMvc.set30(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyOneClick() {
-        customShiftViewMvc.set31()
+        customShiftViewMvc.set31(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyTwoClick() {
-        customShiftViewMvc.set32()
+        customShiftViewMvc.set32(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyThreeClick() {
-        customShiftViewMvc.set33()
+        customShiftViewMvc.set33(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyFourClick() {
-        customShiftViewMvc.set34()
+        customShiftViewMvc.set34(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtyFiveClick() {
-        customShiftViewMvc.set35()
+        customShiftViewMvc.set35(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtySixClick() {
-        customShiftViewMvc.set36()
+        customShiftViewMvc.set36(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun thirtySevenClick() {
-        customShiftViewMvc.set37()
+        customShiftViewMvc.set37(mySharedPreferences)
         loadShiftSchedule()
     }
 
     override fun onPause() {
         super.onPause()
-        myPopUpMenu.dismiss()
+        if (myPopUpMenu != null)
+            myPopUpMenu.dismiss()
     }
 
     override fun onStart() {

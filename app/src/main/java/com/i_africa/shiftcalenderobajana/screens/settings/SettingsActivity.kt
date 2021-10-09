@@ -10,6 +10,10 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_1
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_10
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_11
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_12
+import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_13
+import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_14
+import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_15
+import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_16
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_2
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_3
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_4
@@ -18,13 +22,19 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_6
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_7
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_8
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_9
+import com.i_africa.shiftcalenderobajana.utils.Constant.DATE_TEXT_COLOR_RESOURCE
+import com.i_africa.shiftcalenderobajana.utils.Constant.DATE_TEXT_COLOR_RESOURCE_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.DATE_TEXT_COLOR_STRING_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.DAY_COLOR_RESOURCE
 import com.i_africa.shiftcalenderobajana.utils.Constant.EMAIL_US
 import com.i_africa.shiftcalenderobajana.utils.Constant.MORNING_BACKGROUND_COLOR_RESOURCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.MORNING_BACKGROUND_COLOR_STRING_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.NIGHT_BACKGROUND_COLOR_RESOURCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.NIGHT_BACKGROUND_COLOR_STRING_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.NIGHT_COLOR_RESOURCE
 import com.i_africa.shiftcalenderobajana.utils.Constant.OFF_BACKGROUND_COLOR_RESOURCE_KEY
 import com.i_africa.shiftcalenderobajana.utils.Constant.OFF_BACKGROUND_COLOR_STRING_KEY
+import com.i_africa.shiftcalenderobajana.utils.Constant.OFF_COLOR_RESOURCE
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -42,6 +52,7 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
     private var morningBackgroundColorResource = 0
     private var nightBackgroundColorResource = 0
     private var offBackgroundColorResource = 0
+    private var dateTextColorResource = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +65,7 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
         setDefaultBackgroundColorResource()
         getLatestBackgroundColorResource()
         settingsViewMvc.onResumeRestoreCellBackgroundColor(morningBackgroundColorResource, nightBackgroundColorResource, offBackgroundColorResource)
+        settingsViewMvc.onResumeRestoreDateTextColor(dateTextColorResource)
     }
 
     private fun setDefaultBackgroundColorResource() {
@@ -65,12 +77,16 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
 
         if(mySharedPreferences.getStoredInt(OFF_BACKGROUND_COLOR_RESOURCE_KEY) == 0)
             mySharedPreferences.storeIntValue(OFF_BACKGROUND_COLOR_RESOURCE_KEY, 3)
+
+        if(mySharedPreferences.getStoredInt(DATE_TEXT_COLOR_RESOURCE_KEY) == 0)
+            mySharedPreferences.storeIntValue(DATE_TEXT_COLOR_RESOURCE_KEY, 13)
     }
 
     private fun getLatestBackgroundColorResource() {
         morningBackgroundColorResource = mySharedPreferences.getStoredInt(MORNING_BACKGROUND_COLOR_RESOURCE_KEY)
         nightBackgroundColorResource = mySharedPreferences.getStoredInt(NIGHT_BACKGROUND_COLOR_RESOURCE_KEY)
         offBackgroundColorResource = mySharedPreferences.getStoredInt(OFF_BACKGROUND_COLOR_RESOURCE_KEY)
+        dateTextColorResource = mySharedPreferences.getStoredInt(DATE_TEXT_COLOR_RESOURCE_KEY)
     }
 
     override fun backPressed() {
@@ -94,7 +110,7 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
     }
 
     override fun changeDefaultColor() {
-        settingsViewMvc.restoreDefaultCellBackgroundColor(1, 2, 3)
+        settingsViewMvc.restoreDefaultCellBackgroundColor(DAY_COLOR_RESOURCE, NIGHT_COLOR_RESOURCE, OFF_COLOR_RESOURCE)
         saveColor()
     }
 
@@ -118,7 +134,13 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
             mySharedPreferences.storeIntValue(OFF_BACKGROUND_COLOR_RESOURCE_KEY, settingsViewMvc.offCellColor())
             mySharedPreferences.storeStringValue(OFF_BACKGROUND_COLOR_STRING_KEY, sortColorString(settingsViewMvc.offCellColor()))
         }
+    }
 
+    private fun saveDateTextInPreference() {
+        if (settingsViewMvc.dateTextColor() != 0) {
+            mySharedPreferences.storeStringValue(DATE_TEXT_COLOR_STRING_KEY, sortColorString(settingsViewMvc.dateTextColor()))
+            mySharedPreferences.storeIntValue(DATE_TEXT_COLOR_RESOURCE_KEY, settingsViewMvc.dateTextColor())
+        }
     }
 
     override fun licenseAgreementClick() {
@@ -131,6 +153,20 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
 
     override fun contactUsClick() {
         screensNavigator.visitUrl(EMAIL_US)
+    }
+
+    override fun changeDateTextColor() {
+        settingsViewMvc.changeDateText()
+    }
+
+    override fun changeDateTextDefaultColor() {
+        settingsViewMvc.restoreDefaultDateTextColor(DATE_TEXT_COLOR_RESOURCE)
+        saveDateTextColor()
+    }
+
+    override fun saveDateTextColor() {
+        settingsViewMvc.saveDateTextColor()
+        saveDateTextInPreference()
     }
 
     private fun sortColorString(colorNumber: Int): String {
@@ -160,6 +196,14 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
             stringColor = BACKGROUND_COLOR_11
         if (colorNumber == 12)
             stringColor = BACKGROUND_COLOR_12
+        if (colorNumber == 13)
+            stringColor = BACKGROUND_COLOR_13
+        if (colorNumber == 14)
+            stringColor = BACKGROUND_COLOR_14
+        if (colorNumber == 15)
+            stringColor = BACKGROUND_COLOR_15
+        if (colorNumber == 16)
+            stringColor = BACKGROUND_COLOR_16
 
         return stringColor
     }

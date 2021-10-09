@@ -47,6 +47,13 @@ class SelectShiftAllActivity : BaseActivity() {
                 Constant.BACKGROUND_COLOR_3
             )
 
+        if(mySharedPreferences.getStoredString(Constant.DATE_TEXT_COLOR_STRING_KEY) == "")
+            mySharedPreferences.storeStringValue(
+                Constant.DATE_TEXT_COLOR_STRING_KEY,
+                Constant.BACKGROUND_COLOR_13
+            )
+
+
         if (savedInstanceState == null){
             supportFragmentManager.beginTransaction()
                 .add(R.id.frame_layout, SelectShiftAllFragment())

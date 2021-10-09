@@ -36,6 +36,7 @@ class CalculateOvertimeViewMvc(
         fun basicAndWorkedDaysZero(message: String)
         fun basicSalaryClick()
         fun workedDaysClick()
+        fun backPressed()
     }
 
     init {
@@ -60,6 +61,12 @@ class CalculateOvertimeViewMvc(
             hideAsterisksNote()
             for (listener in listeners) {
                 listener.workedDaysClick()
+            }
+        }
+
+        binding.backButton.setOnClickListener {
+            for (listener in listeners) {
+                listener.backPressed()
             }
         }
     }
