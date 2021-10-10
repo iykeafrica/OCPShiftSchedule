@@ -28,6 +28,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.TWO_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_2_2_2_DAYS
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ConvertToIntegerResource.convertColorIntToResources
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.HighlightCurrentDay.checkCurrentDayAndHighlight
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalendarCellColor.updateShiftCalendarCellColor
 import java.util.*
@@ -57,7 +58,7 @@ class CustomShiftViewMvc(
         hideFourthAndFifthRow()
         calendar.time = date
         currentDay = calendar.get(Calendar.DAY_OF_MONTH)
-//        updateCell()
+        updateCell()
 
         binding.front.setOnClickListener {
             hideFourthAndFifthRow()
@@ -87,22 +88,18 @@ class CustomShiftViewMvc(
     }
 
     fun showDayOfMonth(mySharedPreferences: MySharedPreferences) {
-//        binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
-        binding.dayOfMonthView.text = currentDay.toString()
+        binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
+//        binding.dayOfMonthView.text = currentDay.toString()
         val dayOfMonthTextColor = mySharedPreferences.getStoredString(DATE_TEXT_COLOR_STRING_KEY)
         binding.dayOfMonthView.setTextColor(Color.parseColor(dayOfMonthTextColor))
     }
 
     fun showWeekDay() {
-        val cal = Calendar.getInstance()
-        setCalendar(cal)
-
-        binding.weekdayView.text = DateFormatter.weekDay(cal.time)
+        binding.weekdayView.text = DateFormatter.weekDay(calendar.time)
     }
 
     private fun setCalendar(cal: Calendar) {
-//        day = cal.get(Calendar.DAY_OF_MONTH).toString()
-        day = currentDay.toString()
+        day = cal.get(Calendar.DAY_OF_MONTH).toString()
         month = (cal.get(Calendar.MONTH) + 1).toString()
         year = cal.get(Calendar.YEAR).toString()
         daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
@@ -183,7 +180,7 @@ class CustomShiftViewMvc(
         binding.notification?.visibility = View.VISIBLE
     }
 
-    fun restoreState(dayOfMonth: Int, month: Int, year: Int, mySharedPreferences: MySharedPreferences) {
+    fun restoreState(dayOfMonth: Int, month: Int, year: Int) {
         hideFourthAndFifthRow()
         calendar.set(year, month, dayOfMonth)
         reverseTextAndBackgroundColor(binding)
@@ -191,15 +188,14 @@ class CustomShiftViewMvc(
         daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
         isCurrentDate = true
         currentDay = dayOfMonth
-        updateCell(mySharedPreferences)
+        updateCell()
     }
 
     fun showShift(shift: String) {
         binding.shift.text = shift
     }
 
-    fun updateCell(mySharedPreferences: MySharedPreferences) {
-        val dayOfMonthColor = mySharedPreferences.getStoredString(DATE_TEXT_COLOR_STRING_KEY)
+    private fun updateCell() {
         setCalendar(calendar)
         calendar[Calendar.DAY_OF_MONTH] = 1
         startFirstDay = calendar[Calendar.DAY_OF_WEEK]
@@ -207,223 +203,43 @@ class CustomShiftViewMvc(
 
         for (i in 1..7) {
             if (startFirstDay == i) {
-
                 binding.one.text = setCalendarStartOfCollection(startFirstDay)[0]
-                if (binding.one.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[0]) == currentDay)
-                        binding.one.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.two.text = setCalendarStartOfCollection(startFirstDay)[1]
-                if (binding.two.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[1]) == currentDay)
-                        binding.two.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.three.text = setCalendarStartOfCollection(startFirstDay)[2]
-                if (binding.three.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[2]) == currentDay)
-                        binding.three.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.four.text = setCalendarStartOfCollection(startFirstDay)[3]
-                if (binding.four.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[3]) == currentDay)
-                        binding.four.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.five.text = setCalendarStartOfCollection(startFirstDay)[4]
-                if (binding.five.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[4]) == currentDay)
-                        binding.five.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.six.text = setCalendarStartOfCollection(startFirstDay)[5]
-                if (binding.six.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[5]) == currentDay)
-                        binding.six.setTextColor(Color.parseColor(dayOfMonthColor))
-                }
-
                 binding.seven.text = setCalendarStartOfCollection(startFirstDay)[6]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[6]) == currentDay)
-                    binding.seven.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.eight.text = setCalendarStartOfCollection(startFirstDay)[7]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[7]) == currentDay)
-                    binding.eight.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.nine.text = setCalendarStartOfCollection(startFirstDay)[8]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[8]) == currentDay)
-                    binding.nine.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.ten.text = setCalendarStartOfCollection(startFirstDay)[9]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[9]) == currentDay)
-                    binding.ten.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.eleven.text = setCalendarStartOfCollection(startFirstDay)[10]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[10]) == currentDay)
-                    binding.eleven.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twelve.text = setCalendarStartOfCollection(startFirstDay)[11]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[11]) == currentDay)
-                    binding.twelve.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.thirteen.text = setCalendarStartOfCollection(startFirstDay)[12]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[12]) == currentDay)
-                    binding.thirteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.fourteen.text = setCalendarStartOfCollection(startFirstDay)[13]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[13]) == currentDay)
-                    binding.fourteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.fifteen.text = setCalendarStartOfCollection(startFirstDay)[14]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[14]) == currentDay)
-                    binding.fifteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.sixteen.text = setCalendarStartOfCollection(startFirstDay)[15]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[15]) == currentDay)
-                    binding.sixteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.seventeen.text = setCalendarStartOfCollection(startFirstDay)[16]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[16]) == currentDay)
-                    binding.seventeen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.eighteen.text = setCalendarStartOfCollection(startFirstDay)[17]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[17]) == currentDay)
-                    binding.eighteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.nineteen.text = setCalendarStartOfCollection(startFirstDay)[18]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[18]) == currentDay)
-                    binding.nineteen.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twenty.text = setCalendarStartOfCollection(startFirstDay)[19]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[19]) == currentDay)
-                    binding.twenty.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentyone.text = setCalendarStartOfCollection(startFirstDay)[20]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[20]) == currentDay)
-                    binding.twentyone.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentytwo.text = setCalendarStartOfCollection(startFirstDay)[21]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[21]) == currentDay)
-                    binding.twentytwo.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentythree.text = setCalendarStartOfCollection(startFirstDay)[22]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[22]) == currentDay)
-                    binding.twentythree.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentyfour.text = setCalendarStartOfCollection(startFirstDay)[23]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[23]) == currentDay)
-                    binding.twentyfour.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentyfive.text = setCalendarStartOfCollection(startFirstDay)[24]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[24]) == currentDay)
-                    binding.twentyfive.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentysix.text = setCalendarStartOfCollection(startFirstDay)[25]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[25]) == currentDay)
-                    binding.twentysix.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentyseven.text = setCalendarStartOfCollection(startFirstDay)[26]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[26]) == currentDay)
-                    binding.twentyseven.setTextColor(Color.parseColor(dayOfMonthColor))
-
                 binding.twentyeight.text = setCalendarStartOfCollection(startFirstDay)[27]
-                if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[27]) == currentDay)
-                    binding.twentyeight.setTextColor(Color.parseColor(dayOfMonthColor))
-
-
                 binding.twentynine.text = setCalendarStartOfCollection(startFirstDay)[28]
-                if (binding.twentynine.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.twentynine.text.toString().trim()) > daysInMonth) {
-                        binding.twentynine.text = ""
-                    } else {
-                        binding.fourthRow.visibility = View.VISIBLE
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[28]) == currentDay)
-                            binding.twentynine.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirty.text = setCalendarStartOfCollection(startFirstDay)[29]
-                if (binding.thirty.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirty.text.toString().trim()) > daysInMonth) {
-                        binding.thirty.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[29]) == currentDay)
-                            binding.thirty.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtyone.text = setCalendarStartOfCollection(startFirstDay)[30]
-                if (binding.thirtyone.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtyone.text.toString().trim()) > daysInMonth) {
-                        binding.thirtyone.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[30]) == currentDay)
-                            binding.thirtyone.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtytwo.text = setCalendarStartOfCollection(startFirstDay)[31]
-                if (binding.thirtytwo.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtytwo.text.toString().trim()) > daysInMonth) {
-                        binding.thirtytwo.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[31]) == currentDay)
-                            binding.thirtytwo.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtythree.text = setCalendarStartOfCollection(startFirstDay)[32]
-                if (binding.thirtythree.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtythree.text.toString().trim()) > daysInMonth) {
-                        binding.thirtythree.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[32]) == currentDay)
-                            binding.thirtythree.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtyfour.text = setCalendarStartOfCollection(startFirstDay)[33]
-                if (binding.thirtyfour.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtyfour.text.toString().trim()) > daysInMonth) {
-                        binding.thirtyfour.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[33]) == currentDay)
-                            binding.thirtyfour.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtyfive.text = setCalendarStartOfCollection(startFirstDay)[34]
-                if (binding.thirtyfive.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtyfive.text.toString().trim()) > daysInMonth) {
-                        binding.thirtyfive.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[34]) == currentDay)
-                            binding.thirtyfive.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtysix.text = setCalendarStartOfCollection(startFirstDay)[35]
-                if (binding.thirtysix.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtysix.text.toString().trim()) > daysInMonth) {
-                        binding.thirtysix.text = ""
-                    } else {
-                        binding.fifthRow.visibility = View.VISIBLE
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[35]) == currentDay)
-                            binding.thirtysix.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
-
                 binding.thirtyseven.text = setCalendarStartOfCollection(startFirstDay)[36]
-                if (binding.thirtyseven.text.toString().trim().isNotEmpty()) {
-                    if (Integer.parseInt(binding.thirtyseven.text.toString().trim()) > daysInMonth) {
-                        binding.thirtyseven.text = ""
-                    } else {
-                        if (Integer.parseInt(setCalendarStartOfCollection(startFirstDay)[36]) == currentDay)
-                            binding.thirtyseven.setTextColor(Color.parseColor(dayOfMonthColor))
-                    }
-                }
             }
         }
 
@@ -734,22 +550,22 @@ class CustomShiftViewMvc(
         }
     }
 
-    fun setNextMonth(mySharedPreferences: MySharedPreferences) {
+    fun setNextMonth() {
         currentDay = 1
         reverseTextAndBackgroundColor(binding)
         calendar.add(Calendar.MONTH, +1)
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         date = calendar.time
-        updateCell(mySharedPreferences)
+        updateCell()
     }
 
-    fun setPreviousMonth(mySharedPreferences: MySharedPreferences) {
+    fun setPreviousMonth() {
         currentDay = 1
         reverseTextAndBackgroundColor(binding)
         calendar.add(Calendar.MONTH, -1)
         calendar.set(Calendar.DAY_OF_MONTH, 1)
         date = calendar.time
-        updateCell(mySharedPreferences)
+        updateCell()
     }
 
     fun set1(mySharedPreferences: MySharedPreferences) {
@@ -1086,5 +902,8 @@ class CustomShiftViewMvc(
         fun thirtySevenClick()
     }
 
+    fun checkCellWithCurrentDate(mySharedPreferences: MySharedPreferences) {
+        checkCurrentDayAndHighlight(mySharedPreferences, binding, currentDay, daysInMonth)
+    }
 
 }

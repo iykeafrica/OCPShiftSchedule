@@ -49,8 +49,6 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         val token = mySharedPreferences.getStoredString(Constant.FCM_TOKEN)
         val newToken = mySharedPreferences.getStoredString(Constant.NEW_FCM_TOKEN)
 
-
-
         if (savedInstanceState == null) {
             loadShiftSchedule()
         } else {
@@ -74,12 +72,12 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     private fun loadShiftSchedule() {
+        customShiftViewMvc.checkCellWithCurrentDate(mySharedPreferences)
         customShiftViewMvc.showDayOfMonth(mySharedPreferences)
         customShiftViewMvc.showWeekDay()
         customShiftViewMvc.showShiftDuty(shift, mySharedPreferences)
         customShiftViewMvc.showShiftMonthlyWorkingDays(shift)
         customShiftViewMvc.showShift(shift)
-        customShiftViewMvc.updateCell(mySharedPreferences)
     }
 
     private fun restoreState(savedInstanceState: Bundle) {
@@ -87,7 +85,7 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         val month = savedInstanceState.getInt(Constant.MONTH)
         val year = savedInstanceState.getInt(Constant.YEAR)
 
-        customShiftViewMvc.restoreState(dayOfMonth, month, year, mySharedPreferences)
+        customShiftViewMvc.restoreState(dayOfMonth, month, year)
         loadShiftSchedule()
     }
 
@@ -211,12 +209,12 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
     }
 
     override fun nextMonthClick() {
-        customShiftViewMvc.setNextMonth(mySharedPreferences)
+        customShiftViewMvc.setNextMonth()
         loadShiftSchedule()
     }
 
     override fun previousMonthClick() {
-        customShiftViewMvc.setPreviousMonth(mySharedPreferences)
+        customShiftViewMvc.setPreviousMonth()
         loadShiftSchedule()
     }
 
