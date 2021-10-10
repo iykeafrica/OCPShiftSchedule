@@ -42,7 +42,8 @@ class CustomShiftViewMvc(
     private val binding = ActivityCustomShiftBinding.inflate(activity.layoutInflater, parent, false)
     val rootView = binding.root
 
-    private var date = Date()
+    private
+    var date = Date()
     private val calendar = Calendar.getInstance()
     private lateinit var day: String
     private lateinit var month: String
@@ -86,17 +87,22 @@ class CustomShiftViewMvc(
     }
 
     fun showDayOfMonth(mySharedPreferences: MySharedPreferences) {
-        binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
+//        binding.dayOfMonthView.text = calendar.get(Calendar.DAY_OF_MONTH).toString()
+        binding.dayOfMonthView.text = currentDay.toString()
         val dayOfMonthTextColor = mySharedPreferences.getStoredString(DATE_TEXT_COLOR_STRING_KEY)
         binding.dayOfMonthView.setTextColor(Color.parseColor(dayOfMonthTextColor))
     }
 
     fun showWeekDay() {
-        binding.weekdayView.text = DateFormatter.weekDay(calendar.time)
+        val cal = Calendar.getInstance()
+        setCalendar(cal)
+
+        binding.weekdayView.text = DateFormatter.weekDay(cal.time)
     }
 
     private fun setCalendar(cal: Calendar) {
-        day = cal.get(Calendar.DAY_OF_MONTH).toString()
+//        day = cal.get(Calendar.DAY_OF_MONTH).toString()
+        day = currentDay.toString()
         month = (cal.get(Calendar.MONTH) + 1).toString()
         year = cal.get(Calendar.YEAR).toString()
         daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH)
