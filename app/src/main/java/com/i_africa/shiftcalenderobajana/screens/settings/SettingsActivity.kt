@@ -3,7 +3,6 @@ package com.i_africa.shiftcalenderobajana.screens.settings
 import android.os.Bundle
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
 import com.i_africa.shiftcalenderobajana.screens.common.activity.BaseActivity
-import com.i_africa.shiftcalenderobajana.screens.settings.SettingsViewMvc
 import com.i_africa.shiftcalenderobajana.screens.viewmvc.viewmvcfactory.ViewMvcFactory
 import com.i_africa.shiftcalenderobajana.utils.Constant.APACHE_LICENSE
 import com.i_africa.shiftcalenderobajana.utils.Constant.BACKGROUND_COLOR_1
@@ -61,6 +60,7 @@ class SettingsActivity : BaseActivity(), SettingsViewMvc.Listener {
 
         settingsViewMvc = viewMvcFactory.newSettingsViewMvc(null)
         setContentView(settingsViewMvc.rootView)
+        settingsViewMvc.setUtils()
 
         setDefaultBackgroundColorResource()
         getLatestBackgroundColorResource()

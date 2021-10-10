@@ -9,10 +9,9 @@
     <string name="calculate_ot">Calculate Overtime</string>
     <string name="about">About</string>
     <string name="about_body">This is a shift schedule app modelled with the different shift patterns of workers across Dangote Industry Limited.
-        The maiden version was designed using Obajana Cement Plant (standard three 3 days working shift).
-        This updated version has 2 days, 3 days and 4 days shift schedule of MORNING, NIGHT and OFF Duties.
-        This app factored in different types of the above mentioned shifts.
-        \nAnother feature of this app that you may want to explore is the overtime calculator.
+        The maiden version was designed using Obajana Cement Plant\'s (3-3-3 days shift pattern of MORNING, NIGHT and OFF duties). This updated
+        version has 2-2-2 days, 3-3-3 days and 4-4-4 days pattern shift patterns.
+        \nAnother excellent feature of this app is the overtime calculator.
     </string>
     <string name="about_app">About</string>
     <string name="select_your_shift">SELECT YOUR SHIFT</string>
@@ -71,13 +70,13 @@
     <string name="about_header"><u>About</u></string>
     <string name="version"><u>Version</u></string>
     <string name="version_number">V2.0</string>
-    <string name="terms_of_use_body">AGREEMENT TO TERMS
-
- the Content to which you have properly gained access solely for your personal, non-commercial use. We reserve all rights not expressly granted to you in and to the Site, the Content and the Marks.</string>
+    <string name="terms_of_use_body">Shift Schedule(OCP) has been designed to display shift patterns of workers and calculate overtime. Hence, you
+        may use this app solely for your personal (non-commercial) good. We reserve all rights for the content of this app. So, do not write a software
+        or another app that uses the program or data from Shift Schedule(OCP) whether it is done in exchange for money or not.</string>
     <string name="terms_of_use"><u>Terms of Use</u></string>
     <string name="catalog"><u>Catalog Date</u></string>
     <string name="date">Friday, 8 October 2021 07:22:09</string>
-    <string name="copyright">This is a personal project designed by Ikechi, licensed under the Apache License 2.0 \nCopyright © i_africa solutions</string>
+    <string name="copyright">\u00A9</string>
     <string name="contact_us"><u>Contact Us</u></string>
     <string name="cell_background">Cell background</string>
     <string name="date_text">Date text</string>

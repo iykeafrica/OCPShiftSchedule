@@ -27,6 +27,7 @@ import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_3_3_3_DAYS
 import com.i_africa.shiftcalenderobajana.utils.Constant.TWO_DAYS_LOOP
 import com.i_africa.shiftcalenderobajana.utils.Constant.SHIFT_2_2_2_DAYS
 import com.i_africa.shiftcalenderobajana.utils.mysharedpref.MySharedPreferences
+import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ConvertToIntegerResource.convertColorIntToResources
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ReverseTextAndBackgroundColor.reverseTextAndBackgroundColor
 import com.i_africa.shiftcalenderobajana.utils.shift_calendar.ShiftCalendarCellColor.updateShiftCalendarCellColor
 import java.util.*
@@ -174,20 +175,6 @@ class CustomShiftViewMvc(
         val dayOfMonthColor = mySharedPreferences.getStoredInt(Constant.DATE_TEXT_COLOR_RESOURCE_KEY)
         binding.notification?.setColorFilter(activity.resources.getColor(convertColorIntToResources(dayOfMonthColor)))
         binding.notification?.visibility = View.VISIBLE
-    }
-
-    private fun convertColorIntToResources(colorResource: Int) : Int {
-        var integerResource = 0
-        if (colorResource == 13)
-            integerResource = R.color.color13
-        if (colorResource == 14)
-            integerResource = R.color.color14
-        if (colorResource == 15)
-            integerResource = R.color.color15
-        if (colorResource == 16)
-            integerResource = R.color.color16
-
-        return integerResource
     }
 
     fun restoreState(dayOfMonth: Int, month: Int, year: Int, mySharedPreferences: MySharedPreferences) {

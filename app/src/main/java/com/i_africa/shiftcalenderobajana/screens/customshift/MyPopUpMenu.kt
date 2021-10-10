@@ -1,5 +1,9 @@
 package com.i_africa.shiftcalenderobajana.screens.customshift
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -27,7 +31,14 @@ class MyPopUpMenu(private val activity: AppCompatActivity) : BaseViewMvc<MyPopUp
         val inflater = popup!!.menuInflater
         inflater.inflate(R.menu.shift_menu, popup!!.menu)
 
-        val dayOfMonthColor = mySharedPreferences.getStoredInt(Constant.DATE_TEXT_COLOR_RESOURCE_KEY)
+        val dayOfMonthColor = mySharedPreferences.getStoredString(Constant.DATE_TEXT_COLOR_STRING_KEY)
+        val menuItem = popup!!.menu.findItem(R.id.update)
+        val title = menuItem.title.toString()
+        if (title != null) {
+            val spannableString = SpannableString(title)
+            spannableString.setSpan(ForegroundColorSpan(Color.parseColor(dayOfMonthColor)), 0, spannableString.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+            menuItem.title = spannableString
+        }
 
         popup!!.menu.findItem(R.id.update).isVisible = state != false
 

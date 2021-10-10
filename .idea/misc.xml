@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable-v24/custom_button_settings.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_button.xml" value="0.1" />
+        <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_button_all.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_dialog.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_four_days_button.xml" value="0.21875" />
         <entry key="..\:/Users/IKECHI/AndroidStudioProjects/OCPShiftSchedule/app/src/main/res/drawable/custom_three_days_button.xml" value="0.21875" />

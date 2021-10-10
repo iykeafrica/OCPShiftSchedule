@@ -2,6 +2,7 @@ package com.i_africa.shiftcalenderobajana.screens.settings
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.ColorFilter
 import android.os.Build
 import android.os.Handler
@@ -51,11 +52,14 @@ class SettingsViewMvc(
     private val binding = ActivitySettingsBinding.inflate(activity.layoutInflater, parent, false)
     val rootView = binding.root
 
-
-    init {
+    fun setUtils() {
+        val copyrightIcon = activity.resources.getString(R.string.copyright)
+        binding.copyright.text = "Copyright$copyrightIcon ${Calendar.getInstance().get(Calendar.YEAR)}   i_africa solutions"
         binding.version.text = BuildConfig.VERSION_NAME
         binding.catalogDate.text = DateFormatter.dateCatalog(Calendar.getInstance())
+    }
 
+    init {
         binding.colorPicker.visibility = View.GONE
         binding.save.isEnabled = false
         binding.saveDateColor.isEnabled = false
