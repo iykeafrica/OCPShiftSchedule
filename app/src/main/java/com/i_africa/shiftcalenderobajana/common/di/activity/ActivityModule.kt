@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import com.i_africa.shiftcalenderobajana.screens.customshift.MyPopUpMenu
 import com.i_africa.shiftcalenderobajana.screens.common.ScreensNavigator
+import com.i_africa.shiftcalenderobajana.screens.customshift.MyPopUpMenu2
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +28,6 @@ object ActivityModule {
     @Provides
     fun popUpMenu(appCompatActivity: AppCompatActivity) = MyPopUpMenu(appCompatActivity)
 
+    @Provides
+    fun popUpMenu2(appCompatActivity: AppCompatActivity) = MyPopUpMenu2(appCompatActivity)
 }

@@ -81,6 +81,8 @@
     <string name="cell_background">Cell background</string>
     <string name="date_text">Date text</string>
     <string name="default_color">Default Color</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="create_note">Create Note</string>
 
 </resources>
 

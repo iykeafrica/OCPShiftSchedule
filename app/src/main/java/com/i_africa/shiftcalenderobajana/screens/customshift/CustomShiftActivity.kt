@@ -24,12 +24,13 @@ import javax.inject.Inject
 private val TAG = CustomShiftActivity::class.simpleName
 
 @AndroidEntryPoint
-class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUpMenu.Listener {
+class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUpMenu.Listener, MyPopUpMenu2.Listener {
 
     private lateinit var customShiftViewMvc: CustomShiftViewMvc
+    @Inject lateinit var myPopUpMenu: MyPopUpMenu
+    @Inject lateinit var myPopUpMenu2: MyPopUpMenu2
     @Inject lateinit var screensNavigator: ScreensNavigator
     @Inject lateinit var mySharedPreferences: MySharedPreferences
-    @Inject lateinit var myPopUpMenu: MyPopUpMenu
     @Inject lateinit var viewMvcFactory: ViewMvcFactory
     @Inject lateinit var submitFormUseCase: SubmitFormUseCase
     @Inject lateinit var fetchVersionNameCodeUseCase: FetchVersionNameCodeUseCase
@@ -101,6 +102,10 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         myPopUpMenu.popup(v, state, mySharedPreferences)
     }
 
+    override fun popUpMenuClick2(v: View) {
+        myPopUpMenu2.popup2(v)
+    }
+
     override fun refresh() {
         screensNavigator.refresh()
     }
@@ -120,6 +125,15 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
 
     override fun settings() {
         screensNavigator.navigateToSettings()
+    }
+
+    //PopUpMenu2
+    override fun setAlarm() {
+        TODO("Not yet implemented")
+    }
+
+    override fun createNote() {
+        TODO("Not yet implemented")
     }
 
     private fun getVersionName() {
@@ -407,6 +421,8 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         super.onPause()
         if (myPopUpMenu != null)
             myPopUpMenu.dismiss()
+        if (myPopUpMenu2 != null)
+            myPopUpMenu2.dismiss()
     }
 
     override fun onStart() {
@@ -421,4 +437,5 @@ class CustomShiftActivity : BaseActivity(), CustomShiftViewMvc.Listener, MyPopUp
         coroutineScope.coroutineContext.cancelChildren()
         super.onStop()
     }
+
 }
